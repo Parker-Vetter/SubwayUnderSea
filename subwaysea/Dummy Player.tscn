@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpee3jakvf5ux"]
+
+[ext_resource type="Script" path="res://dummy_player.gd" id="1_0y5vt"]
+[ext_resource type="Texture2D" uid="uid://d2kqdcsmrdi3x" path="res://icon.svg" id="2_bc7o2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qju3s"]
+radius = 62.0
+height = 124.0
+
+[node name="DummyPlayer" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_0y5vt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bc7o2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qju3s")

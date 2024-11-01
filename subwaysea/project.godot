@@ -11,5 +11,21 @@ config_version=5
 [application]
 
 config/name="SubwaySea"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.png"
+
+[dotnet]
+
+project/assembly_name="SubwaySea"
+
+[layer_names]
+
+2d_physics/layer_1="Background"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Interactable"
+2d_physics/layer_4="Buff/Debuff Area"
+
+[physics]
+
+common/main_scene=""
