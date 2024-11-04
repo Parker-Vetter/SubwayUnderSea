@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://beiratmnmkvyi"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_pkbub"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1pg1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_70fqe"]
+radius = 31.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3w30u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2h0en"]
+radius = 24.0
+height = 66.0
+
+[node name="Node2D" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_w1pg1")
+contact_monitor = true
+max_contacts_reported = 3
+angular_damp = 43.0
+script = ExtResource("1_pkbub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_70fqe")
+
+[node name="UpperBody" type="RigidBody2D" parent="."]
+top_level = true
+position = Vector2(0, -68)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_3w30u")
+lock_rotation = true
+linear_damp = 30.606
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperBody"]
+shape = SubResource("CapsuleShape2D_2h0en")
+
+[node name="BendOver" type="Marker2D" parent="."]
+
+[node name="BendUp" type="Marker2D" parent="."]
+top_level = true
+position = Vector2(0, -51)
+
+[node name="Polygon2D" type="Polygon2D" parent="BendUp"]
+polygon = PackedVector2Array(-5, -11, -10, -2, 5, 9, 9, 1)
+
+[node name="TempButt" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-16, -24, 22, -23, 17, 24, 6, 24, 6, 1, -8, 1, -12, 20, -29, 14)
