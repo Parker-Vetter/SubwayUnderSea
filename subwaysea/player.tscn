@@ -5,13 +5,13 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1pg1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_70fqe"]
-radius = 31.0
+radius = 21.0238
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3w30u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2h0en"]
-radius = 24.0
-height = 66.0
+radius = 18.0
+height = 56.0
 
 [node name="Node2D" type="RigidBody2D" groups=["player"]]
 physics_material_override = SubResource("PhysicsMaterial_w1pg1")
@@ -38,7 +38,7 @@ shape = SubResource("CapsuleShape2D_2h0en")
 
 [node name="BendUp" type="Marker2D" parent="."]
 top_level = true
-position = Vector2(0, -51)
+position = Vector2(0, -25)
 
 [node name="Polygon2D" type="Polygon2D" parent="BendUp"]
 polygon = PackedVector2Array(-5, -11, -10, -2, 5, 9, 9, 1)
@@ -51,4 +51,5 @@ position = Vector2(0, 8)
 polygon = PackedVector2Array(-5, -11, -10, -2, 5, 9, 9, 1)
 
 [node name="TempButt" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-16, -24, 22, -23, 17, 24, 6, 24, 6, 1, -8, 1, -12, 20, -29, 14)
+color = Color(0.643925, 0.110548, 0.272255, 1)
+polygon = PackedVector2Array(11, -6, 3, 9, -7, -8)
