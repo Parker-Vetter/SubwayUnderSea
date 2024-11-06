@@ -4,20 +4,36 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(626, 599)
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Floor"]
 position = Vector2(-8.5, 27)
-polygon = PackedVector2Array(-122.5, -46, 2.5, -34, 175.5, -63, 295.5, -111, 351.5, -75, 438.5, -42, 531.5, -236, 527.5, 30, -621.5, 21, -626.5, -144, -569.5, -96, -520.5, -120, -431.5, -54, -340.5, -84)
+polygon = PackedVector2Array(305.5, -32, 303.5, 22, 262.5, 156, 186.5, 168, 186.5, 38, -77.7452, 21.0046, -462.5, 20, -452.5, -33)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(626, 599)
+[node name="CollisionShape2D4" type="CollisionPolygon2D" parent="Floor"]
+position = Vector2(851, 34)
+polygon = PackedVector2Array(208, -47, 203, 34, 31, 38, 7, 181, -48, 178, -96, 35, -462.5, 20, -452.5, -33)
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Floor"]
+position = Vector2(12, 365)
+polygon = PackedVector2Array(-122.5, -46, 483.5, -49, 476.5, 16, -469.5, 18, -458.5, -56, -386.5, -58)
+
+[node name="CollisionShape2D5" type="CollisionPolygon2D" parent="Floor"]
+position = Vector2(1063, 369)
+polygon = PackedVector2Array(-122.5, -46, 483.5, -49, 476.5, 16, -469.5, 18, -458.5, -56, -386.5, -58)
+
+[node name="CollisionShape2D3" type="CollisionPolygon2D" parent="Floor"]
+position = Vector2(917, 625)
+polygon = PackedVector2Array(28, -59, 43, 27, -469.5, 18, -458.5, -56)
+
+[node name="Hull" type="StaticBody2D" parent="."]
+position = Vector2(630, 354)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hull"]
 position = Vector2(-8.5, 27)
-polygon = PackedVector2Array(69.5, -171, 48.5, -130, 155.5, -138, 221.5, -175, 319.5, -180, 369.5, -236, 260.5, -307, -65.5, -284)
+polygon = PackedVector2Array(-122.5, -46, 1150.5, -42, 1144.5, 252, 1068.5, 269, 1060.5, 25, 578.5, 28, 573.5, 122, 516.5, 128, 505.5, 20, -475.5, 14, -428.5, 615, 486.5, 602, 476.5, 781, 461.5, 859, 962.5, 852, 955.5, 602, 1093.5, 605, 1536.5, 619, 1556.5, 334, 1062.5, 345, 1062.5, 275, 1531.5, 271, 1623.5, 264, 1610.5, 664, 1048.5, 849, 1058.5, 927, 373.5, 935, 320.5, 713, -559.5, 705, -610.5, 607, -626.5, -58)
 
-[node name="Node2D" parent="." instance=ExtResource("1_eeyxp")]
+[node name="Player" parent="." instance=ExtResource("1_eeyxp")]
 position = Vector2(534, 527)
 angular_damp = 66.313
