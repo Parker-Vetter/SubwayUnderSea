@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cptr8vp0fx6kp"]
+
+[ext_resource type="PackedScene" path="res://Dummy Player.tscn" id="1_51y8f"]
+[ext_resource type="PackedScene" uid="uid://wxpfl7v6d1n1" path="res://Scenes/Sanity System/Sanity Debuff Area.tscn" id="2_fi6oj"]
+[ext_resource type="PackedScene" uid="uid://by44eem8ipj12" path="res://Scenes/Sanity System/Sanity Buff Area.tscn" id="3_d1a2g"]
+[ext_resource type="PackedScene" uid="uid://p5s5fa41stxs" path="res://Scenes/Sanity System/Cat Main.tscn" id="4_p1d42"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mlgw"]
+size = Vector2(1152, 96)
+
+[node name="Main" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(456, 336)
+shape = SubResource("RectangleShape2D_6mlgw")
+
+[node name="DummyPlayer" parent="." instance=ExtResource("1_51y8f")]
+position = Vector2(312, 208)
+
+[node name="Sanity Debuff Area" parent="." instance=ExtResource("2_fi6oj")]
+position = Vector2(648, 296)
+
+[node name="CollisionPolygon2D" parent="Sanity Debuff Area" index="0"]
+position = Vector2(-160, -80)
+
+[node name="SanityBuffArea" parent="." instance=ExtResource("3_d1a2g")]
+position = Vector2(88, 224)
+
+[node name="CatMain" parent="." instance=ExtResource("4_p1d42")]
+
+[editable path="Sanity Debuff Area"]

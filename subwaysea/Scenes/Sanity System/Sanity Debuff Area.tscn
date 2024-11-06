@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://wxpfl7v6d1n1"]
 
-[ext_resource type="Script" path="res://Sanity Effect Area/sanity_debuff_area.gd" id="1_7pai6"]
+[ext_resource type="Script" path="res://Scripts/Sanity System/sanity_debuff_area.gd" id="1_7pai6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2psw"]
 blend_mode = 2
