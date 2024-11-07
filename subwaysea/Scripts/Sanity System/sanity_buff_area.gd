@@ -1,5 +1,6 @@
 extends Area2D
-
+@onready var sanity_buff_area: Area2D = $"."
+@onready var sanity_debuff_area: Area2D = $"."
 
 func _ready() -> void:
 	pass

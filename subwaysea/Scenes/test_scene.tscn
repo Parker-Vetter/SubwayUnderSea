@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cye8wl7oq5tfg"]
+
+[ext_resource type="PackedScene" uid="uid://clgvbcc50bs6v" path="res://Scenes/player.tscn" id="1_eeyxp"]
+[ext_resource type="PackedScene" uid="uid://wxpfl7v6d1n1" path="res://Scenes/Sanity System/Sanity Debuff Area.tscn" id="2_14ckh"]
+[ext_resource type="PackedScene" uid="uid://by44eem8ipj12" path="res://Scenes/Sanity System/Sanity Buff Area.tscn" id="3_btfmx"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(626, 599)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Floor"]
+position = Vector2(-8.5, 27)
+polygon = PackedVector2Array(305.5, -32, 303.5, 22, 262.5, 156, 186.5, 168, 186.5, 38, -77.7452, 21.0046, -462.5, 20, -452.5, -33, 0.5, -36, 123.5, -70, 256.5, -56)
+
+[node name="CollisionShape2D4" type="CollisionPolygon2D" parent="Floor"]
+position = Vector2(851, 34)
+polygon = PackedVector2Array(208, -47, 203, 34, 31, 38, 7, 181, -48, 178, -96, 35, -462.5, 20, -452.5, -33)
+
+[node name="Hull" type="StaticBody2D" parent="."]
+position = Vector2(630, 354)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hull"]
+position = Vector2(-8.5, 27)
+polygon = PackedVector2Array(-122.5, -46, 1150.5, -42, 1144.5, 252, 1068.5, 269, 1060.5, 25, 578.5, 28, 573.5, 122, 516.5, 128, 505.5, 20, -475.5, 14, -428.5, 615, 486.5, 602, 476.5, 781, 461.5, 859, 962.5, 852, 952.5, 668, 591.5, 667, 584.5, 605, 955.5, 602, 1093.5, 605, 1536.5, 619, 1556.5, 334, 1062.5, 345, 1062.5, 275, 1531.5, 271, 1623.5, 264, 1610.5, 664, 1048.5, 849, 1058.5, 927, 373.5, 935, 320.5, 713, -559.5, 705, -610.5, 607, -626.5, -58)
+
+[node name="Player" parent="." instance=ExtResource("1_eeyxp")]
+position = Vector2(471, 495)
+angular_damp = 66.313
+
+[node name="Sanity Debuff Area" parent="." instance=ExtResource("2_14ckh")]
+position = Vector2(266, 523)
+
+[node name="SanityBuffArea" parent="." instance=ExtResource("3_btfmx")]
+position = Vector2(649, 524)
