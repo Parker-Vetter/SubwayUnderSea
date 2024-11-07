@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://de5ltwg805lo5"]
+
+[ext_resource type="Texture2D" uid="uid://b0rcu3ubllxrt" path="res://Icons/CONE.png" id="1_ylxng"]
+[ext_resource type="Script" path="res://Scripts/player_light.gd" id="2_sfwjp"]
+[ext_resource type="Texture2D" uid="uid://dcgdftmbhk2d3" path="res://Icons/2d_lights_and_shadows_neutral_point_light.webp" id="3_yn5vb"]
+[ext_resource type="Texture2D" uid="uid://g1yjhr8wulci" path="res://Icons/icon.png" id="4_d8p54"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l01m6"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tkw67"]
+light_mode = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_d120p"]
+polygon = PackedVector2Array(190, 67, 223, 89, 242, 64, 206, 43)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_af758"]
+light_mode = 2
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.099986, 0.099986, 0.099986, 1)
+
+[node name="PlayerLight" type="PointLight2D" parent="."]
+texture_filter = 3
+position = Vector2(124, 76)
+color = Color(1, 1, 1, 0)
+range_item_cull_mask = 2
+shadow_enabled = true
+texture = ExtResource("1_ylxng")
+offset = Vector2(128, 0)
+script = ExtResource("2_sfwjp")
+
+[node name="PlayerLight" type="PointLight2D" parent="PlayerLight"]
+texture_filter = 3
+shadow_enabled = true
+texture = ExtResource("1_ylxng")
+offset = Vector2(128, 0)
+script = ExtResource("2_sfwjp")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_l01m6")
+position = Vector2(101, 31)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 6.0
+shadow_enabled = true
+texture = ExtResource("3_yn5vb")
+height = 10.0
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+material = SubResource("CanvasItemMaterial_tkw67")
+position = Vector2(9, 21)
+occluder = SubResource("OccluderPolygon2D_d120p")
+occluder_light_mask = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(219, 155)
+scale = Vector2(0.997663, 1)
+
+[node name="Cat" type="Sprite2D" parent="."]
+light_mask = 2
+material = SubResource("CanvasItemMaterial_af758")
+position = Vector2(298, 59)
+scale = Vector2(0.110294, 0.110294)
+texture = ExtResource("4_d8p54")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
