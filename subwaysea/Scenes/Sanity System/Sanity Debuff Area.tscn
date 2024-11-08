@@ -7,7 +7,6 @@ blend_mode = 2
 
 [node name="Sanity Debuff Area" type="Area2D"]
 collision_layer = 8
-collision_mask = 2
 script = ExtResource("1_7pai6")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

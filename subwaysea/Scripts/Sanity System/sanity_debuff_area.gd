@@ -1,4 +1,5 @@
 extends Area2D
+@onready var player: RigidBody2D = $"../Player"
 
 
 func _ready() -> void:
@@ -8,6 +9,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var overlapping_bodies_list = get_overlapping_bodies()
 	for body in overlapping_bodies_list:
-		if body.has_method("change_sanity"):
-			# access function in player code to change sanity value
-			body.change_sanity(-0.1)
+		if body == player:
+			pass

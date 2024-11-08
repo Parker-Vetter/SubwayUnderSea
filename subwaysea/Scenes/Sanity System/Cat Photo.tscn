@@ -1,17 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://p5s5fa41stxs"]
 
-[ext_resource type="Script" path="res://Scripts/Sanity System/cat_main.gd" id="1_rax14"]
-[ext_resource type="Script" path="res://Scripts/Sanity System/cat_clip.gd" id="2_0ixkr"]
+[ext_resource type="Script" path="res://Scripts/Sanity System/cat_photo.gd" id="1_d1sjc"]
+[ext_resource type="Script" path="res://Scripts/Sanity System/clip_shape.gd" id="2_hcwyu"]
 
-[node name="CatMain" type="Node2D"]
-script = ExtResource("1_rax14")
+[node name="CatPhoto" type="Node2D"]
+script = ExtResource("1_d1sjc")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0, 1, 1)
+offset = Vector2(100, 100)
 
 [node name="BackgroundShape" type="Polygon2D" parent="."]
 color = Color(1, 1, 1, 0.482353)
 polygon = PackedVector2Array(1152, 0, 0, 0, 0, 648, 1152, 648)
 
 [node name="ClipShape" type="Node2D" parent="."]
-script = ExtResource("2_0ixkr")
+script = ExtResource("2_hcwyu")
 
 [node name="Polygon2D" type="Polygon2D" parent="ClipShape"]
 position = Vector2(-96, -128)

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5cmdimyx8yde"]
+
+[ext_resource type="Script" path="res://Scripts/Sanity System/sanity_debuff_area.gd" id="1_4b13m"]
+[ext_resource type="Script" path="res://Scripts/Sanity System/sanity_buff_area.gd" id="2_i8f3k"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2psw"]
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_75hbh"]
+blend_mode = 1
+
+[node name="SanityResource" type="Node2D"]
+
+[node name="Sanity Debuff Area" type="Area2D" parent="."]
+collision_layer = 8
+script = ExtResource("1_4b13m")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sanity Debuff Area"]
+material = SubResource("CanvasItemMaterial_h2psw")
+position = Vector2(-48, -16)
+polygon = PackedVector2Array(-48, -48, 144, -48, 144, 80, -48, 80)
+
+[node name="SanityBuffArea" type="Area2D" parent="."]
+position = Vector2(177, 1)
+collision_layer = 8
+script = ExtResource("2_i8f3k")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="SanityBuffArea"]
+material = SubResource("CanvasItemMaterial_75hbh")
+position = Vector2(32, 0)
+polygon = PackedVector2Array(-96, -64, 96, -64, 96, 64, -96, 64)
+
+[connection signal="body_entered" from="Sanity Debuff Area" to="Sanity Debuff Area" method="_on_body_entered"]
