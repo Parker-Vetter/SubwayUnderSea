@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://grexsfob2dti"]
+[gd_scene load_steps=5 format=3 uid="uid://grexsfob2dti"]
 
 [ext_resource type="PackedScene" uid="uid://beiratmnmkvyi" path="res://Scenes/player.tscn" id="1_eeyxp"]
 [ext_resource type="PackedScene" uid="uid://bjcgghhh053jy" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
+[ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
+[ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="4_v31gu"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -29,3 +31,9 @@ angular_damp = 66.313
 
 [node name="OxygenSystem" parent="." instance=ExtResource("2_lhl1p")]
 position = Vector2(176, 497)
+
+[node name="PlayerOxyTank" parent="." instance=ExtResource("3_xpj87")]
+z_index = 1
+offset_right = 11.0
+offset_bottom = 27.0
+script = ExtResource("4_v31gu")

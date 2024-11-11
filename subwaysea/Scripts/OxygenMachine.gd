@@ -5,6 +5,11 @@ var Multilpier = 1
 var oxygenAmount = 100
 var oxygenCap = 100
 
+@onready var playerOxyTank = get_parent().find_child("PlayerOxyTank").get_child(0)
+
+func _process(delta: float) -> void:
+	playerOxyTank.set("value", oxygenAmount)
+
 func addOxygen():
 	if oxygenAmount < oxygenCap:
 		oxygenAmount = oxygenAmount + (1 * Multilpier)
