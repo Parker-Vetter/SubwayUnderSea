@@ -76,3 +76,5 @@ exit={
 
 2d_render/layer_1="vision layer"
 2d_render/layer_2="light layer"
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Player"

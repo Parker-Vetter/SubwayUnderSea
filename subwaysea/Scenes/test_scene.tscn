@@ -1,9 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://grexsfob2dti"]
+[gd_scene load_steps=10 format=3 uid="uid://dn0mkea57a3cw"]
 
-[ext_resource type="PackedScene" uid="uid://beiratmnmkvyi" path="res://Scenes/player.tscn" id="1_eeyxp"]
-[ext_resource type="PackedScene" uid="uid://bjcgghhh053jy" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
-[ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
+[ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
+[ext_resource type="PackedScene" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
+[ext_resource type="PackedScene" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
 [ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="4_v31gu"]
+[ext_resource type="PackedScene" uid="uid://cqdxwpt8n357u" path="res://level_making/camerasystem.tscn" id="5_5gy3l"]
+[ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="6_pxrql"]
+
+[sub_resource type="Curve2D" id="Curve2D_46uno"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 40, -68, 0, 0, 0, 0, 45, 421)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77ceo"]
+size = Vector2(111, 184)
+
+[sub_resource type="Curve2D" id="Curve2D_2h8we"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 30, 235)
+}
+point_count = 2
 
 [node name="Node2D" type="Node2D"]
 
@@ -37,3 +54,34 @@ z_index = 1
 offset_right = 11.0
 offset_bottom = 27.0
 script = ExtResource("4_v31gu")
+
+[node name="CAMERASYSTEM" parent="." instance=ExtResource("5_5gy3l")]
+
+[node name="Ladder" parent="." instance=ExtResource("6_pxrql")]
+position = Vector2(922, 608)
+
+[node name="Path2D" parent="Ladder" index="3"]
+curve = SubResource("Curve2D_46uno")
+
+[node name="PathFollow2D" parent="Ladder/Path2D" index="0"]
+position = Vector2(40, -68)
+rotation = 1.56057
+
+[node name="Ladder2" parent="." instance=ExtResource("6_pxrql")]
+position = Vector2(1124, 995)
+
+[node name="CollisionShape2D" parent="Ladder2/TopOfLadder" index="0"]
+position = Vector2(36, 75)
+shape = SubResource("RectangleShape2D_77ceo")
+
+[node name="BottomOfLadder" parent="Ladder2" index="1"]
+position = Vector2(-26, 206)
+
+[node name="Path2D" parent="Ladder2" index="3"]
+curve = SubResource("Curve2D_2h8we")
+
+[node name="PathFollow2D" parent="Ladder2/Path2D" index="0"]
+rotation = 1.59815
+
+[editable path="Ladder"]
+[editable path="Ladder2"]

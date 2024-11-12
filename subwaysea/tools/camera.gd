@@ -18,7 +18,7 @@ var velocity = Vector2.ZERO #changes how fast your offset changes
 
 func _ready():
 	ignore_rotation = false
-	position.y = player.position.y - 100
+	position = player.position
 #black out area you were just in thats part of the gameplay
 func transition(point : Vector2): #ig just position
 	var tween = get_tree().create_tween()
@@ -27,13 +27,14 @@ func transition(point : Vector2): #ig just position
 	tween.tween_property(self, 'position', point + Vector2(160, 90), .5)
 
 func _process(delta):
+	player = get_tree().get_first_node_in_group('player')
 	if trauma: 
 		trauma = max(trauma - decay * delta, 0)
 		shake()
 	var displacement = (target_pos - shake_pos) * delta    #distance to center
 	velocity += (displacement * tension) - (velocity * damp)
 	shake_pos += velocity
-	position.x = player.position.x
+	if player != null: position.x = player.position.x
 	offset = shake_pos #this is the property that moves the camera
 
 func add_trauma(amount : float, direction : Vector2): #this function starts everything
@@ -53,3 +54,9 @@ func freeze_frame(time : float, speed : float):
 	Engine.time_scale = speed
 	await get_tree().create_timer(time, true, false, true).timeout
 	Engine.time_scale = 1
+
+func change_y(y_to_change):
+	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self, 'position:y', y_to_change, 1)
