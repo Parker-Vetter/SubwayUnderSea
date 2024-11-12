@@ -21,6 +21,7 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 30, 235)
 }
 point_count = 2
+[ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="3_bakea"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -85,3 +86,10 @@ rotation = 1.59815
 
 [editable path="Ladder"]
 [editable path="Ladder2"]
+[node name="SanityResource" parent="." instance=ExtResource("3_bakea")]
+position = Vector2(419, 528)
+
+[connection signal="oxygen_multiplier_changed" from="SanityResource" to="OxygenSystem" method="_on_sanity_resource_oxygen_multiplier_changed"]
+
+[editable path="OxygenSystem"]
+[editable path="SanityResource"]
