@@ -1,5 +1,4 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjcgghhh053jy"]
-[gd_scene load_steps=3 format=3 uid="uid://bm6rpdse2swr5"]
 
 [ext_resource type="Script" path="res://Scripts/OxygenMachine.gd" id="1_8dnk0"]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Sanity System/sanity_system.gd" id="1_4b13m"]
 [ext_resource type="Script" path="res://Scripts/Sanity System/cat_photo.gd" id="2_kl5jp"]
-[ext_resource type="Texture2D" uid="uid://c3ovfkl1sq6tr" path="res://Icons/icon.png" id="4_dm6jp"]
+[ext_resource type="Texture2D" uid="uid://g1yjhr8wulci" path="res://Icons/icon.png" id="4_dm6jp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2psw"]
 blend_mode = 2

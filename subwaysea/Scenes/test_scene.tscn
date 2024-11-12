@@ -1,22 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn0mkea57a3cw"]
+[gd_scene load_steps=11 format=3 uid="uid://dn0mkea57a3cw"]
 
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
-[ext_resource type="PackedScene" uid="uid://bm6rpdse2swr5" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
+[ext_resource type="PackedScene" uid="uid://bjcgghhh053jy" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
 [ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
 [ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="4_v31gu"]
 [ext_resource type="PackedScene" uid="uid://cqdxwpt8n357u" path="res://level_making/camerasystem.tscn" id="5_5gy3l"]
 [ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="6_pxrql"]
+[ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="7_1hrf3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_537k3"]
-size = Vector2(111, 206)
-
-[sub_resource type="Curve2D" id="Curve2D_ryek2"]
+[sub_resource type="Curve2D" id="Curve2D_46uno"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 39, 258)
+"points": PackedVector2Array(0, 0, 0, 0, 40, -68, 0, 0, 0, 0, 45, 421)
 }
 point_count = 2
 
-<<<<<<< HEAD
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77ceo"]
 size = Vector2(111, 184)
 
@@ -25,11 +22,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 30, 235)
 }
 point_count = 2
-[ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="3_bakea"]
-=======
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k2fj"]
-size = Vector2(104, 28)
->>>>>>> dae83ea35e6a447c0e3d4b01c26d78e7ca7b300c
 
 [node name="Node2D" type="Node2D"]
 
@@ -67,32 +59,35 @@ script = ExtResource("4_v31gu")
 [node name="CAMERASYSTEM" parent="." instance=ExtResource("5_5gy3l")]
 
 [node name="Ladder" parent="." instance=ExtResource("6_pxrql")]
-position = Vector2(939, 603)
+position = Vector2(922, 608)
+
+[node name="Path2D" parent="Ladder" index="3"]
+curve = SubResource("Curve2D_46uno")
+
+[node name="PathFollow2D" parent="Ladder/Path2D" index="0"]
+position = Vector2(40, -68)
+rotation = 1.56057
 
 [node name="Ladder2" parent="." instance=ExtResource("6_pxrql")]
-position = Vector2(1124, 996)
+position = Vector2(1124, 995)
 
 [node name="CollisionShape2D" parent="Ladder2/TopOfLadder" index="0"]
-position = Vector2(36, 86)
-shape = SubResource("RectangleShape2D_537k3")
+position = Vector2(36, 75)
+shape = SubResource("RectangleShape2D_77ceo")
 
 [node name="BottomOfLadder" parent="Ladder2" index="1"]
-position = Vector2(-17, 223)
+position = Vector2(-26, 206)
 
 [node name="Path2D" parent="Ladder2" index="3"]
-curve = SubResource("Curve2D_ryek2")
+curve = SubResource("Curve2D_2h8we")
 
 [node name="PathFollow2D" parent="Ladder2/Path2D" index="0"]
-rotation = 1.5708
+rotation = 1.59815
 
-[node name="CollisionShape2D" parent="Ladder2/Floor" index="0"]
-shape = SubResource("RectangleShape2D_7k2fj")
+[node name="SanitySystem" parent="." instance=ExtResource("7_1hrf3")]
+position = Vector2(405, 525)
 
+[connection signal="oxygen_multiplier_changed" from="SanitySystem" to="OxygenSystem" method="_on_sanity_system_oxygen_multiplier_changed"]
+
+[editable path="Ladder"]
 [editable path="Ladder2"]
-[node name="SanityResource" parent="." instance=ExtResource("3_bakea")]
-position = Vector2(419, 528)
-
-[connection signal="oxygen_multiplier_changed" from="SanityResource" to="OxygenSystem" method="_on_sanity_resource_oxygen_multiplier_changed"]
-
-[editable path="OxygenSystem"]
-[editable path="SanityResource"]

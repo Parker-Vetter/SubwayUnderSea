@@ -1,7 +1,7 @@
 extends Node
 
 var insideArea = false
-var Multilpier = 1
+var multiplier = 1
 var oxygenAmount = 100
 var oxygenCap = 100
 
@@ -12,15 +12,8 @@ func _process(delta: float) -> void:
 
 func addOxygen():
 	if oxygenAmount < oxygenCap:
-		oxygenAmount = oxygenAmount + (1 * Multilpier)
+		oxygenAmount += 1
 
-func loseOxygen():
-	oxygenAmount -= 1
-var multiplier = 1
-func addOxygen():
-	if oxygenAmount < oxygenCap:
-		oxygenAmount = oxygenAmount
-	
 func loseOxygen():
 	oxygenAmount -= 1 * multiplier
 
@@ -37,8 +30,11 @@ func _on_up_timeout() -> void:
 	if insideArea:
 		addOxygen()
 
+
 func _on_down_timeout() -> void:
 	if !insideArea:
 		loseOxygen()
-func _on_sanity_resource_oxygen_multiplier_changed(new_multiplier: Variant) -> void:
+
+
+func _on_sanity_system_oxygen_multiplier_changed(new_multiplier: Variant) -> void:
 	multiplier = new_multiplier
