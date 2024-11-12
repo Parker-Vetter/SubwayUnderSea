@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjcgghhh053jy"]
+[gd_scene load_steps=3 format=3 uid="uid://bm6rpdse2swr5"]
 
 [ext_resource type="Script" path="res://Scripts/OxygenMachine.gd" id="1_8dnk0"]
 
@@ -18,6 +18,7 @@ polygon = PackedVector2Array(-310, 94, -388, 94, -388, 1, -310, 1)
 [node name="FillUpArea" type="Area2D" parent="."]
 position = Vector2(105, 47)
 scale = Vector2(12.5076, -76.6428)
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FillUpArea"]
 position = Vector2(-0.0799522, 0.00326192)

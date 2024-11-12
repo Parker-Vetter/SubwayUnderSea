@@ -50,6 +50,7 @@ func _physics_process(delta: float) -> void:
 
 func set_state_stand():
 	cur_state = STATES.STAND
+	linear_damp = 0
 	speed = 190000
 func set_state_bend():
 	cur_state = STATES.BEND
@@ -59,6 +60,7 @@ func set_state_lay():
 	speed = 50000
 func set_state_cutscene():
 	cur_state = STATES.CUTSCENE
+	linear_damp = 12
 
 func manage_spine(delta):
 	
