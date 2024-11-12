@@ -1,18 +1,22 @@
 [gd_scene load_steps=10 format=3 uid="uid://dn0mkea57a3cw"]
 
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
-[ext_resource type="PackedScene" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
-[ext_resource type="PackedScene" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
+[ext_resource type="PackedScene" uid="uid://bm6rpdse2swr5" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
+[ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
 [ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="4_v31gu"]
 [ext_resource type="PackedScene" uid="uid://cqdxwpt8n357u" path="res://level_making/camerasystem.tscn" id="5_5gy3l"]
 [ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="6_pxrql"]
 
-[sub_resource type="Curve2D" id="Curve2D_46uno"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_537k3"]
+size = Vector2(111, 206)
+
+[sub_resource type="Curve2D" id="Curve2D_ryek2"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 40, -68, 0, 0, 0, 0, 45, 421)
+"points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 39, 258)
 }
 point_count = 2
 
+<<<<<<< HEAD
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77ceo"]
 size = Vector2(111, 184)
 
@@ -22,6 +26,10 @@ _data = {
 }
 point_count = 2
 [ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="3_bakea"]
+=======
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k2fj"]
+size = Vector2(104, 28)
+>>>>>>> dae83ea35e6a447c0e3d4b01c26d78e7ca7b300c
 
 [node name="Node2D" type="Node2D"]
 
@@ -59,32 +67,27 @@ script = ExtResource("4_v31gu")
 [node name="CAMERASYSTEM" parent="." instance=ExtResource("5_5gy3l")]
 
 [node name="Ladder" parent="." instance=ExtResource("6_pxrql")]
-position = Vector2(922, 608)
-
-[node name="Path2D" parent="Ladder" index="3"]
-curve = SubResource("Curve2D_46uno")
-
-[node name="PathFollow2D" parent="Ladder/Path2D" index="0"]
-position = Vector2(40, -68)
-rotation = 1.56057
+position = Vector2(939, 603)
 
 [node name="Ladder2" parent="." instance=ExtResource("6_pxrql")]
-position = Vector2(1124, 995)
+position = Vector2(1124, 996)
 
 [node name="CollisionShape2D" parent="Ladder2/TopOfLadder" index="0"]
-position = Vector2(36, 75)
-shape = SubResource("RectangleShape2D_77ceo")
+position = Vector2(36, 86)
+shape = SubResource("RectangleShape2D_537k3")
 
 [node name="BottomOfLadder" parent="Ladder2" index="1"]
-position = Vector2(-26, 206)
+position = Vector2(-17, 223)
 
 [node name="Path2D" parent="Ladder2" index="3"]
-curve = SubResource("Curve2D_2h8we")
+curve = SubResource("Curve2D_ryek2")
 
 [node name="PathFollow2D" parent="Ladder2/Path2D" index="0"]
-rotation = 1.59815
+rotation = 1.5708
 
-[editable path="Ladder"]
+[node name="CollisionShape2D" parent="Ladder2/Floor" index="0"]
+shape = SubResource("RectangleShape2D_7k2fj")
+
 [editable path="Ladder2"]
 [node name="SanityResource" parent="." instance=ExtResource("3_bakea")]
 position = Vector2(419, 528)
