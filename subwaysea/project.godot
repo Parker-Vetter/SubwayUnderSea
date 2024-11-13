@@ -18,6 +18,7 @@ config/icon="res://Icons/icon.png"
 [autoload]
 
 Director="*res://Scripts/director.gd"
+Camera="*res://tools/camera.gd"
 
 [display]
 
