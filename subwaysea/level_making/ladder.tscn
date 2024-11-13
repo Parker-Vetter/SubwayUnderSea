@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7wtkgsvif50g"]
+
+[ext_resource type="Script" path="res://Scripts/ladder.gd" id="1_6f501"]
+[ext_resource type="Texture2D" uid="uid://bkqry0usfw578" path="res://assets/ladder.png" id="2_676y4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7o3p"]
+size = Vector2(111, 304)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1cd7"]
+size = Vector2(111, 73)
+
+[sub_resource type="Curve2D" id="Curve2D_i1hyn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 38, 406)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0c5e"]
+size = Vector2(104, 28)
+
+[node name="Ladder" type="Node2D"]
+script = ExtResource("1_6f501")
+
+[node name="TopOfLadder" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopOfLadder"]
+position = Vector2(36, 135)
+shape = SubResource("RectangleShape2D_h7o3p")
+
+[node name="BottomOfLadder" type="Area2D" parent="."]
+position = Vector2(-20, 343)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomOfLadder"]
+position = Vector2(55, 1.5)
+shape = SubResource("RectangleShape2D_v1cd7")
+
+[node name="Ladder" type="Sprite2D" parent="."]
+position = Vector2(34, 185)
+texture = ExtResource("2_676y4")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_i1hyn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(39, -94)
+rotation = 1.5728
+loop = false
+
+[node name="Polygon2D" type="Polygon2D" parent="Path2D/PathFollow2D"]
+color = Color(0.352128, 0.389683, 0.186795, 1)
+polygon = PackedVector2Array(-18.9403, 4.27362, 5.33124, 22.9255, 25.0118, 0.639404, 4.61017, -27.0693)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(-1, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(42, 4)
+shape = SubResource("RectangleShape2D_q0c5e")
+debug_color = Color(0.403369, 0.158158, 0.168603, 0.42)

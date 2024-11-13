@@ -19,7 +19,7 @@ func _ready() -> void:
 	upper_body.add_collision_exception_with(self)
 	upper_body.global_position = global_position
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var v = Input.get_axis("left","right")
 	
 	bend_up.global_position = global_position + Vector2(0, -50)
@@ -28,8 +28,8 @@ func _process(delta: float) -> void:
 		upper_body.apply_central_force(v * chest_speed * Vector2(1,0))
 		upper_body.rotation = chest_rotation * v
 		
-		bend_over.global_position = global_position + Vector2(v * 12,-20)
-		bend_down.global_position = global_position + Vector2(v * 40, 0)
+		bend_over.global_position = global_position + Vector2(v * 12,-30)
+		bend_down.global_position = global_position + Vector2(v * 20, 0)
 	else:
 		angular_velocity = 0.0
 	
@@ -42,26 +42,27 @@ func _process(delta: float) -> void:
 			chest_rotation = 1
 		STATES.LAY:
 			spine = bend_down.global_position
-			chest_rotation = PI/2
+			chest_rotation = linear_velocity.angle() + PI/2
 		STATES.CUTSCENE:
-			pass
+			spine = bend_up.global_position
 	
 	manage_spine(delta)
 
 func set_state_stand():
 	cur_state = STATES.STAND
+	linear_damp = 0
 	speed = 190000
 func set_state_bend():
 	cur_state = STATES.BEND
 	speed = 150000
 func set_state_lay():
 	cur_state = STATES.LAY
-	speed = 100000
+	speed = 50000
 func set_state_cutscene():
 	cur_state = STATES.CUTSCENE
+	linear_damp = 12
 
 func manage_spine(delta):
-
 	
 	var u = Input.get_axis('down', 'up')
 	

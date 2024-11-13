@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjcgghhh053jy"]
+
+[ext_resource type="Script" path="res://Scripts/OxygenMachine.gd" id="1_8dnk0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qbeo"]
+size = Vector2(4.15748, 1.2069)
+
+[node name="OxygenSystem" type="Node2D"]
+script = ExtResource("1_8dnk0")
+
+[node name="BodyOfMachine" type="StaticBody2D" parent="."]
+position = Vector2(0, 3)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BodyOfMachine"]
+position = Vector2(388, -4)
+polygon = PackedVector2Array(-310, 94, -388, 94, -388, 1, -310, 1)
+
+[node name="FillUpArea" type="Area2D" parent="."]
+position = Vector2(105, 47)
+scale = Vector2(12.5076, -76.6428)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FillUpArea"]
+position = Vector2(-0.0799522, 0.00326192)
+shape = SubResource("RectangleShape2D_7qbeo")
+
+[node name="Up" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="Down" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="FillUpArea" to="." method="_on_fill_up_area_body_entered"]
+[connection signal="body_exited" from="FillUpArea" to="." method="_on_fill_up_area_body_exited"]
+[connection signal="timeout" from="Up" to="." method="_on_up_timeout"]
+[connection signal="timeout" from="Down" to="." method="_on_down_timeout"]

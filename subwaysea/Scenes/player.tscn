@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://beiratmnmkvyi"]
+[gd_scene load_steps=6 format=3 uid="uid://cc0kb5tbuiykm"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
 
@@ -13,7 +13,8 @@ radius = 21.0238
 radius = 18.0
 height = 56.0
 
-[node name="Node2D" type="RigidBody2D" groups=["player"]]
+[node name="Player" type="RigidBody2D" groups=["player"]]
+collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_w1pg1")
 contact_monitor = true
 max_contacts_reported = 3

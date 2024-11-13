@@ -4,6 +4,7 @@ var fullscreen := false
 
 var score = 0 
 var done = false
+
 func _process(delta):
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
