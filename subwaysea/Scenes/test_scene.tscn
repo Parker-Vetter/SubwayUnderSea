@@ -113,6 +113,7 @@ z_index = -1
 offset_top = 319.0
 offset_right = 2265.0
 offset_bottom = 1373.0
+mouse_filter = 2
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [connection signal="oxygen_multiplier_changed" from="SanitySystem" to="OxygenSystem" method="_on_sanity_system_oxygen_multiplier_changed"]
