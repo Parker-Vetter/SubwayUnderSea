@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bihx5s1i11fgd"]
+
+[ext_resource type="Script" path="res://Scripts/Supply Grabber/debris.gd" id="1_gorbr"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_60s0e"]
+polygon = PackedVector2Array(-7, -6, 0, -7, 7, -6, 11, 0, 8, 5, 0, 7, -7, 5, -10, 0)
+
+[node name="debris" type="Node2D"]
+light_mask = 4
+visibility_layer = 4
+z_index = -1
+script = ExtResource("1_gorbr")
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+light_mask = 4
+visibility_layer = 4
+position = Vector2(56, 24)
+polygon = PackedVector2Array(-63, -30, -56, -31, -49, -30, -45, -24, -48, -19, -56, -17, -63, -19, -66, -24)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 4
+z_index = -1
+occluder = SubResource("OccluderPolygon2D_60s0e")
+occluder_light_mask = 4
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+polygon = PackedVector2Array(-7, -6, 0, -7, 7, -6, 11, 0, 8, 5, 0, 7, -7, 5, -10, 0)
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
