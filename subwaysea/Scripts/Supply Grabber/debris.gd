@@ -9,7 +9,6 @@ signal debris_collected()
 @onready var is_monster = randi_range(0, 1)
 
 func _ready() -> void:
-	self.connect("debris_collected", Director._on_debris_collected)
 	if is_monster:
 		position.x = randfn(0, 64)
 		position.y = 100
