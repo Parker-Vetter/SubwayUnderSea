@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc0kb5tbuiykm"]
+[gd_scene load_steps=9 format=3 uid="uid://cc0kb5tbuiykm"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
 [ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://Icons/CONE.png" id="2_mk1wv"]
 [ext_resource type="Script" path="res://Scripts/follow_mouse.gd" id="3_7nbr5"]
+[ext_resource type="Script" path="res://Scripts/view_detection.gd" id="4_5ltmw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1pg1"]
 
@@ -73,4 +74,7 @@ texture_filter = 3
 shadow_enabled = true
 texture = ExtResource("2_mk1wv")
 offset = Vector2(512, 0)
-script = ExtResource("3_7nbr5")
+
+[node name="RayCast2D" type="RayCast2D" parent="PlayerLight/PlayerLight"]
+target_position = Vector2(1021.69, -382.847)
+script = ExtResource("4_5ltmw")
