@@ -112,5 +112,3 @@ func manage_visual_feet(delta):
 		left_lerp_mover.global_position.y -= delta * 5
 	$LeftThigh.global_position = global_position + Vector2(0,-10)
 	
-	
-	
