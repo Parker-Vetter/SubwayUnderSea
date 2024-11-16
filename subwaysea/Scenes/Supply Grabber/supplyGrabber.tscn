@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmj1p78ddcow4"]
+
+[ext_resource type="Script" path="res://Scripts/Supply Grabber/supply_grabber.gd" id="1_sbofi"]
+[ext_resource type="Texture2D" uid="uid://bje2ditfetyd4" path="res://assets/sonar_blast_circle.png" id="2_qja2g"]
+
+[node name="SupplyGrabber" type="Node2D"]
+script = ExtResource("1_sbofi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+light_mask = 4
+visibility_layer = 4
+z_index = -1
+offset_left = -152.0
+offset_top = -88.0
+offset_right = 152.0
+offset_bottom = 88.0
+mouse_filter = 1
+color = Color(0.099986, 0.099986, 0.099986, 1)
+
+[node name="sonar" type="PointLight2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+z_index = -1
+texture_filter = 3
+position = Vector2(-9.53674e-07, -4.76837e-07)
+scale = Vector2(0.36, 0.370831)
+color = Color(0.126156, 0.673517, 0.219704, 1)
+range_item_cull_mask = 4
+shadow_enabled = true
+shadow_item_cull_mask = 4
+texture = ExtResource("2_qja2g")
+texture_scale = 0.2
+
+[node name="MainTick" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="ship" type="Polygon2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+polygon = PackedVector2Array(-13, -8, 13, -8, 23, 1, 15, 9, -13, 10, -21, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.310617, 0.310617, 0.310617, 1)
+polygon = PackedVector2Array(-152, -112, 176, -112, 176, 112, -176, 112, -176, -112, -152, -112, -152, 88, 152, 88, 152, -88, -152, -88)
+
+[connection signal="timeout" from="MainTick" to="." method="_on_timer_timeout"]

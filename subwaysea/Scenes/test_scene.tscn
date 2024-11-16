@@ -1,12 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://dn0mkea57a3cw"]
+[gd_scene load_steps=17 format=3 uid="uid://dn0mkea57a3cw"]
 
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
+[ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="1_qtfo6"]
+[ext_resource type="Texture2D" uid="uid://c4vjbsqie46d8" path="res://assets/top_bubbles.png" id="2_jox0j"]
 [ext_resource type="PackedScene" uid="uid://bjcgghhh053jy" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
 [ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
 [ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="4_v31gu"]
 [ext_resource type="PackedScene" uid="uid://cqdxwpt8n357u" path="res://level_making/camerasystem.tscn" id="5_5gy3l"]
 [ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="6_pxrql"]
 [ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="7_1hrf3"]
+[ext_resource type="PackedScene" uid="uid://bmj1p78ddcow4" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="10_bb45b"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8026o"]
 polygon = PackedVector2Array(-452.5, -33, -461.5, 19, -77.5, 21, 186.5, 38, 186.5, 168, 262.5, 156, 303.5, 22, 305.5, -32, 256.5, -56, 123.5, -70, -0.5, -36)
@@ -33,6 +36,49 @@ _data = {
 point_count = 2
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Parallax Background" type="Node2D" parent="."]
+
+[node name="Exterior Background" type="Polygon2D" parent="Parallax Background"]
+z_index = -1
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-744, -224, 2656, -208, 2656, 1712, -728, 1768)
+
+[node name="ParallaxBack" type="Parallax2D" parent="Parallax Background"]
+z_index = -1
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(160, 90)
+autoscroll = Vector2(0, 8)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Background/ParallaxBack"]
+modulate = Color(1, 1, 1, 0.478431)
+light_mask = 2
+visibility_layer = 2
+position = Vector2(240, 120)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_qtfo6")
+centered = false
+
+[node name="ParallaxFront" type="Parallax2D" parent="Parallax Background"]
+z_index = -1
+scroll_scale = Vector2(0.7, 0.7)
+repeat_size = Vector2(160, 90)
+autoscroll = Vector2(0, 15)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Background/ParallaxFront"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(240, 120)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_jox0j")
+centered = false
+
+[node name="Interior Background" type="Polygon2D" parent="Parallax Background"]
+z_index = -1
+color = Color(0.144063, 0.144063, 0.144063, 1)
+polygon = PackedVector2Array(0, 328, 1768, 344, 1776, 656, 2248, 648, 2232, 1040, 1664, 1232, 1680, 1312, 992, 1320, 944, 1088, 64, 1088, 8, 992)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(626, 599)
@@ -107,14 +153,19 @@ rotation = 1.59815
 
 [node name="SanitySystem" parent="." instance=ExtResource("7_1hrf3")]
 position = Vector2(405, 525)
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visibility_layer = 0
 z_index = -1
 offset_top = 319.0
 offset_right = 2265.0
 offset_bottom = 1373.0
-mouse_filter = 2
+mouse_filter = 1
 color = Color(0.103744, 0.103744, 0.103744, 1)
+
+[node name="SupplyGrabber" parent="." instance=ExtResource("10_bb45b")]
+position = Vector2(1936, 864)
 
 [connection signal="oxygen_multiplier_changed" from="SanitySystem" to="OxygenSystem" method="_on_sanity_system_oxygen_multiplier_changed"]
 
