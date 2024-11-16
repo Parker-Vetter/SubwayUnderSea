@@ -1,33 +1,33 @@
-[gd_scene load_steps=14 format=3 uid="uid://cc0kb5tbuiykm"]
+[gd_scene load_steps=14 format=3 uid="uid://vwlvjxd46s6m"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
-[ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://Icons/CONE.png" id="2_mk1wv"]
-[ext_resource type="Script" path="res://Scripts/follow_mouse.gd" id="3_7nbr5"]
-[ext_resource type="Shader" uid="uid://uu7t6umy0ogm" path="res://assets/glow.tres" id="4_owt5o"]
-[ext_resource type="Script" path="res://addons/la_ik/nodes/la_ik_two_bone.gd" id="5_tmg8s"]
-[ext_resource type="Script" path="res://addons/la_ik/nodes/la_bone.gd" id="6_vnihy"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_hajf4"]
+[ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://Icons/CONE.png" id="2_gf6fh"]
+[ext_resource type="Script" path="res://Scripts/follow_mouse.gd" id="3_l7tq2"]
+[ext_resource type="Shader" uid="uid://uu7t6umy0ogm" path="res://assets/glow.tres" id="4_j4l3a"]
+[ext_resource type="Script" path="res://addons/la_ik/nodes/la_ik_two_bone.gd" id="5_5a41h"]
+[ext_resource type="Script" path="res://addons/la_ik/nodes/la_bone.gd" id="6_i8b3i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1pg1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ligco"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_70fqe"]
 radius = 21.0238
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ce8b2"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3w30u"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q6p1j"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2h0en"]
 radius = 18.0
 height = 56.0
 
-[sub_resource type="Curve" id="Curve_tg2lt"]
+[sub_resource type="Curve" id="Curve_c344j"]
 _data = [Vector2(0.0157895, 0.967033), 0.0, 0.0, 0, 0, Vector2(0.952632, 0.593407), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_xh2eo"]
+[sub_resource type="Curve" id="Curve_d4o1n"]
 _data = [Vector2(0, 0.461538), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_umio4"]
-shader = ExtResource("4_owt5o")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7r0t"]
+shader = ExtResource("4_j4l3a")
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
 collision_layer = 2
@@ -35,21 +35,21 @@ physics_material_override = SubResource("PhysicsMaterial_w1pg1")
 contact_monitor = true
 max_contacts_reported = 3
 angular_damp = 43.0
-script = ExtResource("1_pkbub")
+script = ExtResource("1_hajf4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ligco")
+shape = SubResource("CircleShape2D_70fqe")
 
 [node name="UpperBody" type="RigidBody2D" parent="."]
 top_level = true
 position = Vector2(0, -68)
 mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_ce8b2")
+physics_material_override = SubResource("PhysicsMaterial_3w30u")
 lock_rotation = true
 linear_damp = 30.606
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperBody"]
-shape = SubResource("CapsuleShape2D_q6p1j")
+shape = SubResource("CapsuleShape2D_2h0en")
 
 [node name="PlayerLight" type="PointLight2D" parent="UpperBody"]
 texture_filter = 3
@@ -58,16 +58,16 @@ scale = Vector2(0.433594, 0.433594)
 color = Color(1, 1, 1, 0)
 range_item_cull_mask = 2
 shadow_enabled = true
-texture = ExtResource("2_mk1wv")
+texture = ExtResource("2_gf6fh")
 offset = Vector2(512, 0)
-script = ExtResource("3_7nbr5")
+script = ExtResource("3_l7tq2")
 
 [node name="PlayerLight" type="PointLight2D" parent="UpperBody/PlayerLight"]
 texture_filter = 3
 shadow_enabled = true
-texture = ExtResource("2_mk1wv")
+texture = ExtResource("2_gf6fh")
 offset = Vector2(512, 0)
-script = ExtResource("3_7nbr5")
+script = ExtResource("3_l7tq2")
 
 [node name="Polygon2D" type="Polygon2D" parent="UpperBody/PlayerLight"]
 position = Vector2(-4.61261, 11.5315)
@@ -76,13 +76,13 @@ polygon = PackedVector2Array(-4.61261, -25.3694, 20.7567, -2.30634, 6.91892, 18.
 
 [node name="Line2D" type="Line2D" parent="UpperBody"]
 points = PackedVector2Array(0, 1, 0, 28)
-width_curve = SubResource("Curve_tg2lt")
+width_curve = SubResource("Curve_c344j")
 
 [node name="Arms" type="Line2D" parent="UpperBody/Line2D"]
 position = Vector2(1, 9)
 points = PackedVector2Array(-1, -1, 45, -2)
 width = 8.46
-width_curve = SubResource("Curve_xh2eo")
+width_curve = SubResource("Curve_d4o1n")
 
 [node name="BendOver" type="Marker2D" parent="."]
 
@@ -106,7 +106,7 @@ polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 [node name="FloorSnap" type="Marker2D" parent="TargetFeet"]
 
 [node name="Polygon2D" type="Polygon2D" parent="TargetFeet/FloorSnap"]
-material = SubResource("ShaderMaterial_umio4")
+material = SubResource("ShaderMaterial_p7r0t")
 color = Color(0.113725, 0, 0.52549, 0.878431)
 polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 
@@ -128,7 +128,7 @@ color = Color(0.176471, 0.403922, 0, 0.505882)
 polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 
 [node name="LeftLaIKTwoBone" type="Node2D" parent="." node_paths=PackedStringArray("bone_one", "bone_two", "target")]
-script = ExtResource("5_tmg8s")
+script = ExtResource("5_5a41h")
 bone_one = NodePath("../LeftThigh")
 bone_two = NodePath("../LeftThigh/LeftCalf")
 target = NodePath("../LeftLerpMover")
@@ -136,17 +136,16 @@ target = NodePath("../LeftLerpMover")
 [node name="LeftThigh" type="Node2D" parent="."]
 top_level = true
 position = Vector2(1, -20)
-script = ExtResource("6_vnihy")
+script = ExtResource("6_i8b3i")
 
 [node name="LeftCalf" type="Node2D" parent="LeftThigh"]
 position = Vector2(28, 0)
-rotation = 0.900933
-script = ExtResource("6_vnihy")
+script = ExtResource("6_i8b3i")
 
 [node name="LeftFoot" type="Node2D" parent="LeftThigh/LeftCalf"]
 position = Vector2(13, 0)
 rotation = -1.6011
-script = ExtResource("6_vnihy")
+script = ExtResource("6_i8b3i")
 
 [node name="Polygon2D2" type="Polygon2D" parent="LeftThigh/LeftCalf/LeftFoot"]
 position = Vector2(-4.76837e-07, -9.53674e-07)
