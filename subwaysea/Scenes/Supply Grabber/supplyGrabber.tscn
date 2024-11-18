@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmj1p78ddcow4"]
+[gd_scene load_steps=3 format=3 uid="uid://smk00qmpdu36"]
 
 [ext_resource type="Script" path="res://Scripts/Supply Grabber/supply_grabber.gd" id="1_sbofi"]
 [ext_resource type="Texture2D" uid="uid://bje2ditfetyd4" path="res://assets/sonar_blast_circle.png" id="2_qja2g"]
@@ -15,7 +15,7 @@ offset_top = -88.0
 offset_right = 152.0
 offset_bottom = 88.0
 mouse_filter = 1
-color = Color(0.099986, 0.099986, 0.099986, 1)
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="sonar" type="PointLight2D" parent="."]
 light_mask = 4
@@ -24,9 +24,11 @@ z_index = -1
 texture_filter = 3
 position = Vector2(-9.53674e-07, -4.76837e-07)
 scale = Vector2(0.36, 0.370831)
-color = Color(0.126156, 0.673517, 0.219704, 1)
+color = Color(0.140702, 0.784734, 0.255927, 1)
+energy = 2.0
 range_item_cull_mask = 4
 shadow_enabled = true
+shadow_color = Color(0, 0.411541, 0.429578, 0)
 shadow_item_cull_mask = 4
 texture = ExtResource("2_qja2g")
 texture_scale = 0.2
@@ -38,6 +40,7 @@ autostart = true
 [node name="ship" type="Polygon2D" parent="."]
 light_mask = 4
 visibility_layer = 4
+color = Color(0.344076, 0.344076, 0.344076, 1)
 polygon = PackedVector2Array(-13, -8, 13, -8, 23, 1, 15, 9, -13, 10, -21, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

@@ -6,14 +6,6 @@ const DEBRIS = preload("res://Scenes/Supply Grabber/debris.tscn")
 signal tick
 var alpha = 1
 
-func _ready() -> void:
-	pass
-
-
-func _process(delta: float) -> void:
-	pass
-
-
 func check_for_debris_spawn():
 	var randint = randi_range(0, 4)
 	if randint == 0:
@@ -29,12 +21,6 @@ func modify_sonar():
 		sonar.texture_scale += 0.2
 	else:
 		sonar.texture_scale = 0.2
-	
-	if alpha > 0:
-		alpha -= 0.25
-	else:
-		alpha = 1
-	sonar.set_energy(alpha)
 
 func _on_timer_timeout() -> void:
 	tick.emit()
