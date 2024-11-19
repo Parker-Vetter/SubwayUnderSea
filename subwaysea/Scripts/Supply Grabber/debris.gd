@@ -4,7 +4,7 @@ const Director = preload("res://Scripts/director.gd")
 
 var mouse_hover = false
 
-signal debris_collected()
+signal debris_collected
 
 @onready var is_monster = randi_range(0, 1)
 

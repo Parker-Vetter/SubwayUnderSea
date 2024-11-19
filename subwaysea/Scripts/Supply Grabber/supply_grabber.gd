@@ -14,8 +14,8 @@ func check_for_debris_spawn():
 func create_new_debris():
 	var instance = DEBRIS.instantiate()
 	self.connect("tick", instance._on_tick)
-	add_child(instance)
-	
+	find_child("DebrisContainer").add_child(instance)
+
 func modify_sonar():
 	if sonar.texture_scale < 1:
 		sonar.texture_scale += 0.2
