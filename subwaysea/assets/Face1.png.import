@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwux8an1eavsg"
-path="res://.godot/imported/sonar_blast.png-197e1951f5fc702ea01a22fba01e95cf.ctex"
+uid="uid://fvavurx8x08w"
+path="res://.godot/imported/Face1.png-c0ab577d539679b055a6119a4cbf2259.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sonar_blast.png"
-dest_files=["res://.godot/imported/sonar_blast.png-197e1951f5fc702ea01a22fba01e95cf.ctex"]
+source_file="res://assets/Face1.png"
+dest_files=["res://.godot/imported/Face1.png-c0ab577d539679b055a6119a4cbf2259.ctex"]
 
 [params]
 

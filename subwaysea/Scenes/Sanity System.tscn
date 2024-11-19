@@ -16,6 +16,7 @@ script = ExtResource("1_4b13m")
 
 [node name="Sanity Debuff Area" type="Area2D" parent="."]
 collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sanity Debuff Area"]
 material = SubResource("CanvasItemMaterial_h2psw")
@@ -23,8 +24,9 @@ position = Vector2(-48, -16)
 polygon = PackedVector2Array(-48, -48, 144, -48, 144, 80, -48, 80)
 
 [node name="SanityBuffArea" type="Area2D" parent="."]
-position = Vector2(177, 1)
+position = Vector2(178, 1)
 collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="SanityBuffArea"]
 material = SubResource("CanvasItemMaterial_75hbh")
