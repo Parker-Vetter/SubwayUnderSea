@@ -1,18 +1,22 @@
-[gd_scene load_steps=19 format=3 uid="uid://dn0mkea57a3cw"]
+[gd_scene load_steps=23 format=3 uid="uid://dn0mkea57a3cw"]
 
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
 [ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="1_qtfo6"]
+[ext_resource type="Texture2D" uid="uid://dcgdftmbhk2d3" path="res://Icons/2d_lights_and_shadows_neutral_point_light.webp" id="1_wmx6u"]
 [ext_resource type="Texture2D" uid="uid://c4vjbsqie46d8" path="res://assets/top_bubbles.png" id="2_jox0j"]
 [ext_resource type="PackedScene" uid="uid://bjcgghhh053jy" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
+[ext_resource type="Script" path="res://Scripts/flicker_light.gd" id="2_xkchl"]
 [ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
 [ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="4_v31gu"]
 [ext_resource type="PackedScene" uid="uid://cqdxwpt8n357u" path="res://level_making/camerasystem.tscn" id="5_5gy3l"]
 [ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="6_pxrql"]
 [ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="7_1hrf3"]
-[ext_resource type="PackedScene" uid="uid://bmj1p78ddcow4" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="10_bb45b"]
-[ext_resource type="Script" path="res://Scripts/tobedeleted.gd" id="11_8qv8o"]
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="10_bb45b"]
+[ext_resource type="Script" path="res://Scripts/tobedeleted.gd" id="11_8qv8o"]
 [ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="11_epfey"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
+light_mode = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8026o"]
 polygon = PackedVector2Array(-452.5, -33, -461.5, 19, -77.5, 21, 186.5, 38, 186.5, 168, 262.5, 156, 303.5, 22, 305.5, -32, 256.5, -56, 123.5, -70, -0.5, -36)
@@ -42,6 +46,92 @@ point_count = 2
 size = Vector2(41, 37)
 
 [node name="TestScene" type="Node2D"]
+
+[node name="LightParent" type="Node2D" parent="."]
+
+[node name="light" type="PointLight2D" parent="LightParent"]
+material = SubResource("CanvasItemMaterial_upv4y")
+position = Vector2(966, 404)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 6.0
+shadow_enabled = true
+texture = ExtResource("1_wmx6u")
+texture_scale = 2.8
+height = 10.0
+script = ExtResource("2_xkchl")
+
+[node name="light2" type="PointLight2D" parent="LightParent"]
+material = SubResource("CanvasItemMaterial_upv4y")
+position = Vector2(1464, 412)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 6.0
+shadow_enabled = true
+texture = ExtResource("1_wmx6u")
+texture_scale = 2.35
+height = 10.0
+script = ExtResource("2_xkchl")
+
+[node name="light3" type="PointLight2D" parent="LightParent"]
+material = SubResource("CanvasItemMaterial_upv4y")
+position = Vector2(403, 399)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 6.0
+shadow_enabled = true
+texture = ExtResource("1_wmx6u")
+texture_scale = 2.35
+height = 10.0
+script = ExtResource("2_xkchl")
+
+[node name="light4" type="PointLight2D" parent="LightParent"]
+material = SubResource("CanvasItemMaterial_upv4y")
+position = Vector2(398, 649)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 6.0
+shadow_enabled = true
+texture = ExtResource("1_wmx6u")
+texture_scale = 2.35
+height = 10.0
+script = ExtResource("2_xkchl")
+
+[node name="light5" type="PointLight2D" parent="LightParent"]
+material = SubResource("CanvasItemMaterial_upv4y")
+position = Vector2(1930, 727)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 6.0
+shadow_enabled = true
+texture = ExtResource("1_wmx6u")
+texture_scale = 2.35
+height = 10.0
+script = ExtResource("2_xkchl")
+
+[node name="light6" type="PointLight2D" parent="LightParent"]
+material = SubResource("CanvasItemMaterial_upv4y")
+position = Vector2(1356, 1052)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 6.0
+shadow_enabled = true
+texture = ExtResource("1_wmx6u")
+texture_scale = 2.35
+height = 10.0
+script = ExtResource("2_xkchl")
+
+[node name="light7" type="PointLight2D" parent="LightParent"]
+material = SubResource("CanvasItemMaterial_upv4y")
+position = Vector2(1207, 672)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 6.0
+shadow_enabled = true
+texture = ExtResource("1_wmx6u")
+texture_scale = 2.35
+height = 10.0
+script = ExtResource("2_xkchl")
 
 [node name="Parallax Background" type="Node2D" parent="."]
 
