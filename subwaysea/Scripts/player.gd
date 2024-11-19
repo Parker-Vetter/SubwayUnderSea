@@ -11,6 +11,7 @@ extends RigidBody2D
 @onready var feet_ray_cast: RayCast2D = $TargetFeet/FeetRayCast
 @onready var left_lerp_mover: Marker2D = $LeftLerpMover
 
+@onready var r_lerp_position_hand: Marker2D = $UpperBody/Line2D/AnimationLerp/RLerpPositionHand
 
 
 enum STATES {STAND, BEND, LAY, CUTSCENE}
@@ -21,6 +22,7 @@ var speed = 190000
 var chest_speed = 2000 #for polish could add movement speed based on if you are laying down or not
 var chest_rotation = 0
 @onready var spine = Vector2.ZERO
+var holding_c = []
 
 var ik_length = 35.0
 
@@ -57,6 +59,8 @@ func _physics_process(delta: float) -> void:
 			spine = bend_up.global_position
 	
 	manage_spine(delta)
+	manage_arm(delta)
+	manage_component(delta)
 
 func set_state_stand():
 	cur_state = STATES.STAND
@@ -111,4 +115,13 @@ func manage_visual_feet(delta):
 	if left_lerp_mover.global_position.distance_to(lerp_position.global_position) > 10.0:
 		left_lerp_mover.global_position.y -= delta * 5
 	$LeftThigh.global_position = global_position + Vector2(0,-10)
+
+func manage_arm(delta):
+	$UpperBody/Line2D/RShoulder.global_position = $UpperBody/Line2D/Shoulder_pos.global_position
+
+func manage_component(delta):
+	for i in holding_c:
+		i.global_position = r_lerp_position_hand.get_child(holding_c.find(i)).global_position
 	
+func remove_component(delta):
+	pass

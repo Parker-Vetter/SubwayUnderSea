@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vwlvjxd46s6m"]
+[gd_scene load_steps=13 format=3 uid="uid://cr1mc6bnevxdf"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_hajf4"]
 [ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://Icons/CONE.png" id="2_gf6fh"]
@@ -9,27 +9,24 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1pg1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_70fqe"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ligco"]
 radius = 21.0238
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3w30u"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ce8b2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2h0en"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q6p1j"]
 radius = 18.0
 height = 56.0
 
-[sub_resource type="Curve" id="Curve_c344j"]
+[sub_resource type="Curve" id="Curve_tg2lt"]
 _data = [Vector2(0.0157895, 0.967033), 0.0, 0.0, 0, 0, Vector2(0.952632, 0.593407), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_d4o1n"]
-_data = [Vector2(0, 0.461538), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7r0t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_umio4"]
 shader = ExtResource("4_j4l3a")
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
+z_index = 3
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_w1pg1")
 contact_monitor = true
@@ -38,18 +35,18 @@ angular_damp = 43.0
 script = ExtResource("1_hajf4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_70fqe")
+shape = SubResource("CircleShape2D_ligco")
 
 [node name="UpperBody" type="RigidBody2D" parent="."]
 top_level = true
 position = Vector2(0, -68)
 mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_3w30u")
+physics_material_override = SubResource("PhysicsMaterial_ce8b2")
 lock_rotation = true
 linear_damp = 30.606
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperBody"]
-shape = SubResource("CapsuleShape2D_2h0en")
+shape = SubResource("CapsuleShape2D_q6p1j")
 
 [node name="PlayerLight" type="PointLight2D" parent="UpperBody"]
 texture_filter = 3
@@ -76,13 +73,50 @@ polygon = PackedVector2Array(-4.61261, -25.3694, 20.7567, -2.30634, 6.91892, 18.
 
 [node name="Line2D" type="Line2D" parent="UpperBody"]
 points = PackedVector2Array(0, 1, 0, 28)
-width_curve = SubResource("Curve_c344j")
+width_curve = SubResource("Curve_tg2lt")
 
-[node name="Arms" type="Line2D" parent="UpperBody/Line2D"]
-position = Vector2(1, 9)
-points = PackedVector2Array(-1, -1, 45, -2)
-width = 8.46
-width_curve = SubResource("Curve_d4o1n")
+[node name="Shoulder_pos" type="Marker2D" parent="UpperBody/Line2D"]
+position = Vector2(0, 8)
+
+[node name="RShoulder" type="Node2D" parent="UpperBody/Line2D"]
+top_level = true
+position = Vector2(3, -63)
+script = ExtResource("6_i8b3i")
+
+[node name="RForearm" type="Node2D" parent="UpperBody/Line2D/RShoulder"]
+position = Vector2(14, 2)
+script = ExtResource("6_i8b3i")
+
+[node name="RHand" type="Node2D" parent="UpperBody/Line2D/RShoulder/RForearm"]
+position = Vector2(25, 1)
+script = ExtResource("6_i8b3i")
+
+[node name="Polygon2D" type="Polygon2D" parent="UpperBody/Line2D/RShoulder/RForearm/RHand"]
+polygon = PackedVector2Array(0.977531, 0.210789, 2.08945, 4.54249, 15.9999, 0.0684967, 3.98653, -4.2553)
+
+[node name="Polygon2D" type="Polygon2D" parent="UpperBody/Line2D/RShoulder/RForearm"]
+polygon = PackedVector2Array(0.977531, 0.210789, 4.98306, 4.91436, 24, 0.995724, 5.02587, -5.08555)
+
+[node name="Polygon2D" type="Polygon2D" parent="UpperBody/Line2D/RShoulder"]
+polygon = PackedVector2Array(0.977531, 0.210789, 2.08945, 4.54249, 13.8962, 1.97348, 3.98653, -4.2553)
+
+[node name="LaIKTwoBone" type="Node2D" parent="UpperBody/Line2D" node_paths=PackedStringArray("bone_one", "bone_two", "target")]
+position = Vector2(0, 68)
+script = ExtResource("5_5a41h")
+bone_one = NodePath("../RShoulder")
+bone_two = NodePath("../RShoulder/RForearm")
+target = NodePath("../AnimationLerp/RLerpPositionHand")
+flip_bend = true
+
+[node name="AnimationLerp" type="Marker2D" parent="UpperBody/Line2D"]
+
+[node name="RLerpPositionHand" type="Marker2D" parent="UpperBody/Line2D/AnimationLerp"]
+position = Vector2(29, 20)
+
+[node name="First component" type="Marker2D" parent="UpperBody/Line2D/AnimationLerp/RLerpPositionHand"]
+
+[node name="Second component" type="Marker2D" parent="UpperBody/Line2D/AnimationLerp/RLerpPositionHand"]
+position = Vector2(0, -19)
 
 [node name="BendOver" type="Marker2D" parent="."]
 
@@ -106,7 +140,7 @@ polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 [node name="FloorSnap" type="Marker2D" parent="TargetFeet"]
 
 [node name="Polygon2D" type="Polygon2D" parent="TargetFeet/FloorSnap"]
-material = SubResource("ShaderMaterial_p7r0t")
+material = SubResource("ShaderMaterial_umio4")
 color = Color(0.113725, 0, 0.52549, 0.878431)
 polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 
@@ -140,6 +174,8 @@ script = ExtResource("6_i8b3i")
 
 [node name="LeftCalf" type="Node2D" parent="LeftThigh"]
 position = Vector2(28, 0)
+rotation = 0.900933
+scale = Vector2(1, 1)
 script = ExtResource("6_i8b3i")
 
 [node name="LeftFoot" type="Node2D" parent="LeftThigh/LeftCalf"]

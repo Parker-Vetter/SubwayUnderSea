@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://f34j633okqsc"]
+
+[ext_resource type="Script" path="res://Scripts/component.gd" id="1_vt3f1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_moquu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nea4g"]
+size = Vector2(70, 44)
+
+[node name="Component" type="RigidBody2D"]
+script = ExtResource("1_vt3f1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_moquu")
+debug_color = Color(1.20327e-06, 0.633247, 0.442587, 0.42)
+
+[node name="DetectMachine" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectMachine"]
+shape = SubResource("RectangleShape2D_nea4g")
+debug_color = Color(0.870588, 0, 0.85098, 0)
+
+[node name="DetectPlayer" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayer"]
+shape = SubResource("RectangleShape2D_nea4g")
+debug_color = Color(0.870588, 0, 0.85098, 0)

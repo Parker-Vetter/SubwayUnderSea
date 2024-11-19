@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cc0kb5tbuiykm"]
+[gd_scene load_steps=12 format=3 uid="uid://cc0kb5tbuiykm"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
-[ext_resource type="PackedScene" uid="uid://1rxjcuekay2p" path="res://Scenes/view_light.tscn" id="2_op83d"]
+[ext_resource type="PackedScene" path="res://Scenes/view_light.tscn" id="2_op83d"]
 [ext_resource type="Shader" uid="uid://uu7t6umy0ogm" path="res://assets/glow.tres" id="4_owt5o"]
 [ext_resource type="Script" path="res://addons/la_ik/nodes/la_ik_two_bone.gd" id="5_tmg8s"]
 [ext_resource type="Script" path="res://addons/la_ik/nodes/la_bone.gd" id="6_vnihy"]
@@ -19,10 +19,6 @@ height = 56.0
 
 [sub_resource type="Curve" id="Curve_tg2lt"]
 _data = [Vector2(0.0157895, 0.967033), 0.0, 0.0, 0, 0, Vector2(0.952632, 0.593407), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_xh2eo"]
-_data = [Vector2(0, 0.461538), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_umio4"]
@@ -64,11 +60,47 @@ polygon = PackedVector2Array(-4.61261, -25.3694, 20.7567, -2.30634, 6.91892, 18.
 points = PackedVector2Array(0, 1, 0, 28)
 width_curve = SubResource("Curve_tg2lt")
 
-[node name="Arms" type="Line2D" parent="UpperBody/Line2D"]
-position = Vector2(1, 9)
-points = PackedVector2Array(-1, -1, 45, -2)
-width = 8.46
-width_curve = SubResource("Curve_xh2eo")
+[node name="Shoulder_pos" type="Marker2D" parent="UpperBody/Line2D"]
+position = Vector2(0, 8)
+
+[node name="RShoulder" type="Node2D" parent="UpperBody/Line2D"]
+top_level = true
+position = Vector2(3, -63)
+rotation = 1.35842
+script = ExtResource("6_vnihy")
+
+[node name="RForearm" type="Node2D" parent="UpperBody/Line2D/RShoulder"]
+position = Vector2(14, 2)
+rotation = -1.3627
+script = ExtResource("6_vnihy")
+
+[node name="RHand" type="Node2D" parent="UpperBody/Line2D/RShoulder/RForearm"]
+position = Vector2(25, 1)
+script = ExtResource("6_vnihy")
+
+[node name="Polygon2D" type="Polygon2D" parent="UpperBody/Line2D/RShoulder/RForearm/RHand"]
+polygon = PackedVector2Array(0.977531, 0.210789, 2.08945, 4.54249, 15.9999, 0.0684967, 3.98653, -4.2553)
+
+[node name="Polygon2D" type="Polygon2D" parent="UpperBody/Line2D/RShoulder/RForearm"]
+polygon = PackedVector2Array(0.977531, 0.210789, 4.98306, 4.91436, 24, 0.995724, 5.02587, -5.08555)
+
+[node name="Polygon2D" type="Polygon2D" parent="UpperBody/Line2D/RShoulder"]
+polygon = PackedVector2Array(0.977531, 0.210789, 2.08945, 4.54249, 13.8962, 1.97348, 3.98653, -4.2553)
+
+[node name="LaIKTwoBone" type="Node2D" parent="UpperBody/Line2D"]
+position = Vector2(0, 68)
+script = ExtResource("5_tmg8s")
+flip_bend = true
+
+[node name="AnimationLerp" type="Marker2D" parent="UpperBody/Line2D"]
+
+[node name="RLerpPositionHand" type="Marker2D" parent="UpperBody/Line2D/AnimationLerp"]
+position = Vector2(29, 20)
+
+[node name="First component" type="Marker2D" parent="UpperBody/Line2D/AnimationLerp/RLerpPositionHand"]
+
+[node name="Second component" type="Marker2D" parent="UpperBody/Line2D/AnimationLerp/RLerpPositionHand"]
+position = Vector2(0, -19)
 
 [node name="BendOver" type="Marker2D" parent="."]
 
