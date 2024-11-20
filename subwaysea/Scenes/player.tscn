@@ -3,6 +3,10 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
 [ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://Icons/CONE.png" id="2_mk1wv"]
 [ext_resource type="Script" path="res://Scripts/follow_mouse.gd" id="3_7nbr5"]
+[ext_resource type="PackedScene" uid="uid://1rxjcuekay2p" path="res://Scenes/view_light.tscn" id="2_op83d"]
+[ext_resource type="Shader" uid="uid://uu7t6umy0ogm" path="res://assets/glow.tres" id="4_owt5o"]
+[ext_resource type="Script" path="res://addons/la_ik/nodes/la_ik_two_bone.gd" id="5_tmg8s"]
+[ext_resource type="Script" path="res://addons/la_ik/nodes/la_bone.gd" id="6_vnihy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1pg1"]
 
