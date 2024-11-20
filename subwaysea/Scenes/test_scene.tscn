@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
 [ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="1_qtfo6"]
+[ext_resource type="Script" path="res://Scenes/lights.gd" id="1_vqc60"]
 [ext_resource type="Texture2D" uid="uid://dcgdftmbhk2d3" path="res://Icons/2d_lights_and_shadows_neutral_point_light.webp" id="1_wmx6u"]
 [ext_resource type="Texture2D" uid="uid://c4vjbsqie46d8" path="res://assets/top_bubbles.png" id="2_jox0j"]
 [ext_resource type="PackedScene" uid="uid://bjcgghhh053jy" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
-[ext_resource type="Script" path="res://Scripts/flicker_light.gd" id="2_xkchl"]
 [ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
 [ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="4_v31gu"]
 [ext_resource type="PackedScene" uid="uid://cqdxwpt8n357u" path="res://level_making/camerasystem.tscn" id="5_5gy3l"]
@@ -45,6 +45,7 @@ point_count = 2
 [node name="TestScene" type="Node2D"]
 
 [node name="LightParent" type="Node2D" parent="."]
+script = ExtResource("1_vqc60")
 
 [node name="light" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -56,7 +57,6 @@ shadow_enabled = true
 texture = ExtResource("1_wmx6u")
 texture_scale = 2.8
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light2" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -68,7 +68,6 @@ shadow_enabled = true
 texture = ExtResource("1_wmx6u")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light3" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -80,7 +79,6 @@ shadow_enabled = true
 texture = ExtResource("1_wmx6u")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light4" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -92,7 +90,6 @@ shadow_enabled = true
 texture = ExtResource("1_wmx6u")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light5" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -104,7 +101,6 @@ shadow_enabled = true
 texture = ExtResource("1_wmx6u")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light6" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -116,7 +112,6 @@ shadow_enabled = true
 texture = ExtResource("1_wmx6u")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light7" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -128,7 +123,6 @@ shadow_enabled = true
 texture = ExtResource("1_wmx6u")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="Parallax Background" type="Node2D" parent="."]
 

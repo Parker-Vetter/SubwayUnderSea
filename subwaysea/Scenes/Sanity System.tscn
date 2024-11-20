@@ -38,7 +38,6 @@ z_index = 12
 script = ExtResource("2_kl5jp")
 
 [node name="Polygon2D" type="Polygon2D" parent="CatPhoto"]
-light_mask = 2
 position = Vector2(-96, -128)
 texture = ExtResource("4_dm6jp")
 texture_scale = Vector2(1.945, 1.945)
