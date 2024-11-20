@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="7_1hrf3"]
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="10_bb45b"]
 [ext_resource type="Script" path="res://Scripts/tobedeleted.gd" id="11_8qv8o"]
-[ext_resource type="PackedScene" path="res://Scenes/FaceDisplay.tscn" id="11_epfey"]
+[ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="11_epfey"]
 [ext_resource type="PackedScene" uid="uid://f34j633okqsc" path="res://Scenes/component.tscn" id="15_mvw0f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
@@ -286,6 +286,9 @@ position = Vector2(1073, 525)
 
 [node name="Component2" parent="." instance=ExtResource("15_mvw0f")]
 position = Vector2(1212, 552)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
 
 [connection signal="oxygen_multiplier_changed" from="SanitySystem" to="OxygenSystem" method="_on_sanity_system_oxygen_multiplier_changed"]
 
