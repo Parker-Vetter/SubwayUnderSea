@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dn0mkea57a3cw"]
+[gd_scene load_steps=22 format=3 uid="uid://dn0mkea57a3cw"]
 
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
 [ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="1_qtfo6"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="6_pxrql"]
 [ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="7_1hrf3"]
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="10_bb45b"]
-[ext_resource type="Script" path="res://Scripts/tobedeleted.gd" id="11_8qv8o"]
 [ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="11_epfey"]
 [ext_resource type="PackedScene" uid="uid://f34j633okqsc" path="res://Scenes/component.tscn" id="15_mvw0f"]
 
@@ -42,9 +41,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 30, 235)
 }
 point_count = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbr52"]
-size = Vector2(41, 37)
 
 [node name="TestScene" type="Node2D"]
 
@@ -265,21 +261,6 @@ color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [node name="SupplyGrabber" parent="." instance=ExtResource("10_bb45b")]
 position = Vector2(1928, 856)
-
-[node name="imgoingtoshityourself" type="Area2D" parent="."]
-position = Vector2(1229, 434)
-collision_layer = 16
-script = ExtResource("11_8qv8o")
-
-[node name="TESTINGDELETETHIS" type="CollisionShape2D" parent="imgoingtoshityourself"]
-shape = SubResource("RectangleShape2D_dbr52")
-
-[node name="DELETEME" type="ColorRect" parent="imgoingtoshityourself"]
-offset_left = -17.0
-offset_top = -17.0
-offset_right = 17.0
-offset_bottom = 17.0
-color = Color(0, 0, 1, 1)
 
 [node name="Component" parent="." instance=ExtResource("15_mvw0f")]
 position = Vector2(1073, 525)

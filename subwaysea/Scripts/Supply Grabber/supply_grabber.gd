@@ -26,4 +26,3 @@ func _on_timer_timeout() -> void:
 	tick.emit()
 	check_for_debris_spawn()
 	modify_sonar()
-	
