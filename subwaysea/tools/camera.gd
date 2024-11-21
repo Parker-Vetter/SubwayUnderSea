@@ -18,7 +18,8 @@ var velocity = Vector2.ZERO #changes how fast your offset changes
 
 func _ready():
 	ignore_rotation = false
-	position = player.position
+	
+	if player != null: position = player.position
 #black out area you were just in thats part of the gameplay
 func transition(point : Vector2): #ig just position
 	var tween = get_tree().create_tween()

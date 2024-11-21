@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dn0mkea57a3cw"]
+[gd_scene load_steps=26 format=3 uid="uid://dn0mkea57a3cw"]
 
 [ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
 [ext_resource type="Script" path="res://Scripts/lights.gd" id="2_f5qwo"]
@@ -16,31 +16,49 @@
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="14_61kdm"]
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
 [ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
+[ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
+[ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="1_qtfo6"]
+[ext_resource type="Texture2D" uid="uid://dcgdftmbhk2d3" path="res://Icons/2d_lights_and_shadows_neutral_point_light.webp" id="1_wmx6u"]
+[ext_resource type="Texture2D" uid="uid://c4vjbsqie46d8" path="res://assets/top_bubbles.png" id="2_jox0j"]
+[ext_resource type="PackedScene" uid="uid://bjcgghhh053jy" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
+[ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
+[ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="4_v31gu"]
+[ext_resource type="PackedScene" uid="uid://cqdxwpt8n357u" path="res://level_making/camerasystem.tscn" id="5_5gy3l"]
+[ext_resource type="Texture2D" uid="uid://dtsfba21rwvx" path="res://assets/Backgrounds/background.png" id="5_q5aab"]
+[ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="6_pxrql"]
+[ext_resource type="Texture2D" uid="uid://cxjp2dd814lug" path="res://assets/Backgrounds/pipes_background.png" id="6_s8pm1"]
+[ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="7_1hrf3"]
+[ext_resource type="Texture2D" uid="uid://0yxhwoclfsd8" path="res://assets/Backgrounds/hanging_cables_background.png" id="7_5i4w0"]
+[ext_resource type="Texture2D" uid="uid://c7fh2ch28etqe" path="res://assets/Backgrounds/hanging_cables_foreground.png" id="8_x8q07"]
+[ext_resource type="Texture2D" uid="uid://b1ld0rjn6hd8u" path="res://assets/Backgrounds/foreground_pipes.png" id="9_frhj4"]
+[ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="10_bb45b"]
+[ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="11_epfey"]
+[ext_resource type="PackedScene" uid="uid://f34j633okqsc" path="res://Scenes/component.tscn" id="15_mvw0f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8026o"]
-polygon = PackedVector2Array(-452.5, -33, -461.5, 19, -77.5, 21, 186.5, 38, 186.5, 168, 262.5, 156, 303.5, 22, 305.5, -32, 256.5, -56, 123.5, -70, -0.5, -36)
+polygon = PackedVector2Array(-473.5, -18, -473.5, 118, 294.5, 118, 294.5, -18)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8i1j1"]
-polygon = PackedVector2Array(-453, -33, -463, 20, -96, 35, -48, 178, 7, 181, 31, 38, 203, 34, 208, -47)
+polygon = PackedVector2Array(-453, -25, -453, 111, -77, 111, -53, 207, 3, 207, 27, 111, 211, 111, 211, -25)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j2785"]
-polygon = PackedVector2Array(-626.5, -58, 1150.5, -42, 1144.5, 252, 1068.5, 269, 1060.5, 25, 578.5, 28, 573.5, 122, 516.5, 128, 505.5, 20, -475.5, 14, -428.5, 615, 486.5, 602, 476.5, 783, 461.5, 859, 962.5, 852, 952.5, 668, 591.5, 667, 584.5, 605, 955.5, 602, 1536.5, 619, 1556.5, 334, 1062.5, 345, 1062.5, 275, 1531.5, 271, 1623.5, 264, 1610.5, 664, 1048.5, 849, 1058.5, 927, 373.5, 935, 320.5, 713, -559.5, 705, -610.5, 607)
+polygon = PackedVector2Array(-621.5, -53, 1146.5, -53, 1146.5, 147, 1066.5, 123, 1066.5, 3, 578.5, 3, 570.5, 115, 514.5, 115, 506.5, 3, -477.5, 3, -477.5, 611, 482.5, 611, 482.5, 1011, 954.5, 1011, 954.5, 835, 594.5, 835, 594.5, 611, 1538.5, 611, 1538.5, 363, 1066.5, 363, 1066.5, 123, 1626.5, 275, 1626.5, 659, 1058.5, 851, 1058.5, 1059, 394.5, 1059, 250.5, 891, -509.5, 891, -621.5, 707)
 
 [sub_resource type="Curve2D" id="Curve2D_46uno"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 40, -68, 0, 0, 0, 0, 45, 421)
+"points": PackedVector2Array(0, 0, 0, 0, 40, -68, 0, 0, 0, 0, 38, 16, 0, 0, 0, 0, 38, 176, 0, 0, 0, 0, 38, 376)
 }
-point_count = 2
+point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77ceo"]
-size = Vector2(111, 184)
+size = Vector2(111, 334)
 
 [sub_resource type="Curve2D" id="Curve2D_2h8we"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 30, 235)
+"points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 36, 373)
 }
 point_count = 2
 
@@ -85,7 +103,7 @@ height = 10.0
 
 [node name="light4" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
-position = Vector2(398, 649)
+position = Vector2(1363, 1234)
 scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
@@ -96,7 +114,7 @@ height = 10.0
 
 [node name="light5" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
-position = Vector2(1930, 727)
+position = Vector2(243, 772)
 scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
@@ -107,7 +125,7 @@ height = 10.0
 
 [node name="light6" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
-position = Vector2(1356, 1052)
+position = Vector2(1656, 762)
 scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
@@ -118,7 +136,7 @@ height = 10.0
 
 [node name="light7" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
-position = Vector2(1207, 672)
+position = Vector2(1206, 767)
 scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
@@ -127,21 +145,20 @@ texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
 
-[node name="Parallax Background" type="Node2D" parent="."]
+[node name="Parallax Exterior" type="Node2D" parent="."]
 
-[node name="Exterior Background" type="Polygon2D" parent="Parallax Background"]
-z_index = -1
+[node name="Exterior Background" type="Polygon2D" parent="Parallax Exterior"]
+z_index = -2
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-744, -224, 2656, -208, 2656, 1712, -728, 1768)
 
-[node name="ParallaxBack" type="Parallax2D" parent="Parallax Background"]
-z_index = -1
+[node name="Background2" type="Parallax2D" parent="Parallax Exterior/Exterior Background"]
 scroll_scale = Vector2(0.4, 0.4)
 repeat_size = Vector2(160, 90)
 autoscroll = Vector2(0, 8)
 repeat_times = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax Background/ParallaxBack"]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Exterior/Exterior Background/Background2"]
 modulate = Color(1, 1, 1, 0.478431)
 light_mask = 2
 visibility_layer = 2
@@ -150,14 +167,13 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_gn2it")
 centered = false
 
-[node name="ParallaxFront" type="Parallax2D" parent="Parallax Background"]
-z_index = -1
+[node name="Foreground" type="Parallax2D" parent="Parallax Exterior/Exterior Background"]
 scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(160, 90)
 autoscroll = Vector2(0, 15)
 repeat_times = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax Background/ParallaxFront"]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Exterior/Exterior Background/Foreground"]
 light_mask = 2
 visibility_layer = 2
 position = Vector2(240, 120)
@@ -165,43 +181,126 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_sjbok")
 centered = false
 
-[node name="Interior Background" type="Polygon2D" parent="Parallax Background"]
-z_index = -1
+[node name="Parallax Interior" type="Node2D" parent="."]
+
+[node name="Lowest Z Index" type="Polygon2D" parent="Parallax Interior"]
+clip_children = 1
+z_index = -2
 color = Color(0.144063, 0.144063, 0.144063, 1)
-polygon = PackedVector2Array(0, 328, 1768, 344, 1776, 656, 2248, 648, 2232, 1040, 1664, 1232, 1680, 1312, 992, 1320, 944, 1088, 64, 1088, 8, 992)
+polygon = PackedVector2Array(1768, 328, 1768, 528, 2248, 656, 2248, 1040, 1680, 1232, 1680, 1440, 1016, 1440, 872, 1272, 112, 1272, 0, 1088, 0, 328)
+
+[node name="Background" type="Parallax2D" parent="Parallax Interior/Lowest Z Index"]
+scroll_scale = Vector2(0.86, 1)
+repeat_size = Vector2(1280, 360)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Interior/Lowest Z Index/Background"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("5_q5aab")
+centered = false
+
+[node name="Background Pipes" type="Parallax2D" parent="Parallax Interior/Lowest Z Index"]
+scroll_scale = Vector2(0.88, 1)
+repeat_size = Vector2(1280, 360)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Interior/Lowest Z Index/Background Pipes"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("6_s8pm1")
+centered = false
+
+[node name="Background Cables" type="Parallax2D" parent="Parallax Interior/Lowest Z Index"]
+scroll_scale = Vector2(0.92, 1)
+repeat_size = Vector2(1280, 360)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Interior/Lowest Z Index/Background Cables"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("7_5i4w0")
+centered = false
+
+[node name="Middle Z Index" type="Polygon2D" parent="Parallax Interior"]
+clip_children = 1
+polygon = PackedVector2Array(1768, 328, 1768, 528, 2248, 656, 2248, 1040, 1680, 1232, 1680, 1440, 1016, 1440, 872, 1272, 112, 1272, 0, 1088, 0, 328)
+
+[node name="Midground Cables" type="Parallax2D" parent="Parallax Interior/Middle Z Index"]
+scroll_scale = Vector2(0.96, 1)
+repeat_size = Vector2(1280, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Interior/Middle Z Index/Midground Cables"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("8_x8q07")
+centered = false
+
+[node name="Highest Z Index" type="Polygon2D" parent="Parallax Interior"]
+clip_children = 1
+light_mask = 0
+z_index = 1
+polygon = PackedVector2Array(1768, 328, 1768, 528, 2248, 656, 2248, 1040, 2008, 1120, 24, 1120, 0, 1088, 0, 328)
+
+[node name="Foreground Pipes" type="Parallax2D" parent="Parallax Interior/Highest Z Index"]
+light_mask = 0
+scroll_scale = Vector2(1.1, 1)
+repeat_size = Vector2(1280, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Interior/Highest Z Index/Foreground Pipes"]
+light_mask = 0
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("9_frhj4")
+centered = false
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(626, 599)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Floor"]
 position = Vector2(-8.5, 27)
-polygon = PackedVector2Array(305.5, -32, 303.5, 22, 262.5, 156, 186.5, 168, 186.5, 38, -77.7452, 21.0046, -462.5, 20, -452.5, -33, 0.5, -36, 123.5, -70, 256.5, -56)
+polygon = PackedVector2Array(-473.5, -18, -473.5, 118, 294.5, 118, 294.5, -18)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Floor/CollisionShape2D"]
 occluder = SubResource("OccluderPolygon2D_8026o")
 occluder_light_mask = 3
 
+[node name="Polygon2D" type="Polygon2D" parent="Floor/CollisionShape2D"]
+light_mask = 0
+color = Color(0.0901961, 0.0313726, 0.0117647, 1)
+polygon = PackedVector2Array(-473.5, -18, -473.5, 118, 294.5, 118, 294.5, -18)
+
 [node name="CollisionShape2D4" type="CollisionPolygon2D" parent="Floor"]
 position = Vector2(851, 34)
-polygon = PackedVector2Array(208, -47, 203, 34, 31, 38, 7, 181, -48, 178, -96, 35, -462.5, 20, -452.5, -33)
+polygon = PackedVector2Array(-453, -25, -453, 111, -77, 111, -53, 207, 3, 207, 27, 111, 211, 111, 211, -25)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Floor/CollisionShape2D4"]
 occluder = SubResource("OccluderPolygon2D_8i1j1")
 occluder_light_mask = 3
+
+[node name="Polygon2D" type="Polygon2D" parent="Floor/CollisionShape2D4"]
+light_mask = 0
+color = Color(0.0901961, 0.0313726, 0.0117647, 1)
+polygon = PackedVector2Array(-453, -25, -453, 111, -77, 111, -53, 207, 3, 207, 27, 111, 211, 111, 211, -25)
 
 [node name="Hull" type="StaticBody2D" parent="."]
 position = Vector2(630, 354)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hull"]
 position = Vector2(-8.5, 27)
-polygon = PackedVector2Array(-122.5, -46, 1150.5, -42, 1144.5, 252, 1068.5, 269, 1060.5, 25, 578.5, 28, 573.5, 122, 516.5, 128, 505.5, 20, -475.5, 14, -428.5, 615, 486.5, 602, 476.5, 781, 461.5, 859, 962.5, 852, 952.5, 668, 591.5, 667, 584.5, 605, 955.5, 602, 1093.5, 605, 1536.5, 619, 1541.5, 565, 1563.5, 558, 1580.5, 520, 1648.5, 437, 1622.5, 422, 1543.5, 521, 1556.5, 334, 1062.5, 345, 1062.5, 275, 1531.5, 271, 1623.5, 264, 1652.5, 397, 1700.5, 438, 1684.5, 567, 1621.5, 574, 1610.5, 664, 1048.5, 849, 1058.5, 927, 373.5, 935, 320.5, 713, -559.5, 705, -610.5, 607, -626.5, -58)
+polygon = PackedVector2Array(-621.5, -53, 1146.5, -53, 1146.5, 147, 1066.5, 123, 1066.5, 3, 578.5, 3, 570.5, 115, 514.5, 115, 506.5, 3, -477.5, 3, -477.5, 611, 482.5, 611, 482.5, 1011, 954.5, 1011, 954.5, 835, 594.5, 835, 594.5, 611, 1538.5, 611, 1538.5, 363, 1066.5, 363, 1066.5, 123, 1626.5, 275, 1626.5, 659, 1058.5, 851, 1058.5, 1059, 394.5, 1059, 250.5, 891, -509.5, 891, -621.5, 707)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Hull/CollisionShape2D"]
 occluder = SubResource("OccluderPolygon2D_j2785")
 occluder_light_mask = 3
 
-[node name="Player" parent="." instance=ExtResource("6_cbvck")]
-position = Vector2(1450, 1199)
+[node name="Polygon2D" type="Polygon2D" parent="Hull/CollisionShape2D"]
+light_mask = 0
+color = Color(0.0901961, 0.0313726, 0.0117647, 1)
+polygon = PackedVector2Array(-621.5, -53, 1146.5, -53, 1146.5, 147, 1066.5, 123, 1066.5, 3, 578.5, 3, 570.5, 115, 514.5, 115, 506.5, 3, -477.5, 3, -477.5, 611, 482.5, 611, 482.5, 1011, 954.5, 1011, 954.5, 835, 594.5, 835, 594.5, 611, 1538.5, 611, 1538.5, 363, 1066.5, 363, 1066.5, 123, 1626.5, 275, 1626.5, 659, 1058.5, 851, 1058.5, 1059, 394.5, 1059, 250.5, 891, -509.5, 891, -621.5, 707)
+
+[node name="Player" parent="." instance=ExtResource("1_eeyxp")]
+position = Vector2(534, 527)
 angular_damp = 66.313
 
 [node name="OxygenSystem" parent="." instance=ExtResource("7_8beuo")]
@@ -213,34 +312,50 @@ offset_right = 11.0
 offset_bottom = 27.0
 script = ExtResource("9_bsjgf")
 
-[node name="CAMERASYSTEM" parent="." instance=ExtResource("10_6ymck")]
+[node name="CAMERASYSTEM" parent="." instance=ExtResource("5_5gy3l")]
 metadata/_edit_lock_ = true
 
 [node name="Ladder" parent="." instance=ExtResource("11_y1uls")]
 position = Vector2(922, 608)
 
+[node name="CollisionShape2D" parent="Ladder/TopOfLadder" index="0"]
+position = Vector2(46, 143.5)
+
+[node name="CollisionShape2D" parent="Ladder/BottomOfLadder" index="0"]
+position = Vector2(66, 1)
+
 [node name="Path2D" parent="Ladder" index="3"]
+position = Vector2(6, 8)
 curve = SubResource("Curve2D_46uno")
 
 [node name="PathFollow2D" parent="Ladder/Path2D" index="0"]
 position = Vector2(40, -68)
-rotation = 1.56057
+rotation = 1.5946
+
+[node name="CollisionShape2D" parent="Ladder/Floor" index="0"]
+position = Vector2(47, 7)
 
 [node name="Ladder2" parent="." instance=ExtResource("11_y1uls")]
 position = Vector2(1124, 995)
 
 [node name="CollisionShape2D" parent="Ladder2/TopOfLadder" index="0"]
-position = Vector2(36, 75)
+position = Vector2(36, 150)
 shape = SubResource("RectangleShape2D_77ceo")
 
 [node name="BottomOfLadder" parent="Ladder2" index="1"]
 position = Vector2(-26, 206)
 
+[node name="CollisionShape2D" parent="Ladder2/BottomOfLadder" index="0"]
+position = Vector2(62, 151)
+
 [node name="Path2D" parent="Ladder2" index="3"]
 curve = SubResource("Curve2D_2h8we")
 
 [node name="PathFollow2D" parent="Ladder2/Path2D" index="0"]
-rotation = 1.59815
+rotation = 1.57722
+
+[node name="CollisionShape2D" parent="Ladder2/Floor" index="0"]
+position = Vector2(37, 4)
 
 [node name="SanitySystem" parent="." instance=ExtResource("12_e13pe")]
 position = Vector2(405, 525)
