@@ -3,11 +3,41 @@
 [ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://Icons/CONE.png" id="1_ylxng"]
 [ext_resource type="Script" path="res://Scripts/follow_mouse.gd" id="2_sfwjp"]
 [ext_resource type="Texture2D" uid="uid://dcgdftmbhk2d3" path="res://Icons/2d_lights_and_shadows_neutral_point_light.webp" id="3_yn5vb"]
-[ext_resource type="Script" path="res://Scripts/flicker_light.gd" id="4_2rjwi"]
 [ext_resource type="Texture2D" uid="uid://g1yjhr8wulci" path="res://Icons/icon.png" id="4_d8p54"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l01m6"]
 light_mode = 2
+
+[sub_resource type="GDScript" id="GDScript_ctvq8"]
+script/source = "extends PointLight2D
+
+@onready var maxEnergy = self.energy #sets the maxEnergy to whatever the energy was on startup
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	#if Input.is_action_just_pressed(\"interact\"): #press 'w' to test the flicker
+		#flickerOn()
+	#if Input.is_action_just_pressed(\"left_mouse\"): #press 'w' to test the flicker
+		#flickerOff()
+	pass
+
+func flickerOn():
+	var randint = randi_range(15,25) #gets a random integer between two numbers
+	for i in range(randint): #flickers a randint number of times
+		await awaitTimer() #wait for the timer to finish
+	self.energy = maxEnergy #sets the light back to normal brightness
+
+func flickerOff():
+	var randint = randi_range(25,35) #gets a random integer between two numbers
+	for i in range(randint): #flickers a randint number of times
+		await awaitTimer() #wait for the timer to finish
+	self.energy = 0 #turns the lights off
+
+func awaitTimer():
+	var rand = randi_range(0,6) #choses an int between 0 and max energy
+	self.energy = rand #sets brightness to the random int
+	await get_tree().create_timer(0.05).timeout #creates a timer for the flicker to last for
+"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tkw67"]
 light_mode = 2
@@ -54,7 +84,7 @@ energy = 6.0
 shadow_enabled = true
 texture = ExtResource("3_yn5vb")
 height = 10.0
-script = ExtResource("4_2rjwi")
+script = SubResource("GDScript_ctvq8")
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
 material = SubResource("CanvasItemMaterial_tkw67")
