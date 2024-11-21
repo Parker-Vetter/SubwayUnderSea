@@ -61,3 +61,9 @@ position = Vector2(-1, 9)
 position = Vector2(42, 4)
 shape = SubResource("RectangleShape2D_q0c5e")
 debug_color = Color(0.403369, 0.158158, 0.168603, 0.42)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+light_mask = 0
+position = Vector2(-3, 52)
+color = Color(0.0901961, 0.0313726, 0.0117647, 1)
+polygon = PackedVector2Array(-29, -20, 107, -20, 107, 84, -29, 84)

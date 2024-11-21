@@ -3,18 +3,18 @@
 [ext_resource type="Script" path="res://tools/cam_switches.gd" id="1_8qpr7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnppb"]
-size = Vector2(2279, 313)
+size = Vector2(2279, 363)
 
 [node name="CAMERASYSTEM" type="Node2D"]
 
 [node name="DebugCam" type="Camera2D" parent="."]
-position = Vector2(-372, 466)
+position = Vector2(-328, 550)
 
 [node name="DebugCam2" type="Camera2D" parent="."]
-position = Vector2(-374, 829)
+position = Vector2(-327, 906)
 
 [node name="DebugCam3" type="Camera2D" parent="."]
-position = Vector2(-372, 1137)
+position = Vector2(-326, 1273)
 
 [node name="CamSwitches" type="Node2D" parent="."]
 script = ExtResource("1_8qpr7")
@@ -22,35 +22,35 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="TopBunk" type="Area2D" parent="CamSwitches"]
-position = Vector2(-8, 325)
+position = Vector2(10, 354)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CamSwitches/TopBunk"]
-position = Vector2(1129.5, 163.5)
+position = Vector2(1130, 191)
 shape = SubResource("RectangleShape2D_lnppb")
 debug_color = Color(0.694118, 0.619608, 0, 0)
 
 [node name="MidBunk" type="Area2D" parent="CamSwitches"]
-position = Vector2(-10, 679)
+position = Vector2(10, 650)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CamSwitches/MidBunk"]
-position = Vector2(1129.5, 180.5)
+position = Vector2(1130, 261)
 shape = SubResource("RectangleShape2D_lnppb")
 debug_color = Color(0.694118, 0.619608, 0, 0)
 
 [node name="BottomBunk" type="Area2D" parent="CamSwitches"]
-position = Vector2(-10, 1037)
+position = Vector2(11, 980)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CamSwitches/BottomBunk"]
-position = Vector2(1129.5, 163.5)
+position = Vector2(1128, 296)
 shape = SubResource("RectangleShape2D_lnppb")
 debug_color = Color(0.692315, 0.619856, 1.15514e-06, 0)
 
-[connection signal="body_entered" from="CamSwitches/TopBunk" to="CamSwitches" method="switch_cam" binds= [500.0]]
-[connection signal="body_entered" from="CamSwitches/MidBunk" to="CamSwitches" method="switch_cam" binds= [830.0]]
-[connection signal="body_entered" from="CamSwitches/BottomBunk" to="CamSwitches" method="switch_cam" binds= [1140.0]]
+[connection signal="body_entered" from="CamSwitches/TopBunk" to="CamSwitches" method="switch_cam" binds= [540.0]]
+[connection signal="body_entered" from="CamSwitches/MidBunk" to="CamSwitches" method="switch_cam" binds= [900.0]]
+[connection signal="body_entered" from="CamSwitches/BottomBunk" to="CamSwitches" method="switch_cam" binds= [1260.0]]
