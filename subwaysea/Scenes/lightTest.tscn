@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://Icons/CONE.png" id="1_ylxng"]
 [ext_resource type="Script" path="res://Scripts/follow_mouse.gd" id="2_sfwjp"]
 [ext_resource type="Texture2D" uid="uid://dcgdftmbhk2d3" path="res://Icons/2d_lights_and_shadows_neutral_point_light.webp" id="3_yn5vb"]
-[ext_resource type="Script" path="res://Scripts/flicker_light.gd" id="4_2rjwi"]
+[ext_resource type="Script" path="res://Scripts/lights.gd" id="4_2rjwi"]
 [ext_resource type="Texture2D" uid="uid://g1yjhr8wulci" path="res://Icons/icon.png" id="4_d8p54"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l01m6"]

@@ -1,20 +1,21 @@
 [gd_scene load_steps=24 format=3 uid="uid://dn0mkea57a3cw"]
 
-[ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
-[ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="1_qtfo6"]
-[ext_resource type="Texture2D" uid="uid://dcgdftmbhk2d3" path="res://Icons/2d_lights_and_shadows_neutral_point_light.webp" id="1_wmx6u"]
-[ext_resource type="Texture2D" uid="uid://c4vjbsqie46d8" path="res://assets/top_bubbles.png" id="2_jox0j"]
-[ext_resource type="PackedScene" uid="uid://bjcgghhh053jy" path="res://Scenes/oxygenSystem.tscn" id="2_lhl1p"]
-[ext_resource type="Script" path="res://Scripts/flicker_light.gd" id="2_xkchl"]
-[ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="3_xpj87"]
-[ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="4_v31gu"]
-[ext_resource type="PackedScene" uid="uid://cqdxwpt8n357u" path="res://level_making/camerasystem.tscn" id="5_5gy3l"]
-[ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="6_pxrql"]
-[ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="7_1hrf3"]
-[ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="10_bb45b"]
-[ext_resource type="Script" path="res://Scripts/tobedeleted.gd" id="11_8qv8o"]
-[ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="11_epfey"]
-[ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_vrnt5"]
+[ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
+[ext_resource type="Script" path="res://Scripts/lights.gd" id="2_f5qwo"]
+[ext_resource type="Texture2D" uid="uid://dcgdftmbhk2d3" path="res://Icons/2d_lights_and_shadows_neutral_point_light.webp" id="3_n5gfx"]
+[ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="4_gn2it"]
+[ext_resource type="Texture2D" uid="uid://c4vjbsqie46d8" path="res://assets/top_bubbles.png" id="5_sjbok"]
+[ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="6_cbvck"]
+[ext_resource type="PackedScene" uid="uid://bjcgghhh053jy" path="res://Scenes/oxygenSystem.tscn" id="7_8beuo"]
+[ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="8_thvg5"]
+[ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="9_bsjgf"]
+[ext_resource type="PackedScene" uid="uid://cqdxwpt8n357u" path="res://level_making/camerasystem.tscn" id="10_6ymck"]
+[ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="11_y1uls"]
+[ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="12_e13pe"]
+[ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="13_eu4yb"]
+[ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="14_61kdm"]
+[ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
+[ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
@@ -43,12 +44,11 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbr52"]
-size = Vector2(41, 37)
-
-[node name="TestScene" type="Node2D"]
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_1xxoe")
 
 [node name="LightParent" type="Node2D" parent="."]
+script = ExtResource("2_f5qwo")
 
 [node name="light" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -57,10 +57,9 @@ scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
 shadow_enabled = true
-texture = ExtResource("1_wmx6u")
+texture = ExtResource("3_n5gfx")
 texture_scale = 2.8
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light2" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -69,10 +68,9 @@ scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
 shadow_enabled = true
-texture = ExtResource("1_wmx6u")
+texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light3" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -81,10 +79,9 @@ scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
 shadow_enabled = true
-texture = ExtResource("1_wmx6u")
+texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light4" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -93,10 +90,9 @@ scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
 shadow_enabled = true
-texture = ExtResource("1_wmx6u")
+texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light5" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -105,10 +101,9 @@ scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
 shadow_enabled = true
-texture = ExtResource("1_wmx6u")
+texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light6" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -117,10 +112,9 @@ scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
 shadow_enabled = true
-texture = ExtResource("1_wmx6u")
+texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="light7" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -129,10 +123,9 @@ scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
 shadow_enabled = true
-texture = ExtResource("1_wmx6u")
+texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
-script = ExtResource("2_xkchl")
 
 [node name="Parallax Background" type="Node2D" parent="."]
 
@@ -154,7 +147,7 @@ light_mask = 2
 visibility_layer = 2
 position = Vector2(240, 120)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_qtfo6")
+texture = ExtResource("4_gn2it")
 centered = false
 
 [node name="ParallaxFront" type="Parallax2D" parent="Parallax Background"]
@@ -169,7 +162,7 @@ light_mask = 2
 visibility_layer = 2
 position = Vector2(240, 120)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_jox0j")
+texture = ExtResource("5_sjbok")
 centered = false
 
 [node name="Interior Background" type="Polygon2D" parent="Parallax Background"]
@@ -207,22 +200,23 @@ polygon = PackedVector2Array(-122.5, -46, 1150.5, -42, 1144.5, 252, 1068.5, 269,
 occluder = SubResource("OccluderPolygon2D_j2785")
 occluder_light_mask = 3
 
-[node name="Player" parent="." instance=ExtResource("1_eeyxp")]
-position = Vector2(534, 527)
+[node name="Player" parent="." instance=ExtResource("6_cbvck")]
+position = Vector2(1450, 1199)
 angular_damp = 66.313
 
-[node name="OxygenSystem" parent="." instance=ExtResource("2_lhl1p")]
+[node name="OxygenSystem" parent="." instance=ExtResource("7_8beuo")]
 position = Vector2(144, 899)
 
-[node name="PlayerOxyTank" parent="." instance=ExtResource("3_xpj87")]
+[node name="PlayerOxyTank" parent="." instance=ExtResource("8_thvg5")]
 z_index = 1
 offset_right = 11.0
 offset_bottom = 27.0
-script = ExtResource("4_v31gu")
+script = ExtResource("9_bsjgf")
 
-[node name="CAMERASYSTEM" parent="." instance=ExtResource("5_5gy3l")]
+[node name="CAMERASYSTEM" parent="." instance=ExtResource("10_6ymck")]
+metadata/_edit_lock_ = true
 
-[node name="Ladder" parent="." instance=ExtResource("6_pxrql")]
+[node name="Ladder" parent="." instance=ExtResource("11_y1uls")]
 position = Vector2(922, 608)
 
 [node name="Path2D" parent="Ladder" index="3"]
@@ -232,7 +226,7 @@ curve = SubResource("Curve2D_46uno")
 position = Vector2(40, -68)
 rotation = 1.56057
 
-[node name="Ladder2" parent="." instance=ExtResource("6_pxrql")]
+[node name="Ladder2" parent="." instance=ExtResource("11_y1uls")]
 position = Vector2(1124, 995)
 
 [node name="CollisionShape2D" parent="Ladder2/TopOfLadder" index="0"]
@@ -248,7 +242,7 @@ curve = SubResource("Curve2D_2h8we")
 [node name="PathFollow2D" parent="Ladder2/Path2D" index="0"]
 rotation = 1.59815
 
-[node name="SanitySystem" parent="." instance=ExtResource("7_1hrf3")]
+[node name="SanitySystem" parent="." instance=ExtResource("12_e13pe")]
 position = Vector2(405, 525)
 metadata/_edit_lock_ = true
 
@@ -260,32 +254,21 @@ offset_right = 2265.0
 offset_bottom = 1373.0
 mouse_filter = 1
 color = Color(0.103744, 0.103744, 0.103744, 1)
+metadata/_edit_lock_ = true
 
-[node name="FaceDisplay" parent="." instance=ExtResource("11_epfey")]
+[node name="FaceDisplay" parent="." instance=ExtResource("13_eu4yb")]
 
-[node name="SupplyGrabber" parent="." instance=ExtResource("10_bb45b")]
+[node name="SupplyGrabber" parent="." instance=ExtResource("14_61kdm")]
 position = Vector2(1928, 856)
 
 [node name="DebrisContainer" type="Node2D" parent="SupplyGrabber"]
 
-[node name="imgoingtoshityourself" type="Area2D" parent="."]
-position = Vector2(1229, 434)
-collision_layer = 16
-script = ExtResource("11_8qv8o")
-
-[node name="TESTINGDELETETHIS" type="CollisionShape2D" parent="imgoingtoshityourself"]
-shape = SubResource("RectangleShape2D_dbr52")
-
-[node name="DELETEME" type="ColorRect" parent="imgoingtoshityourself"]
-offset_left = -17.0
-offset_top = -17.0
-offset_right = 17.0
-offset_bottom = 17.0
-color = Color(0, 0, 1, 1)
-
 [node name="ComponentSpawner" type="Node2D" parent="."]
-position = Vector2(2245, 826)
-script = ExtResource("15_vrnt5")
+position = Vector2(225, 510)
+script = ExtResource("15_rset8")
+
+[node name="BreakerBox" parent="." instance=ExtResource("16_yne7g")]
+position = Vector2(1649, 493)
 
 [connection signal="oxygen_multiplier_changed" from="SanitySystem" to="OxygenSystem" method="_on_sanity_system_oxygen_multiplier_changed"]
 [connection signal="child_entered_tree" from="SupplyGrabber/DebrisContainer" to="ComponentSpawner" method="_on_debris_container_child_entered_tree"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvotvnd110mnm"]
+
+[ext_resource type="Script" path="res://Scripts/breakerBox.gd" id="1_qvh50"]
+[ext_resource type="Texture2D" uid="uid://c7ywavpryni5k" path="res://assets/oxy_fixed.png" id="1_teclw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bovuj"]
+size = Vector2(3.51786, 1.2069)
+
+[node name="BreakerBox" type="StaticBody2D"]
+position = Vector2(0, 3)
+collision_layer = 4
+script = ExtResource("1_qvh50")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(203, -4.00001)
+scale = Vector2(0.524038, 0.584005)
+polygon = PackedVector2Array(-311.046, 160.957, -387.376, 160.957, -388, 1, -310, 1)
+
+[node name="FillUpArea" type="Area2D" parent="."]
+position = Vector2(21, 47)
+scale = Vector2(12.5076, -76.6428)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FillUpArea"]
+position = Vector2(-3.43791, 0.0521902)
+shape = SubResource("RectangleShape2D_bovuj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(20, 24)
+scale = Vector2(0.625, 0.828128)
+texture = ExtResource("1_teclw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+texture_filter = 1
+position = Vector2(-22.4, 55.8325)
+scale = Vector2(0.2875, 0.744766)
+texture = ExtResource("1_teclw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
+texture_filter = 1
+position = Vector2(22.4, 55.8325)
+scale = Vector2(0.2875, 0.744766)
+texture = ExtResource("1_teclw")

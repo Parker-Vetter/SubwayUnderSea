@@ -10,9 +10,11 @@ signal debris_collected
 
 func _ready() -> void:
 	if is_monster:
+		self.name = "monster"
 		position.x = randfn(0, 64)
 		position.y = 100
 	else:
+		self.name = "debris"
 		position.x = randfn(0, 64)
 		position.y = -100
 
