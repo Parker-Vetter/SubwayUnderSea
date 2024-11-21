@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dn0mkea57a3cw"]
+[gd_scene load_steps=27 format=3 uid="uid://dn0mkea57a3cw"]
 
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
 [ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="1_qtfo6"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://c7fh2ch28etqe" path="res://assets/Backgrounds/hanging_cables_foreground.png" id="8_x8q07"]
 [ext_resource type="Texture2D" uid="uid://b1ld0rjn6hd8u" path="res://assets/Backgrounds/foreground_pipes.png" id="9_frhj4"]
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="10_bb45b"]
-[ext_resource type="Script" path="res://Scripts/tobedeleted.gd" id="11_8qv8o"]
 [ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="11_epfey"]
 [ext_resource type="PackedScene" uid="uid://f34j633okqsc" path="res://Scenes/component.tscn" id="15_mvw0f"]
 
@@ -47,9 +46,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 36, 373)
 }
 point_count = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbr52"]
-size = Vector2(41, 37)
 
 [node name="TestScene" type="Node2D"]
 
@@ -93,7 +89,7 @@ script = ExtResource("2_xkchl")
 
 [node name="light4" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
-position = Vector2(398, 649)
+position = Vector2(1363, 1234)
 scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
@@ -105,7 +101,7 @@ script = ExtResource("2_xkchl")
 
 [node name="light5" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
-position = Vector2(1930, 727)
+position = Vector2(243, 772)
 scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
@@ -117,7 +113,7 @@ script = ExtResource("2_xkchl")
 
 [node name="light6" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
-position = Vector2(1356, 1052)
+position = Vector2(1656, 762)
 scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
@@ -129,7 +125,7 @@ script = ExtResource("2_xkchl")
 
 [node name="light7" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
-position = Vector2(1207, 672)
+position = Vector2(1206, 767)
 scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
@@ -370,21 +366,6 @@ metadata/_edit_lock_ = true
 [node name="SupplyGrabber" parent="." instance=ExtResource("10_bb45b")]
 z_index = -1
 position = Vector2(1927, 877)
-
-[node name="imgoingtoshityourself" type="Area2D" parent="."]
-position = Vector2(1229, 434)
-collision_layer = 16
-script = ExtResource("11_8qv8o")
-
-[node name="TESTINGDELETETHIS" type="CollisionShape2D" parent="imgoingtoshityourself"]
-shape = SubResource("RectangleShape2D_dbr52")
-
-[node name="DELETEME" type="ColorRect" parent="imgoingtoshityourself"]
-offset_left = -17.0
-offset_top = -17.0
-offset_right = 17.0
-offset_bottom = 17.0
-color = Color(0, 0, 1, 1)
 
 [node name="Component" parent="." instance=ExtResource("15_mvw0f")]
 position = Vector2(1073, 525)
