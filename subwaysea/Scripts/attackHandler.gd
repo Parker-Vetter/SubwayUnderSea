@@ -3,9 +3,7 @@ extends Node
 signal wasAttacked
 
 func _process(delta: float) -> void:
-	#pass
-	if Input.is_action_just_pressed('interact'):
-		callForAttack()
+	pass
 
 # function needs to be called when the monster or anything else triggers an attack event
 # currently this is not implemented anywhere

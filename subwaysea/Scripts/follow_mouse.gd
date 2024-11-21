@@ -12,6 +12,5 @@ func isRayColliding():
 		target = ray.get_collider() #creates a var called target
 		if (target.get_parent().name == "OxygenSystem"): #checks if the target is a specific target
 			target.get_parent().changeSprite()
-			print("Oxygen System changed")
 		elif (target.get_parent().name == "BreakerBox"):
 			target.get_parent().changeSprite()
