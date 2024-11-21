@@ -1,7 +1,9 @@
 extends Node2D
 
-@onready var background_shape: Polygon2D = $CanvasLayer/BackgroundShape
-@onready var clip_shape: Polygon2D = $Polygon2D
+
+@onready var background_shape = get_child(0)
+@onready var clip_shape = get_child(1)
+
 
 var cat_has_mouse = false
 var dragging = false

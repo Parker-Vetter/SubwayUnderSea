@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci2e8iop58h5t"
-path="res://.godot/imported/O2 Machine.png-9fbf57e79b6b0771b09d44c923006daf.ctex"
+uid="uid://cbxky3n3scti8"
+path="res://.godot/imported/Light Machine ON.png-ab0e1c9a62375cbfe936283a9f01e93b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Backgrounds/O2 Machine.png"
-dest_files=["res://.godot/imported/O2 Machine.png-9fbf57e79b6b0771b09d44c923006daf.ctex"]
+source_file="res://assets/Light Machine ON.png"
+dest_files=["res://.godot/imported/Light Machine ON.png-ab0e1c9a62375cbfe936283a9f01e93b.ctex"]
 
 [params]
 
