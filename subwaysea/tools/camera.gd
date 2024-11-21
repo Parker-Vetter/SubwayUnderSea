@@ -5,6 +5,7 @@ var max_offset := Vector2(480*.01,272*.01) #this reduces how much your camera ca
 var max_roll = 0.01 #Maximum rotation in radians (use sparingly).
 @onready var noise = preload("res://assets/cam_noise.tres")
 @onready var player = get_tree().get_first_node_in_group('player')
+@onready var mainScene = get_tree().root.get_node("MainScene")
 
 var noise_y = 0 #Value used to move through the noise
 var trauma := 0.0 #Current shake strength
@@ -18,7 +19,7 @@ var velocity = Vector2.ZERO #changes how fast your offset changes
 
 func _ready():
 	ignore_rotation = false
-	
+	mainScene.connect("wasAttacked", Callable(self, "attacked"))
 	if player != null: position = player.position
 #black out area you were just in thats part of the gameplay
 func transition(point : Vector2): #ig just position
@@ -37,6 +38,11 @@ func _process(delta):
 	shake_pos += velocity
 	if player != null: position.x = player.position.x
 	offset = shake_pos #this is the property that moves the camera
+
+func attacked(randValue):
+	print("attacked Called")
+	add_trauma(1, Vector2.RIGHT)
+
 
 func add_trauma(amount : float, direction : Vector2): #this function starts everything
 	trauma = min(trauma + amount, 1.0) #for the regular camera shake motion

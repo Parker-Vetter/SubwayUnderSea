@@ -54,6 +54,7 @@ script = ExtResource("1_1xxoe")
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 60.0
 autostart = true
 
 [node name="LightParent" type="Node2D" parent="."]
