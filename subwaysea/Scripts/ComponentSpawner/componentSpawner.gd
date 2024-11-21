@@ -15,8 +15,6 @@ func debrisCollected(is_monster):
 func _on_debris_container_child_entered_tree(node: Node) -> void:
 	if node.name == "debris":
 		node.connect("debris_collected", Callable(self, "debrisCollected"))
-	else:
-		pass
 
 
 func _on_debris_container_child_exiting_tree(node: Node) -> void:

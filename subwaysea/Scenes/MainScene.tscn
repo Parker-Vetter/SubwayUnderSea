@@ -52,6 +52,10 @@ point_count = 2
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_1xxoe")
 
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
 [node name="LightParent" type="Node2D" parent="."]
 script = ExtResource("2_f5qwo")
 
@@ -375,6 +379,7 @@ position = Vector2(1649, 493)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.09, 0.05826, 0.0486, 1)
 
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="oxygen_multiplier_changed" from="SanitySystem" to="OxygenSystem" method="_on_sanity_system_oxygen_multiplier_changed"]
 [connection signal="child_entered_tree" from="SupplyGrabber/DebrisContainer" to="ComponentSpawner" method="_on_debris_container_child_entered_tree"]
 [connection signal="child_exiting_tree" from="SupplyGrabber/DebrisContainer" to="ComponentSpawner" method="_on_debris_container_child_exiting_tree"]
