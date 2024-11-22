@@ -1,11 +1,11 @@
 extends StaticBody2D
 
 
-var currentSprite = load("res://assets/oxy_fixed.png")
+var currentSprite = load("res://assets/Light Machine ON.png")
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var fixedSprite = load("res://assets/oxy_fixed.png")
-@onready var brokenSprite = load("res://assets/oxy_broken.png")
+@onready var fixedSprite = load("res://assets/Light Machine ON.png")
+@onready var brokenSprite = load("res://assets/Light Machine OFF.png")
 
 @onready var lightParent = self.get_parent().find_child("LightParent")
 

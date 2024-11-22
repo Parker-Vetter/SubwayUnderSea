@@ -6,8 +6,9 @@ extends RigidBody2D
 @onready var player = get_tree().get_first_node_in_group('player')
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed('interact') and detect_player.has_overlapping_bodies():
+	if Input.is_action_just_pressed('interact') and detect_player.has_overlapping_bodies and detect_player.get_overlapping_bodies()[0].holding_c == []:
 		detect_player.get_overlapping_bodies()[0].holding_c += [self]
+		print(detect_player.get_overlapping_bodies()[0].holding_c)
 		freeze = true
 		$CollisionShape2D.disabled = true
 	

@@ -1,18 +1,27 @@
 extends Node2D
 
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	#if Input.is_action_just_pressed("interact"): #press 'space' to test the flicker
+		#flickerOn()
+	#if Input.is_action_just_pressed("left_mouse"): #press 'left mouse' to test the flicker
+		#flickerOff()
+	pass
+
 func flickerOn():
 	var randint = randi_range(15,25) #gets a random integer between two numbers
 	for i in range(randint): #flickers a randint number of times
 		await awaitTimer() #wait for the timer to finish
 	for child in get_children():
-		child.energy = 6 #sets the light back to normal brightness	
+		child.energy = 6 #sets the light back to normal brightness
 
 func flickerOff():
-	var randint = randi_range(15,25) #gets a random integer between two numbers
+	var randint = randi_range(25,35) #gets a random integer between two numbers
 	for i in range(randint): #flickers a randint number of times
 		await awaitTimer() #wait for the timer to finish
 	for child in get_children():
-		child.energy = 0 #sets the light back to normal brightness	
+		child.energy = 0 #turns the lights off
 
 func awaitTimer():
 	for child in get_children():
