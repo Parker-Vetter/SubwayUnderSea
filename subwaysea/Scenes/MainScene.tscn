@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dn0mkea57a3cw"]
+[gd_scene load_steps=31 format=3 uid="uid://dn0mkea57a3cw"]
 
 [ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
@@ -15,12 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://c7fh2ch28etqe" path="res://assets/Backgrounds/hanging_cables_foreground.png" id="8_x8q07"]
 [ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="9_bsjgf"]
 [ext_resource type="Texture2D" uid="uid://b1ld0rjn6hd8u" path="res://assets/Backgrounds/foreground_pipes.png" id="9_frhj4"]
+[ext_resource type="Texture2D" uid="uid://b32pm3thjeb8w" path="res://assets/cat_photo.png" id="11_8sp0x"]
 [ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="11_y1uls"]
 [ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="12_e13pe"]
 [ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="13_eu4yb"]
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="14_61kdm"]
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
 [ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
+[ext_resource type="Texture2D" uid="uid://e5gvb71liegp" path="res://assets/component spawner.png" id="22_7k725"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
@@ -247,6 +249,75 @@ scale = Vector2(2, 2)
 texture = ExtResource("9_frhj4")
 centered = false
 
+[node name="Cat Room (Basement)" type="Polygon2D" parent="Parallax Interior"]
+modulate = Color(0.605274, 0.605274, 0.605274, 1)
+clip_children = 1
+polygon = PackedVector2Array(1096, 1172, 1616, 1171, 1617, 1417, 1087, 1413)
+
+[node name="Parallax2D" type="Parallax2D" parent="Parallax Interior/Cat Room (Basement)"]
+scroll_scale = Vector2(0.86, 1)
+scroll_offset = Vector2(-161.125, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Interior/Cat Room (Basement)/Parallax2D"]
+position = Vector2(1340, 1244)
+rotation = 0.190592
+scale = Vector2(0.31761, 0.31761)
+texture = ExtResource("11_8sp0x")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax Interior/Cat Room (Basement)/Parallax2D"]
+position = Vector2(1410, 1293)
+rotation = -0.349776
+scale = Vector2(0.31761, 0.31761)
+texture = ExtResource("11_8sp0x")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax Interior/Cat Room (Basement)/Parallax2D"]
+position = Vector2(1529.16, 1274.62)
+rotation = -0.185903
+scale = Vector2(0.505713, 0.505713)
+texture = ExtResource("11_8sp0x")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Parallax Interior/Cat Room (Basement)/Parallax2D"]
+position = Vector2(1522, 1382)
+rotation = -0.33629
+scale = Vector2(0.336467, 0.336467)
+texture = ExtResource("11_8sp0x")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Parallax Interior/Cat Room (Basement)/Parallax2D"]
+position = Vector2(1366, 1329)
+rotation = 0.175114
+scale = Vector2(0.41195, 0.41195)
+texture = ExtResource("11_8sp0x")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Parallax Interior/Cat Room (Basement)/Parallax2D"]
+position = Vector2(1462, 1316)
+rotation = 0.230457
+scale = Vector2(0.411527, 0.411527)
+texture = ExtResource("11_8sp0x")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Parallax Interior/Cat Room (Basement)/Parallax2D"]
+position = Vector2(1285, 1299)
+rotation = -0.161731
+scale = Vector2(0.448114, 0.448114)
+texture = ExtResource("11_8sp0x")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Parallax Interior/Cat Room (Basement)/Parallax2D"]
+position = Vector2(1430, 1237)
+rotation = -0.182556
+scale = Vector2(0.204403, 0.204403)
+texture = ExtResource("11_8sp0x")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Parallax Interior/Cat Room (Basement)/Parallax2D"]
+position = Vector2(1217, 1270)
+rotation = 0.174907
+scale = Vector2(0.262994, 0.262994)
+texture = ExtResource("11_8sp0x")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Parallax Interior/Cat Room (Basement)/Parallax2D"]
+position = Vector2(1254, 1365)
+rotation = 0.181709
+scale = Vector2(0.349057, 0.349057)
+texture = ExtResource("11_8sp0x")
+
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(626, 599)
 
@@ -295,6 +366,7 @@ polygon = PackedVector2Array(-621.5, -53, 1146.5, -53, 1146.5, 147, 1066.5, 123,
 [node name="Player" parent="." instance=ExtResource("1_eeyxp")]
 position = Vector2(534, 527)
 angular_damp = 66.313
+metadata/_edit_lock_ = true
 
 [node name="OxygenSystem" parent="." instance=ExtResource("7_8beuo")]
 z_index = -1
@@ -320,6 +392,9 @@ position = Vector2(46, 143.5)
 [node name="CollisionShape2D" parent="Ladder/BottomOfLadder" index="0"]
 position = Vector2(66, 1)
 
+[node name="Ladder" parent="Ladder" index="2"]
+position = Vector2(45, 203)
+
 [node name="Path2D" parent="Ladder" index="3"]
 position = Vector2(6, 8)
 curve = SubResource("Curve2D_46uno")
@@ -344,6 +419,9 @@ position = Vector2(-26, 206)
 [node name="CollisionShape2D" parent="Ladder2/BottomOfLadder" index="0"]
 position = Vector2(62, 151)
 
+[node name="Ladder" parent="Ladder2" index="2"]
+position = Vector2(36, 196)
+
 [node name="Path2D" parent="Ladder2" index="3"]
 curve = SubResource("Curve2D_2h8we")
 
@@ -357,36 +435,22 @@ position = Vector2(37, 4)
 position = Vector2(405, 525)
 metadata/_edit_lock_ = true
 
-[node name="Sanity Debuff Area" parent="SanitySystem" index="0"]
+[node name="CatPhoto" parent="SanitySystem" index="0"]
+position = Vector2(961, 784)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sanity Debuff Area" parent="SanitySystem" index="1"]
 visible = false
-position = Vector2(-406, -520)
 
 [node name="CollisionPolygon2D" parent="SanitySystem/Sanity Debuff Area" index="0"]
-visible = false
-position = Vector2(513.969, 591.5)
-scale = Vector2(8.2194, 4.84375)
-polygon = PackedVector2Array(-48, -48, 144, -48, 144.053, 26.7355, 201.478, 27.9742, 201.965, 83.5097, -48, 80)
+polygon = PackedVector2Array(-217, -125, 1336, -123, 1341, 228, 1805, 226, 1805, 484, 869, 492, 869, 598, 747, 599, 746.761, 487.658, -220, 491)
 
-[node name="SanityBuffArea" parent="SanitySystem" index="1"]
+[node name="SanityBuffArea" parent="SanitySystem" index="2"]
 visible = false
-position = Vector2(-403, -522)
 
 [node name="CollisionShape2D" parent="SanitySystem/SanityBuffArea" index="0"]
-visible = false
-position = Vector2(1312, 1269)
-polygon = PackedVector2Array(-63, -64, 264, -57, 264, 121, -208, 121, -209, 42, -59, 39)
-
-[node name="CatPhoto" parent="SanitySystem/CanvasLayer" index="0"]
-metadata/_edit_lock_ = true
-
-[node name="BackgroundShape" parent="SanitySystem/CanvasLayer/CatPhoto" index="0"]
-metadata/_edit_lock_ = true
-
-[node name="Polygon2D" parent="SanitySystem/CanvasLayer/CatPhoto" index="1"]
-metadata/_edit_lock_ = true
-
-[node name="Area2D" parent="SanitySystem/CanvasLayer/CatPhoto" index="2"]
-metadata/_edit_lock_ = true
+position = Vector2(897, 750)
+polygon = PackedVector2Array(-239, -59, 96, -64, 94, 115, -375, 114, -379, 34, -238, 31)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visibility_layer = 0
@@ -405,11 +469,23 @@ position = Vector2(-314, -87)
 z_index = -1
 position = Vector2(1947, 876)
 
+[node name="ship" parent="SupplyGrabber" index="3"]
+color = Color(0.0901961, 0.0313726, 0.0117647, 1)
+polygon = PackedVector2Array(-13, -8, -7, -10, 0, -11, 5, -11, 10, -10, 15, -8, 18, -6, 21, -3, 22, 1, 21, 4, 18, 7, 15, 9, 10, 10, 2, 11, -7, 11, -13, 10, -17, 8, -20, 3, -20, -2, -18, -5)
+
 [node name="DebrisContainer" type="Node2D" parent="SupplyGrabber"]
 
 [node name="ComponentSpawner" type="Node2D" parent="."]
-position = Vector2(1633, 756)
+position = Vector2(1629, 782)
 script = ExtResource("15_rset8")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ComponentSpawner"]
+light_mask = 0
+texture_filter = 1
+position = Vector2(0.999952, -5)
+scale = Vector2(2.95833, 2.95833)
+texture = ExtResource("22_7k725")
 
 [node name="BreakerBox" parent="." instance=ExtResource("16_yne7g")]
 z_index = -1

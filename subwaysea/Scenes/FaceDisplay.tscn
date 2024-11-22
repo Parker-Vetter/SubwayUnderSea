@@ -1,8 +1,10 @@
-[gd_scene load_steps=51 format=3 uid="uid://gnxhj7qlcejs"]
+[gd_scene load_steps=53 format=3 uid="uid://gnxhj7qlcejs"]
 
 [ext_resource type="Script" path="res://Scripts/face_display.gd" id="1_e5ur3"]
-[ext_resource type="Texture2D" uid="uid://fvavurx8x08w" path="res://assets/Face1.png" id="2_mhgrn"]
+[ext_resource type="Texture2D" uid="uid://bujkjrh50hli7" path="res://assets/Normal.png" id="3_00amr"]
 [ext_resource type="Texture2D" uid="uid://dp2b4ixrs0xlh" path="res://assets/heartbeat.png" id="3_da8u5"]
+[ext_resource type="Texture2D" uid="uid://bq83o23ws41k4" path="res://assets/HUD.png" id="4_wqlb2"]
+[ext_resource type="Texture2D" uid="uid://3bjy44cmaays" path="res://assets/Face Frame.png" id="5_dwcme"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3a3dc"]
 atlas = ExtResource("3_da8u5")
@@ -335,41 +337,62 @@ animations = [{
 }]
 
 [node name="FaceDisplay" type="Node2D"]
+light_mask = 0
 script = ExtResource("1_e5ur3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer"]
-position = Vector2(0, 75.9353)
-scale = Vector2(0.725191, 0.794623)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 360, 131, 360, 131, 176, 0, 176)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(7.52316e-37, 216)
-scale = Vector2(0.95, 0.95)
-texture = ExtResource("2_mhgrn")
+[node name="HUD Scratches" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.733333)
+light_mask = 0
+texture_filter = 1
+texture = ExtResource("4_wqlb2")
 centered = false
+metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+[node name="Display Frame" type="Sprite2D" parent="CanvasLayer"]
+self_modulate = Color(0, 0, 0, 1)
+clip_children = 2
+texture_filter = 1
+position = Vector2(44, 283)
+scale = Vector2(2.09722, 2.09722)
+texture = ExtResource("5_dwcme")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Display Frame"]
+modulate = Color(0.556066, 0.248158, 0.106654, 1)
 light_mask = 0
 visibility_layer = 512
 texture_filter = 1
-position = Vector2(0, 302)
-scale = Vector2(0.719697, 0.701457)
+position = Vector2(-18.1192, 4.2914)
+scale = Vector2(0.276219, 0.328477)
 sprite_frames = SubResource("SpriteFrames_fwu5p")
 autoplay = "default"
 centered = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Display Frame"]
+modulate = Color(0.9772, 0.750934, 0.659641, 1)
+light_mask = 0
+position = Vector2(-16.6888, -33.8543)
+scale = Vector2(0.022351, 0.022351)
+texture = ExtResource("3_00amr")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Display Frame"]
+modulate = Color(0.666667, 0.305882, 0.141176, 1)
+light_mask = 0
 texture_filter = 1
-offset_left = 11.0
-offset_top = 336.0
-offset_right = 91.0
-offset_bottom = 376.0
+anchors_preset = -1
+anchor_left = 0.089
+anchor_right = 0.089
+offset_left = -17.9855
+offset_top = 17.1656
+offset_right = 54.0145
+offset_bottom = 63.1656
+scale = Vector2(0.425, 0.425)
+mouse_filter = 1
 text = "BPM: 160"
 fit_content = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

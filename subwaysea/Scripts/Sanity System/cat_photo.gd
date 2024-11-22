@@ -1,8 +1,8 @@
 extends Node2D
 
-
-@onready var background_shape = get_child(0)
-@onready var clip_shape = get_child(1)
+@onready var background_shape: Polygon2D = get_node("../CanvasLayer/BackgroundShape")
+@onready var clip_shape: Polygon2D = get_node("ClipShape")
+#@onready var background_shape: Polygon2D = $"../CanvasLayer/BackgroundShape"
 
 
 var cat_has_mouse = false
@@ -17,11 +17,18 @@ signal sanity_changed(new_sanity)
 func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed("left_mouse") and (cat_has_mouse == true or dragging):
-		global_position = lerp(global_position, get_global_mouse_position(), 12 * delta)
+		self.global_position = lerp(self.global_position, get_global_mouse_position(), 12 * delta)
+		
+		if not self.find_parent("CanvasLayer"):
+			self.reparent(self.get_parent().get_node("CanvasLayer"))
+			set_scale(Vector2(1, 1))
+			
 	if Input.is_action_just_released("left_mouse"):
 		dragging = false
 	
-	find_intersect()
+	if self.find_parent("CanvasLayer"):
+		find_intersect()
+	
 	sanity = clamp(intersect_area / total_area, 0, 1)
 	sanity_changed.emit(sanity)
 
@@ -52,14 +59,6 @@ func calculate_area(mesh_vertices: PackedVector2Array):
 		result += mesh_vertices[q].cross(mesh_vertices[p])
 		
 	intersect_area = abs(result) * 0.5
-
-
-func move_cat_photo(delta):
-	if Input.is_action_pressed("left_mouse") and (cat_has_mouse == true or dragging):
-		global_position = lerp(global_position, get_global_mouse_position(), 12 * delta)
-		find_intersect()
-	if Input.is_action_just_released("left_mouse"):
-		dragging = false
 
 
 func _on_area_2d_mouse_entered() -> void:

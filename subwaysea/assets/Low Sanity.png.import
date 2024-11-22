@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0heijulghfm5"
-path="res://.godot/imported/Face2.png-7935ee0751afaad05dfe499bd776050d.ctex"
+uid="uid://dyk1ujobyjkv8"
+path="res://.godot/imported/Low Sanity.png-262309e2f475b2117f9eedeb4bd718ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Face2.png"
-dest_files=["res://.godot/imported/Face2.png-7935ee0751afaad05dfe499bd776050d.ctex"]
+source_file="res://assets/Low Sanity.png"
+dest_files=["res://.godot/imported/Low Sanity.png-262309e2f475b2117f9eedeb4bd718ae.ctex"]
 
 [params]
 
