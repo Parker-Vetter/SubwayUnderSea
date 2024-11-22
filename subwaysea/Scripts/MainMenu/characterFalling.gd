@@ -11,8 +11,8 @@ const LIFETIMER = preload("res://Scenes/MainMenu/lifeTimer.tscn")
 
 func _process(delta):
 	for child in spriteholder.get_children():  # Iterate over all children of `spriteholder`
-			child.rotate(5.0 * delta)  # Make it spin (scaled by delta for smooth rotation)
-			child.position.y += 20 * delta  # Move down the Y-axis (scaled by delta)
+			child.rotate(randi_range(2,5) * delta)  # Make it spin (scaled by delta for smooth rotation)
+			child.position.y += randi_range(10,20) * delta  # Move down the Y-axis (scaled by delta)
 
 func _on_spawner_timeout() -> void:
 	var spawn_x = lerp(line.get_point_position(0).x, line.get_point_position(1).x, randf())
@@ -27,7 +27,7 @@ func _on_spawner_timeout() -> void:
 	var life_timer = LIFETIMER.instantiate()
 	life_timer.name = "lifeTimer"
 	life_timer.autostart = true
-	life_timer.wait_time = 20
+	life_timer.wait_time = 60
 	life_timer.connect("timeout", Callable(self, "_on_player_life_timeout"))  # Use a callable for connection
 	playerinstance.add_child(life_timer)
 	life_timer.start()

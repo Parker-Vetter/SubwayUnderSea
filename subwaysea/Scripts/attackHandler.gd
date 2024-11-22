@@ -1,6 +1,7 @@
 extends Node
 
 signal wasAttacked
+signal MainInitialized
 
 @onready var randomAttackTimer = find_child("AttackTimer")
 
@@ -10,6 +11,7 @@ func _process(delta: float) -> void:
 func _ready() -> void:
 	randomAttackTimer.wait_time = randi_range(120,600)
 	randomAttackTimer.autostart = true
+	MainInitialized.emit()
 
 
 # function needs to be called when the monster or anything else triggers an attack event
