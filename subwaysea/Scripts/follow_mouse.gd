@@ -10,5 +10,7 @@ func _process(delta: float) -> void:
 func isRayColliding():
 	if ray.is_colliding(): #checks if the ray is colliding
 		target = ray.get_collider() #creates a var called target
-		if target != null and target.get_parent().name == "OxygenSystem": #checks if the target is a specific target
-			target.get_parent().changeSprite() #change the sprite of the oxygen machine to the current value when the ray collides with it
+		if (target != null and target.get_parent().name == "OxygenSystem"): #checks if the target is a specific target
+			target.get_parent().changeSprite()
+		elif (target != null and target.name == "BreakerBox"):
+			target.changeSprite()

@@ -13,11 +13,20 @@ var currentSprite = load("res://assets/oxy_fixed.png")
 @onready var fixedSprite = load("res://assets/oxy_fixed.png")
 @onready var brokenSprite = load("res://assets/oxy_broken.png")
 
-
 signal oxygen_threshold_changed(oxygen_threshold)
 
 func _ready() -> void:
+	self.get_parent().connect("wasAttacked", Callable(self, "wasAttacked"))
 	self.connect("oxygen_threshold_changed", face_display._on_oxygen_threshold_changed)
+
+# randomValue can be between 0 and 10 so if we hit 5 through 10 oxygen will break
+func wasAttacked(randomValue):
+	if randomValue >= 5:
+		currentSprite = brokenSprite
+
+# set the oxygen meter to go up again
+func wasFixed():
+	currentSprite = fixedSprite
 
 func _process(delta: float) -> void:
 	playerOxyTank.set("value", oxygenAmount)
@@ -26,7 +35,7 @@ func _process(delta: float) -> void:
 		hasSpriteChanged()
 
 func addOxygen():
-	if oxygenAmount < oxygenCap:
+	if (oxygenAmount < oxygenCap) and (sprite.texture == fixedSprite):
 		oxygenAmount += 1
 
 func loseOxygen():
@@ -44,20 +53,16 @@ func _on_fill_up_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		insideArea = true
 
-
 func _on_fill_up_area_body_exited(body: Node2D) -> void:
 	insideArea = false
-
 
 func _on_up_timeout() -> void:
 	if insideArea:
 		addOxygen()
 
-
 func _on_down_timeout() -> void:
-	if !insideArea:
+	if !insideArea || sprite.texture == brokenSprite:
 		loseOxygen()
-
 
 func _on_sanity_system_oxygen_multiplier_changed(new_multiplier: Variant) -> void:
 	multiplier = new_multiplier

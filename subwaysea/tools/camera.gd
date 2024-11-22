@@ -6,6 +6,7 @@ var max_roll = 0.01 #Maximum rotation in radians (use sparingly).
 @onready var noise = preload("res://assets/cam_noise.tres")
 @onready var player = get_tree().get_first_node_in_group('player')
 
+
 var noise_y = 0 #Value used to move through the noise
 var trauma := 0.0 #Current shake strength
 var trauma_pwr := 2 #Trauma exponent. Use [2,3]
@@ -18,8 +19,12 @@ var velocity = Vector2.ZERO #changes how fast your offset changes
 
 func _ready():
 	ignore_rotation = false
-	
 	if player != null: position = player.position
+
+#func MainScene():
+#	print("mainIniziatlized")
+#	var mainScene = get_tree().root.get_node("MainScene")
+
 #black out area you were just in thats part of the gameplay
 func transition(point : Vector2): #ig just position
 	var tween = get_tree().create_tween()
@@ -28,6 +33,10 @@ func transition(point : Vector2): #ig just position
 	tween.tween_property(self, 'position', point + Vector2(160, 90), .5)
 
 func _process(delta):
+#	var mainScene = get_tree().root.get_node("MainScene")
+#	if mainScene != null:
+#		
+#		mainScene.connect("MainInitialized", Callable(self, "MainScene"))
 	player = get_tree().get_first_node_in_group('player')
 	if trauma: 
 		trauma = max(trauma - decay * delta, 0)
@@ -37,6 +46,10 @@ func _process(delta):
 	shake_pos += velocity
 	if player != null: position.x = player.position.x
 	offset = shake_pos #this is the property that moves the camera
+
+# shake the screen
+func attacked(randValue):
+	add_trauma(1, Vector2.RIGHT)
 
 func add_trauma(amount : float, direction : Vector2): #this function starts everything
 	trauma = min(trauma + amount, 1.0) #for the regular camera shake motion
