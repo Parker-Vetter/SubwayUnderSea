@@ -7,7 +7,7 @@
 size = Vector2(3.03815, 0.347391)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2v6x2"]
-size = Vector2(4.91701, 0.12022)
+size = Vector2(4.91701, 1.13001)
 
 [node name="BreakerBox" type="StaticBody2D"]
 position = Vector2(0, 3)
@@ -44,7 +44,7 @@ position = Vector2(-1.03937, -0.300093)
 shape = SubResource("RectangleShape2D_bovuj")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="FillUpArea"]
-position = Vector2(-3.93761, 0.0391427)
+position = Vector2(-3.93761, -0.465752)
 shape = SubResource("RectangleShape2D_2v6x2")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]

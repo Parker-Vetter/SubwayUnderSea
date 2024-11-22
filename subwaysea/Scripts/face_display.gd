@@ -1,12 +1,12 @@
 extends Node2D
 
-const FACE_1 = preload("res://assets/Face1.png")
-const FACE_2 = preload("res://assets/Face2.png")
-const FACE_3 = preload("res://assets/Face3.png")
+const LOW_OXYGEN = preload("res://assets/Low Oxygen.png")
+const LOW_SANITY = preload("res://assets/Low Sanity.png")
+const NORMAL = preload("res://assets/Normal.png")
 
-@onready var heartbeat_monitor: AnimatedSprite2D = $CanvasLayer/AnimatedSprite2D
-@onready var face_sprite: Sprite2D = $CanvasLayer/Sprite2D
-@onready var bpm_display: RichTextLabel = $CanvasLayer/RichTextLabel
+@onready var face_sprite: Sprite2D = $"CanvasLayer/Display Frame/Sprite2D"
+@onready var bpm_display: RichTextLabel = $"CanvasLayer/Display Frame/RichTextLabel"
+@onready var heartbeat_monitor: AnimatedSprite2D = $"CanvasLayer/Display Frame/AnimatedSprite2D"
 
 var sanity = 0
 var old_sanity  = 0
@@ -18,11 +18,11 @@ var animation_speed = 1
 func _process(delta: float) -> void:
 	# this all needs to be in one if/elif tree so that the low oxygen face has priority
 	if oxygen == "low":
-		face_sprite.set_texture(FACE_3)
+		face_sprite.set_texture(LOW_OXYGEN)
 	elif sanity < 20:
-		face_sprite.set_texture(FACE_2)
+		face_sprite.set_texture(LOW_SANITY)
 	elif sanity >= 20:
-		face_sprite.set_texture(FACE_1)
+		face_sprite.set_texture(NORMAL)
 	
 
 func alter_heartbeat_speed():
