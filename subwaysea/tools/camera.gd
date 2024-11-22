@@ -19,8 +19,10 @@ var velocity = Vector2.ZERO #changes how fast your offset changes
 
 func _ready():
 	ignore_rotation = false
-	mainScene.connect("wasAttacked", Callable(self, "attacked"))
+	if mainScene != null:
+		mainScene.connect("wasAttacked", Callable(self, "attacked"))
 	if player != null: position = player.position
+
 #black out area you were just in thats part of the gameplay
 func transition(point : Vector2): #ig just position
 	var tween = get_tree().create_tween()
@@ -39,10 +41,9 @@ func _process(delta):
 	if player != null: position.x = player.position.x
 	offset = shake_pos #this is the property that moves the camera
 
+# shake the screen
 func attacked(randValue):
-	print("attacked Called")
 	add_trauma(1, Vector2.RIGHT)
-
 
 func add_trauma(amount : float, direction : Vector2): #this function starts everything
 	trauma = min(trauma + amount, 1.0) #for the regular camera shake motion

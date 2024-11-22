@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://rxjphhxutk81"]
+
+[node name="Life" type="Timer"]
+wait_time = 20.0
+autostart = true

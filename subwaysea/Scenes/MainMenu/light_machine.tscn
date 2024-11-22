@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5xksdjj6tueg"]
+
+[ext_resource type="Texture2D" uid="uid://co6es4qno8b8f" path="res://assets/Light Machine OFF.png" id="1_10pxg"]
+
+[node name="LightMachine" type="Sprite2D"]
+position = Vector2(69, 130)
+texture = ExtResource("1_10pxg")

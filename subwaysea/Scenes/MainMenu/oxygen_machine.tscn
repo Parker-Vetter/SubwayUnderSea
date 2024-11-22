@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ym43ay0h3jtu"]
+
+[ext_resource type="Texture2D" uid="uid://4p5645ieavlc" path="res://assets/oxy_broken.png" id="1_c8b4l"]
+
+[node name="OxygenMachine" type="Sprite2D"]
+position = Vector2(-56, 113)
+texture = ExtResource("1_c8b4l")
