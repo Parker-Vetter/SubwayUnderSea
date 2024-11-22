@@ -5,7 +5,7 @@ var max_offset := Vector2(480*.01,272*.01) #this reduces how much your camera ca
 var max_roll = 0.01 #Maximum rotation in radians (use sparingly).
 @onready var noise = preload("res://assets/cam_noise.tres")
 @onready var player = get_tree().get_first_node_in_group('player')
-@onready var mainScene = get_tree().root.get_node("MainScene")
+
 
 var noise_y = 0 #Value used to move through the noise
 var trauma := 0.0 #Current shake strength
@@ -19,9 +19,11 @@ var velocity = Vector2.ZERO #changes how fast your offset changes
 
 func _ready():
 	ignore_rotation = false
-	if mainScene != null:
-		mainScene.connect("wasAttacked", Callable(self, "attacked"))
 	if player != null: position = player.position
+
+#func MainScene():
+#	print("mainIniziatlized")
+#	var mainScene = get_tree().root.get_node("MainScene")
 
 #black out area you were just in thats part of the gameplay
 func transition(point : Vector2): #ig just position
@@ -31,6 +33,10 @@ func transition(point : Vector2): #ig just position
 	tween.tween_property(self, 'position', point + Vector2(160, 90), .5)
 
 func _process(delta):
+#	var mainScene = get_tree().root.get_node("MainScene")
+#	if mainScene != null:
+#		
+#		mainScene.connect("MainInitialized", Callable(self, "MainScene"))
 	player = get_tree().get_first_node_in_group('player')
 	if trauma: 
 		trauma = max(trauma - decay * delta, 0)
