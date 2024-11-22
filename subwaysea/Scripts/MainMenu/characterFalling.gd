@@ -34,6 +34,6 @@ func _on_spawner_timeout() -> void:
 
 func _on_player_life_timeout():
 	# Find the timer's parent (player instance) and free it
-	var playerinstance = get_parent()
+	var playerinstance = spriteholder.get_child(0)
 	if playerinstance:
 		playerinstance.queue_free()
