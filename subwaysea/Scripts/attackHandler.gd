@@ -11,6 +11,7 @@ func _process(delta: float) -> void:
 	if dead and fadeIn.color.a < 1.0:
 		fadeIn.color.a += 0.5 * delta
 	elif fadeIn.color.a >= 1.0:
+		dead = false
 		get_tree().reload_current_scene()
 
 

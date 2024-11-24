@@ -205,7 +205,6 @@ script = ExtResource("6_vnihy")
 [node name="LeftCalf" type="Node2D" parent="LeftThigh"]
 position = Vector2(28, 0)
 rotation = 0.900932
-scale = Vector2(1, 1)
 script = ExtResource("6_vnihy")
 
 [node name="LeftFoot" type="Node2D" parent="LeftThigh/LeftCalf"]
