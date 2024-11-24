@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		find_intersect()
 	
 	sanity = clamp(intersect_area / total_area, 0, 1)
-	sanity_changed.emit(sanity)
+	sanity_changed.emit(sanity, delta)
 
 
 func find_intersect():

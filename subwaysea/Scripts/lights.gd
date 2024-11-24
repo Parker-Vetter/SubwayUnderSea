@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var mainscene: Node2D = $".."
+@onready var sanity = $"../SanitySystem"
 @onready var onLight = load("res://assets/light_on.png")
 @onready var offLight = load("res://assets/light_off.png")
 
@@ -18,6 +19,7 @@ func flickerOn():
 		await awaitTimer() #wait for the timer to finish
 	for child in get_children():
 		child.energy = 6 #sets the light back to normal brightness
+	sanity.disable_debuff_area() #disable the sanity debuff area
 
 func flickerOff():
 	var randint = randi_range(25,35) #gets a random integer between two numbers
@@ -25,6 +27,7 @@ func flickerOff():
 		await awaitTimer() #wait for the timer to finish
 	for child in get_children():
 		child.energy = 0 #turns the lights off
+	sanity.enable_debuff_area() #reenable the sanity debuff area
 
 func awaitTimer():
 	if get_tree().current_scene == mainscene:
