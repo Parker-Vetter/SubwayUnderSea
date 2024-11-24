@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var oxygen_system: Node2D = $"../OxygenSystem"
 @onready var face_display: Node2D = $"../FaceDisplay"
+@onready var light_system: Node2D = $"../LightParent"
 
 signal oxygen_multiplier_changed(new_multiplier)
 signal sanity_threshold_reached(threshold)
@@ -41,11 +42,11 @@ func calculate_multiplier():
 		oxygen_multiplier_changed.emit(multiplier)
 
 func determine_sanity_threshold():
-	#var sanity_threshold
-	#if sanity < 45:
-		#sanity_threshold = "low"
-	#else:
-		#sanity_threshold = "high"
+	var sanity_threshold
+	if sanity < 45:
+		sanity_threshold = "low"
+	else:
+		sanity_threshold = "high"
 	sanity_threshold_reached.emit(sanity)
 
 func _on_sanity_debuff_area_body_entered(body: Node2D) -> void:
