@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cr1mc6bnevxdf"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_hajf4"]
-[ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://Icons/CONE.png" id="2_gf6fh"]
+[ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://assets/CONE.png" id="2_gf6fh"]
 [ext_resource type="Script" path="res://Scripts/follow_mouse.gd" id="3_l7tq2"]
 [ext_resource type="Shader" uid="uid://uu7t6umy0ogm" path="res://assets/glow.tres" id="4_j4l3a"]
 [ext_resource type="Script" path="res://addons/la_ik/nodes/la_ik_two_bone.gd" id="5_5a41h"]

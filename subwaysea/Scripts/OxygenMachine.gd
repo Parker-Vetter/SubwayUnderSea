@@ -31,8 +31,6 @@ func wasFixed():
 func _process(delta: float) -> void:
 	playerOxyTank.set("value", oxygenAmount)
 	determine_oxygen_threshold()
-	if Input.is_action_just_pressed("left_mouse"):
-		hasSpriteChanged()
 
 func addOxygen():
 	if (oxygenAmount < oxygenCap) and (sprite.texture == fixedSprite):
@@ -43,7 +41,9 @@ func loseOxygen():
 
 func determine_oxygen_threshold():
 	var oxygen_threshold
-	if oxygenAmount < 50:
+	if oxygenAmount == 0:
+		get_parent().death()
+	elif oxygenAmount < 50:
 		oxygen_threshold = "low"
 	else:
 		oxygen_threshold = "high"

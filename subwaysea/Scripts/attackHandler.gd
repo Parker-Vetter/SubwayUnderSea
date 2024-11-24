@@ -4,12 +4,18 @@ signal wasAttacked
 signal MainInitialized
 
 @onready var randomAttackTimer = find_child("AttackTimer")
+@onready var fadeIn: ColorRect = $ColorRect
+var dead = false
 
 func _process(delta: float) -> void:
-	pass
+	if dead and fadeIn.color.a < 1.0:
+		fadeIn.color.a += 0.5 * delta
+	elif fadeIn.color.a >= 1.0:
+		get_tree().reload_current_scene()
+
 
 func _ready() -> void:
-	randomAttackTimer.wait_time = randi_range(120,600)
+	randomAttackTimer.wait_time = randi_range(60,300)
 	randomAttackTimer.autostart = true
 	MainInitialized.emit()
 
@@ -29,3 +35,6 @@ func emitWasAttacked():
 func _on_attack_timer_timeout() -> void:
 	callForAttack()
 	randomAttackTimer.wait_time = randi_range(120,600)
+
+func death():
+	dead = true

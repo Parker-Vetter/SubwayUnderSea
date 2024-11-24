@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://dn0mkea57a3cw"]
+[gd_scene load_steps=33 format=3 uid="uid://dn0mkea57a3cw"]
 
 [ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
 [ext_resource type="Script" path="res://Scripts/lights.gd" id="2_f5qwo"]
 [ext_resource type="Texture2D" uid="uid://dcgdftmbhk2d3" path="res://Icons/2d_lights_and_shadows_neutral_point_light.webp" id="3_n5gfx"]
+[ext_resource type="Texture2D" uid="uid://ohalo1nvu3fm" path="res://assets/light_on.png" id="4_2ui7e"]
 [ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="4_gn2it"]
 [ext_resource type="PackedScene" uid="uid://cqdxwpt8n357u" path="res://level_making/camerasystem.tscn" id="5_5gy3l"]
 [ext_resource type="Texture2D" uid="uid://dtsfba21rwvx" path="res://assets/Backgrounds/background.png" id="5_q5aab"]
@@ -23,6 +24,7 @@
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
 [ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
 [ext_resource type="Texture2D" uid="uid://e5gvb71liegp" path="res://assets/component spawner.png" id="22_7k725"]
+[ext_resource type="PackedScene" uid="uid://djl7jxpyxig1i" path="res://Scenes/depth_gague.tscn" id="24_o1462"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
@@ -73,6 +75,12 @@ texture = ExtResource("3_n5gfx")
 texture_scale = 2.8
 height = 10.0
 
+[node name="Sprite2D" type="Sprite2D" parent="LightParent/light"]
+texture_filter = 1
+position = Vector2(0, 7.39968)
+scale = Vector2(3.38271, 3.38271)
+texture = ExtResource("4_2ui7e")
+
 [node name="light2" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
 position = Vector2(1464, 412)
@@ -83,6 +91,12 @@ shadow_enabled = true
 texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="LightParent/light2"]
+texture_filter = 1
+position = Vector2(0, 7.39968)
+scale = Vector2(3.38271, 3.38271)
+texture = ExtResource("4_2ui7e")
 
 [node name="light3" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -95,6 +109,12 @@ texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
 
+[node name="Sprite2D" type="Sprite2D" parent="LightParent/light3"]
+texture_filter = 1
+position = Vector2(0, 7.39968)
+scale = Vector2(3.38271, 3.38271)
+texture = ExtResource("4_2ui7e")
+
 [node name="light4" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
 position = Vector2(1363, 1234)
@@ -105,6 +125,12 @@ shadow_enabled = true
 texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="LightParent/light4"]
+texture_filter = 1
+position = Vector2(0, 7.39968)
+scale = Vector2(3.38271, 3.38271)
+texture = ExtResource("4_2ui7e")
 
 [node name="light5" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -117,9 +143,15 @@ texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
 
+[node name="Sprite2D" type="Sprite2D" parent="LightParent/light5"]
+texture_filter = 1
+position = Vector2(0, 7.39968)
+scale = Vector2(3.38271, 3.38271)
+texture = ExtResource("4_2ui7e")
+
 [node name="light6" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
-position = Vector2(1656, 762)
+position = Vector2(1656, 768)
 scale = Vector2(0.675705, 0.675705)
 color = Color(1, 0.85098, 0.129412, 0.294118)
 energy = 6.0
@@ -127,6 +159,12 @@ shadow_enabled = true
 texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="LightParent/light6"]
+texture_filter = 1
+position = Vector2(0, 7.39968)
+scale = Vector2(3.38271, 3.38271)
+texture = ExtResource("4_2ui7e")
 
 [node name="light7" type="PointLight2D" parent="LightParent"]
 material = SubResource("CanvasItemMaterial_upv4y")
@@ -139,6 +177,12 @@ texture = ExtResource("3_n5gfx")
 texture_scale = 2.35
 height = 10.0
 
+[node name="Sprite2D" type="Sprite2D" parent="LightParent/light7"]
+texture_filter = 1
+position = Vector2(0, 7.39968)
+scale = Vector2(3.38271, 3.38271)
+texture = ExtResource("4_2ui7e")
+
 [node name="Parallax Exterior" type="Node2D" parent="."]
 
 [node name="Exterior Background" type="Polygon2D" parent="Parallax Exterior"]
@@ -148,6 +192,7 @@ polygon = PackedVector2Array(-744, -224, 2656, -208, 2656, 1712, -728, 1768)
 
 [node name="Background2" type="Parallax2D" parent="Parallax Exterior/Exterior Background"]
 scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(2328, 79)
 repeat_size = Vector2(160, 90)
 autoscroll = Vector2(0, 8)
 repeat_times = 6
@@ -453,13 +498,14 @@ position = Vector2(897, 750)
 polygon = PackedVector2Array(-239, -59, 96, -64, 94, 115, -375, 114, -379, 34, -238, 31)
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visibility_layer = 0
-z_index = -1
+top_level = true
+light_mask = 0
+z_index = 24
 offset_top = 319.0
-offset_right = 2265.0
-offset_bottom = 1373.0
+offset_right = 2289.0
+offset_bottom = 1462.0
 mouse_filter = 1
-color = Color(0.103744, 0.103744, 0.103744, 1)
+color = Color(0, 0, 0, 0)
 metadata/_edit_lock_ = true
 
 [node name="FaceDisplay" parent="." instance=ExtResource("13_eu4yb")]
@@ -491,8 +537,10 @@ texture = ExtResource("22_7k725")
 z_index = -1
 position = Vector2(1584, 492)
 
+[node name="depthGague" parent="." instance=ExtResource("24_o1462")]
+position = Vector2(1928, 791)
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.188235, 0.133333, 0.117647, 1)
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1rxjcuekay2p"]
 
-[ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://Icons/CONE.png" id="1_bfbjf"]
+[ext_resource type="Texture2D" uid="uid://dfrgtqtf8wshv" path="res://assets/CONE.png" id="1_bfbjf"]
 [ext_resource type="Script" path="res://Scripts/follow_mouse.gd" id="2_gnuyu"]
 [ext_resource type="Script" path="res://Scripts/view_detection.gd" id="3_p6bdm"]
 
