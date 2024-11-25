@@ -305,6 +305,37 @@ scale = Vector2(2, 2)
 texture = ExtResource("8_x8q07")
 centered = false
 
+[node name="Background2" type="Parallax2D" parent="Parallax Interior/Middle Z Index"]
+modulate = Color(0.41598, 0.41598, 0.41598, 0.286275)
+scroll_scale = Vector2(0.96, 1)
+scroll_offset = Vector2(2328, 79)
+repeat_size = Vector2(160, 90)
+autoscroll = Vector2(0, 5)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Interior/Middle Z Index/Background2"]
+modulate = Color(0.41598, 0.41598, 0.41598, 0.286275)
+visibility_layer = 2
+position = Vector2(240, 120)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_gn2it")
+centered = false
+
+[node name="Foreground" type="Parallax2D" parent="Parallax Interior/Middle Z Index"]
+modulate = Color(0.41598, 0.41598, 0.41598, 0.286275)
+scroll_scale = Vector2(0.98, 1)
+repeat_size = Vector2(160, 90)
+autoscroll = Vector2(0, 7)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Interior/Middle Z Index/Foreground"]
+modulate = Color(0.41598, 0.41598, 0.41598, 0.286275)
+visibility_layer = 2
+position = Vector2(240, 120)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_sjbok")
+centered = false
+
 [node name="Highest Z Index" type="Polygon2D" parent="Parallax Interior"]
 clip_children = 1
 light_mask = 0
