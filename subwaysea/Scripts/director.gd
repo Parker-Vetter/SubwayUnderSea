@@ -14,14 +14,14 @@ func _process(delta):
 			return
 		else:
 			# Find escMenu as a child of MainScene
-			var exitMenu = MainScene.get_node_or_null("escMenu")
-			if exitMenu and !exitMenu.visible:
-				exitMenu.visible = true
+			var escMenu = MainScene.get_node_or_null("escMenu")
+			if escMenu.visible == false:
+				escMenu.visible = true
 				Engine.time_scale = 0  # Pause the game
-			elif exitMenu and exitMenu.visible:
-				exitMenu.visible = false
+			elif escMenu.visible == true:
+				escMenu.visible = false
 				Engine.time_scale = 1  # Resume the game
-		
+	
 	if Input.is_action_just_pressed("fullscreen"):
 		if !fullscreen:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

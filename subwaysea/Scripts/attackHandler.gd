@@ -18,7 +18,8 @@ func _process(delta: float) -> void:
 		fadeIn.color.a = max(0, fadeIn.color.a - delta,0)
 	#
 	if Input.is_action_just_pressed('interact'):
-		callForAttack()
+		#callForAttack()
+		pass
 
 func _ready() -> void:
 	Engine.time_scale = 1
