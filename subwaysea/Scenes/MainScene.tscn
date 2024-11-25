@@ -445,37 +445,34 @@ position = Vector2(-8.5, 27)
 [node name="SmashPoint1" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
 
 [node name="SmashPoint2" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(448.5, 1, 413.5, 90, 491.5, 137, 535.5, 156, 591.5, 153, 656.5, 75, 640.5, -5)
+polygon = PackedVector2Array(448.5, 1, 416.5, 34, 413.5, 90, 491.5, 137, 535.5, 156, 620.5, 157, 685.5, 107, 729.5, 107, 760.5, 92, 770.5, 51, 773.5, -1)
 
 [node name="SmashPoint3" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(-396.5, 3, -420.5, 48, -463.5, 90, -496.5, 93, -493.5, 10, -469.5, -12)
-
-[node name="SmashPoint5" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(294.5, -3, 221.5, 80, 127.5, 58, 94.5, 0, 209.5, -15)
+polygon = PackedVector2Array(-396.5, 3, -386.5, 72, -410.5, 241, -518.5, 247, -493.5, 10, -469.5, -12)
 
 [node name="SmashPoint6" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(-345.5, 5, -354.5, 45, -312.5, 67, -284.5, 49, -260.5, 53, -243.5, 2, -194.5, 0, -185.5, 53, -163.5, 95, -98.5, 76, -86.5, 47, -79.5, -9, -278.5, -37)
+polygon = PackedVector2Array(-345.5, 5, -354.5, 45, -312.5, 67, -284.5, 49, -260.5, 53, -243.5, 2, -194.5, 0, -185.5, 53, -169.5, 131, -85.5, 131, -86.5, 47, -79.5, -9, -278.5, -37)
 
 [node name="SmashPoint7" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(-488.5, 433, -378.5, 445, -353.5, 506, -374.5, 571, -437.5, 636, -526.5, 598)
+polygon = PackedVector2Array(-488.5, 433, -378.5, 445, -181.5, 385, -353.5, 506, -374.5, 571, -437.5, 636, -526.5, 598)
 
 [node name="SmashPoint9" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(-14.5, -9, -18.5, 79, -2.5, 158, 59.5, 143, 120.5, 98, 81.5, -7)
+polygon = PackedVector2Array(213.5, -6, 115.5, -6, 160.5, 37, 129.5, 71, 130.5, 117, 97.5, 143, 101.5, 161, 129.5, 163, 172.5, 147, 205.5, 145, 238.5, 120, 264.5, 84, 295.5, 64, 299.5, 20, 294.5, -11)
 
 [node name="SmashPoint8" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(-70.5, 656, -16.5, 583, 36.5, 575, 112.5, 588, 158.5, 590, 208.5, 606, 231.5, 627, 136.5, 667)
+polygon = PackedVector2Array(-70.5, 656, -93.5, 643, -82.5, 585, -16.5, 583, 39.5, 557, 112.5, 588, 158.5, 590, 208.5, 606, 231.5, 627, 136.5, 667)
 
 [node name="SmashPoint10" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
 polygon = PackedVector2Array(626.5, 612, 679.5, 582, 715.5, 603, 746.5, 582, 793.5, 570, 839.5, 571, 869.5, 593, 893.5, 620, 666.5, 647)
 
 [node name="SmashPoint11" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(972.5, 621, 993.5, 596, 1017.5, 619, 1047.5, 602, 1091.5, 619, 1142.5, 604, 1233.5, 623, 1034.5, 656)
+polygon = PackedVector2Array(905.5, 614, 985.5, 573, 1017.5, 619, 1047.5, 602, 1091.5, 619, 1142.5, 604, 1233.5, 623, 1034.5, 656)
 
 [node name="SmashPoint12" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
 polygon = PackedVector2Array(1536.5, 464, 1484.5, 466, 1454.5, 487, 1448.5, 527, 1436.5, 553, 1437.5, 582, 1414.5, 622, 1562.5, 625, 1550.5, 460)
 
 [node name="Player" parent="." instance=ExtResource("1_eeyxp")]
-position = Vector2(660, 869)
+position = Vector2(1051, 572)
 angular_damp = 66.313
 
 [node name="OxygenSystem" parent="." instance=ExtResource("7_8beuo")]
@@ -665,13 +662,10 @@ texture = ExtResource("3_n5gfx")
 texture_scale = 2.8
 height = 10.0
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.188235, 0.133333, 0.117647, 1)
-
 [node name="Engine" parent="." instance=ExtResource("26_s0mwt")]
 z_index = -1
 position = Vector2(254, 450)
+metadata/_edit_lock_ = true
 
 [node name="depthGague" parent="Engine" index="4"]
 position = Vector2(1651, 514)
@@ -689,6 +683,10 @@ shadow_enabled = true
 texture = ExtResource("3_n5gfx")
 texture_scale = 2.8
 height = 10.0
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.188235, 0.133333, 0.117647, 1)
 
 [connection signal="wasAttacked" from="." to="LightParent" method="attacked_for_bit"]
 [connection signal="wasAttacked" from="." to="Hull" method="was_attacked"]

@@ -17,8 +17,8 @@ func _process(delta: float) -> void:
 	if dying == false:
 		fadeIn.color.a = max(0, fadeIn.color.a - delta,0)
 	#
-	#if Input.is_action_just_pressed('interact'):
-		#callForAttack()
+	if Input.is_action_just_pressed('interact'):
+		callForAttack()
 
 
 func _ready() -> void:

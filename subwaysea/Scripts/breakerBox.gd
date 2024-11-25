@@ -21,11 +21,13 @@ func wasAttacked(randomValue):
 			lightParent.flickerOff()
 		currentSprite = brokenSprite
 		$WorkingAudio.stop()
+		$light.energy = 0
 
 func repair():
 	if currentSprite == brokenSprite:
 		lightParent.flickerOn()
 		currentSprite = fixedSprite
+		$light.energy = 2
 		return true
 
 #set the sprite texture to the variable currentSprite

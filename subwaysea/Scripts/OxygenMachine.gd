@@ -29,11 +29,13 @@ func wasAttacked(randomValue):
 	if randomValue >= 5:
 		currentSprite = brokenSprite
 		$WorkingAudio.stop()
+		$light.energy = 0
 
 # set the oxygen meter to go up again
 func repair():
 	if currentSprite == brokenSprite:
 		currentSprite = fixedSprite
+		$light.energy = 3
 		return true
 func _process(delta: float) -> void:
 	playerOxyTank.set("value", oxygenAmount)

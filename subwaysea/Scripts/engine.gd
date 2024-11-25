@@ -20,11 +20,13 @@ func wasAttacked(randomValue):
 		currentSprite = brokenSprite
 		$WorkingAudio.stop()
 		depth_gauge.delta_depth = 0
+		$light.energy = 0
 
 func repair():
 	if currentSprite == brokenSprite:
 		currentSprite = fixedSprite
 		depth_gauge.delta_depth = 1
+		$light.energy = 3
 		return true
 	
 
