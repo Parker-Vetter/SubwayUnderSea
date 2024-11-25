@@ -65,19 +65,16 @@ texture = ExtResource("8_tn5mj")
 [node name="LeftLeg" type="Sprite2D" parent="."]
 position = Vector2(-2.48039, -0.191666)
 rotation = -0.237177
-scale = Vector2(1, 1)
 texture = ExtResource("6_h0k7r")
 
 [node name="LeftCalf" type="Sprite2D" parent="."]
 position = Vector2(5.16567, -4.00451)
 rotation = 0.24779
-scale = Vector2(1, 1)
 texture = ExtResource("7_chv14")
 
 [node name="LeftFoot" type="Sprite2D" parent="."]
 position = Vector2(3.48731, -0.81341)
 rotation = 0.247386
-scale = Vector2(1, 1)
 texture = ExtResource("8_tn5mj")
 
 [node name="O2Tank" type="Sprite2D" parent="."]

@@ -62,6 +62,12 @@ texture_filter = 1
 layout_mode = 2
 text = "PLAY"
 
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Credits - Sends you 
+back to main menu"
+
 [node name="Button" type="Button" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
@@ -126,6 +132,7 @@ volume_db = -2.971
 autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Play Button" to="CanvasLayer/Main Menu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/CreditsButton" to="CanvasLayer/Main Menu" method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Button" to="CanvasLayer/Main Menu" method="_on_button_pressed"]
 [connection signal="timeout" from="FloatingSpritesinOcean/Spawner" to="FloatingSpritesinOcean" method="_on_spawner_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play"]

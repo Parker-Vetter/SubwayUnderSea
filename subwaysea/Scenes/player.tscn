@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://cc0kb5tbuiykm"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
-[ext_resource type="PackedScene" uid="uid://po33qrtvxntv" path="res://Scenes/view_light.tscn" id="2_op83d"]
+[ext_resource type="PackedScene" uid="uid://1rxjcuekay2p" path="res://Scenes/view_light.tscn" id="2_op83d"]
 [ext_resource type="Texture2D" uid="uid://coytrmujtyly" path="res://assets/player parts/body.png" id="4_gitg4"]
 [ext_resource type="Shader" uid="uid://uu7t6umy0ogm" path="res://assets/glow.tres" id="4_owt5o"]
 [ext_resource type="Texture2D" uid="uid://dqk0p87sn20f8" path="res://assets/player parts/hand.png" id="5_jruwp"]
