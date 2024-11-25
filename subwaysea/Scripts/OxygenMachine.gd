@@ -2,7 +2,7 @@ extends Node
 
 var insideArea = false
 var multiplier = 1
-var oxygenAmount = 100
+var oxygenAmount = 10
 var oxygenCap = 100
 
 var currentSprite = load("res://assets/oxy_fixed.png")
@@ -14,8 +14,10 @@ var currentSprite = load("res://assets/oxy_fixed.png")
 @onready var brokenSprite = load("res://assets/oxy_broken.png")
 
 signal oxygen_threshold_changed(oxygen_threshold)
+signal death
 
 func _ready() -> void:
+	self.connect("death", self.get_parent().death)
 	self.get_parent().connect("wasAttacked", Callable(self, "wasAttacked"))
 	self.connect("oxygen_threshold_changed", face_display._on_oxygen_threshold_changed)
 
@@ -25,8 +27,8 @@ func wasAttacked(randomValue):
 		currentSprite = brokenSprite
 
 # set the oxygen meter to go up again
-func wasFixed():
-	currentSprite = fixedSprite
+func repair():
+	sprite.texture = fixedSprite
 
 func _process(delta: float) -> void:
 	playerOxyTank.set("value", oxygenAmount)
@@ -38,6 +40,8 @@ func addOxygen():
 
 func loseOxygen():
 	oxygenAmount -= 1 * multiplier
+	if oxygenAmount <= 0:
+		death.emit()
 
 func determine_oxygen_threshold():
 	var oxygen_threshold
@@ -67,13 +71,3 @@ func _on_down_timeout() -> void:
 func _on_sanity_system_oxygen_multiplier_changed(new_multiplier: Variant) -> void:
 	multiplier = new_multiplier
 
-#set the sprite texture to the variable currentSprite
-func changeSprite():
-	sprite.texture = currentSprite
-
-#function to change the check the sprite and change the currentSprite variable
-func hasSpriteChanged():
-	if sprite.texture == fixedSprite:
-		currentSprite = brokenSprite
-	elif  sprite.texture == brokenSprite:
-		currentSprite = fixedSprite

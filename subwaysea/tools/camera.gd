@@ -47,7 +47,6 @@ func _process(delta):
 
 # shake the screen
 func attacked(randValue):
-	print("Camera shake")
 	add_trauma(1, Vector2.RIGHT)
 
 func add_trauma(amount : float, direction : Vector2): #this function starts everything

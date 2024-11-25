@@ -22,9 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="13_eu4yb"]
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="14_61kdm"]
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
-[ext_resource type="PackedScene" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
+[ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
 [ext_resource type="Texture2D" uid="uid://e5gvb71liegp" path="res://assets/component spawner.png" id="22_7k725"]
-[ext_resource type="PackedScene" path="res://Scenes/depth_gague.tscn" id="24_o1462"]
+[ext_resource type="PackedScene" uid="uid://djl7jxpyxig1i" path="res://Scenes/depth_gague.tscn" id="24_o1462"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
@@ -538,9 +538,10 @@ z_index = -1
 position = Vector2(1584, 492)
 
 [node name="depthGague" parent="." instance=ExtResource("24_o1462")]
-position = Vector2(1928, 791)
+position = Vector2(1930, 964)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.188235, 0.133333, 0.117647, 1)
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

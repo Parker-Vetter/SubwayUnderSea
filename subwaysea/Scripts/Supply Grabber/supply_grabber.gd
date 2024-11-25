@@ -2,13 +2,15 @@ extends Node2D
 
 const DEBRIS = preload("res://Scenes/Supply Grabber/debris.tscn")
 @onready var sonar: PointLight2D = $sonar
+@onready var debris_container = get_node("DebrisContainer")
 
 signal tick
 var alpha = 1
 
 func check_for_debris_spawn():
 	var randint = randi_range(0, 4)
-	if randint == 0:
+	# variable probability to spawn depending on current existing debris
+	if randint < (4 - debris_container.get_child_count()):
 		create_new_debris()
 
 func create_new_debris():

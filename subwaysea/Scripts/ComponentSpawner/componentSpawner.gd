@@ -7,4 +7,4 @@ const COMPONENT = preload("res://Scenes/component.tscn")
 func debrisCollected():
 	var newComponent = COMPONENT.instantiate()
 	get_parent().add_child(newComponent)
-	newComponent.global_position = self.global_position + Vector2(0, randfn(0, 0.1))
+	newComponent.global_position = self.global_position
