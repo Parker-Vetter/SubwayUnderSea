@@ -10,4 +10,22 @@ depth = 600
 texture_filter = 1
 offset_right = 43.0
 offset_bottom = 23.0
-text = "300m"
+text = "Depth: 300m"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+light_mask = 0
+z_index = 24
+offset_left = -2176.0
+offset_top = -960.0
+offset_right = 2576.0
+offset_bottom = 1200.0
+color = Color(0, 0, 0.0117647, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="surfacing label" type="Label" parent="CanvasLayer"]
+offset_left = 280.0
+offset_top = 48.0
+offset_right = 392.0
+offset_bottom = 71.0
+text = "SURFACING..."

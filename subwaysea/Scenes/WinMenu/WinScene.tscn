@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs087341cu6rc"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="1_e1of1"]
+[ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="2_xc8ja"]
+[ext_resource type="Texture2D" uid="uid://c4vjbsqie46d8" path="res://assets/top_bubbles.png" id="3_lgaqy"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/characterFalling.gd" id="4_codwu"]
+
+[sub_resource type="Curve" id="Curve_4qct1"]
+
+[node name="WinScene" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(43.54, 51.865)
+transform = Transform2D(1, 0, 0, 1, 43.54, 51.865)
+
+[node name="Main Menu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = -0.068
+anchor_top = -0.143
+anchor_right = -0.068
+anchor_bottom = -0.143
+offset_left = 43.52
+offset_top = 51.48
+offset_right = 43.52
+offset_bottom = 51.48
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e1of1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Main Menu"]
+layout_mode = 0
+offset_left = -42.54
+offset_top = -51.865
+offset_right = 598.46
+offset_bottom = 309.135
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main Menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="TitleBar" type="Label" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+text = "You Won!"
+
+[node name="TitleBarPanel" type="Panel" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/TitleBar"]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.006
+anchor_top = -0.087
+anchor_right = 1.006
+anchor_bottom = 1.13
+offset_left = 0.02
+offset_top = 0.00100017
+offset_right = -0.0200043
+offset_bottom = 0.0100002
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Play Button" type="Button" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "REPLAY"
+
+[node name="Button" type="Button" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "EXIT"
+
+[node name="Parallax Exterior" type="Node2D" parent="."]
+
+[node name="Exterior Background" type="Polygon2D" parent="Parallax Exterior"]
+z_index = -2
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-744, -224, 2656, -208, 2656, 1712, -728, 1768)
+
+[node name="Background2" type="Parallax2D" parent="Parallax Exterior/Exterior Background"]
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(160, 90)
+autoscroll = Vector2(0, 8)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Exterior/Exterior Background/Background2"]
+modulate = Color(1, 1, 1, 0.478431)
+light_mask = 2
+visibility_layer = 2
+position = Vector2(240, 120)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_xc8ja")
+centered = false
+
+[node name="Foreground" type="Parallax2D" parent="Parallax Exterior/Exterior Background"]
+scroll_scale = Vector2(0.7, 0.7)
+scroll_offset = Vector2(950, 869)
+repeat_size = Vector2(160, 90)
+autoscroll = Vector2(0, 15)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax Exterior/Exterior Background/Foreground"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(240, 120)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_lgaqy")
+centered = false
+
+[node name="FloatingSpritesinOcean" type="Node2D" parent="."]
+script = ExtResource("4_codwu")
+
+[node name="Line2D" type="Line2D" parent="FloatingSpritesinOcean"]
+z_index = 5
+position = Vector2(1, 194)
+points = PackedVector2Array(-200, -200, 200, -200)
+width_curve = SubResource("Curve_4qct1")
+texture_mode = 2
+
+[node name="Spawner" type="Timer" parent="FloatingSpritesinOcean"]
+wait_time = 5.0
+autostart = true
+
+[node name="SpriteHolder" type="Node2D" parent="FloatingSpritesinOcean"]
+
+[connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Play Button" to="CanvasLayer/Main Menu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Button" to="CanvasLayer/Main Menu" method="_on_button_pressed"]
+[connection signal="timeout" from="FloatingSpritesinOcean/Spawner" to="FloatingSpritesinOcean" method="_on_spawner_timeout"]

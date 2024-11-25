@@ -539,7 +539,7 @@ z_index = -1
 position = Vector2(1584, 492)
 
 [node name="depthGague" parent="." instance=ExtResource("24_o1462")]
-position = Vector2(1930, 964)
+position = Vector2(1900, 964)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
