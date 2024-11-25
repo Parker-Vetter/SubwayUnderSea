@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var oxygen_system: Node2D = $"../OxygenSystem"
 @onready var face_display: Node2D = $"../FaceDisplay"
+@onready var breathing: AudioStreamPlayer = $Breathing
 
 signal oxygen_multiplier_changed(new_multiplier)
 signal sanity_threshold_reached(threshold)
@@ -24,14 +25,25 @@ func _process(delta: float) -> void:
 	sanity = clamp(sanity, 0, 70)
 	#var sanity_effect = (1/(sanity/69) - 1) * .01
 	
-	if sanity <= 10:
+	if get_parent().dying:
+		breathing.pitch_scale = lerp(breathing.pitch_scale, 1.3, delta )
+		breathing.volume_db = lerp(breathing.volume_db, -5.0, delta)
+	elif sanity <= 10:
 		sanity_effect = lerp(sanity_effect, .01, delta)
+		breathing.pitch_scale = lerp(breathing.pitch_scale, 1.2, delta * .1)
+		breathing.volume_db = lerp(breathing.volume_db, -10.0, delta)
 	elif sanity <= 30:
 		sanity_effect = lerp(sanity_effect, .005, delta)
+		breathing.pitch_scale = lerp(breathing.pitch_scale, 1.1, delta * .1)
+		breathing.volume_db = lerp(breathing.volume_db, -20.0, delta)
 	elif sanity <= 50:
 		sanity_effect = lerp(sanity_effect, .001, delta)
-	#else:
-		#sanity_effect = lerp(sanity_effect, 0.0, delta)
+		breathing.pitch_scale = 1.0
+		breathing.volume_db = -25
+	else:
+		sanity_effect = lerp(sanity_effect, 0.0, delta)
+		breathing.volume_db = -30
+		
 	$CanvasLayer/Sprite2D.material.set_shader_parameter('distortion_strength', sanity_effect)
 	calculate_multiplier()
 	determine_sanity_threshold()
@@ -44,7 +56,7 @@ func remove_sanity(delta):
 	sanity -= 5 * delta
 
 func passive_sanity_loss(delta):
-	sanity -= 0.8 * delta
+	sanity -= 0.8 * delta *3
 
 func calculate_multiplier():
 		var multiplier = 1 - sanity/70

@@ -17,15 +17,14 @@ func _process(delta: float) -> void:
 	if dying == false:
 		fadeIn.color.a = max(0, fadeIn.color.a - delta,0)
 	#
-	if Input.is_action_just_pressed('interact'):
+	#if Input.is_action_just_pressed('interact'):
 		#callForAttack()
-		pass
 
 func _ready() -> void:
-	Engine.time_scale = 1
 	randomAttackTimer.wait_time = randi_range(60,300)
 	randomAttackTimer.autostart = true
 	MainInitialized.emit()
+
 
 # function needs to be called when the monster or anything else triggers an attack event
 # called on instantiated debris click event
