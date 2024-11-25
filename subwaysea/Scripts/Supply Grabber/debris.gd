@@ -2,6 +2,7 @@ extends Node2D
 
 const Director = preload("res://Scripts/director.gd")
 @onready var main_scene =  get_node("/root/MainScene")
+@onready var componentSpawner =  get_node("/root/MainScene/ComponentSpawner")
 var mouse_hover = false
 
 signal debris_collected
@@ -11,16 +12,19 @@ signal debris_collected
 var monster_is_on_left
 
 func _ready() -> void:
-	#self.connect("debris_collected", main_scene.callForAttack)
 	if is_monster:
+		# connects directly to attack handler to call for attack
+		self.connect("debris_collected", main_scene.callForAttack)
 		initialize_monster_position()
 	else:
+		# connects to component spawner to call for new component
+		self.connect("debris_collected", componentSpawner.debrisCollected)
 		position.x = randfn(0, 64)
 		position.y = -100
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("left_mouse") and mouse_hover:
-		debris_collected.emit(is_monster)
+		debris_collected.emit()
 		self.queue_free()
 	
 ## MONSTER-RELATED FUNCTIONS

@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 # function needs to be called when the monster or anything else triggers an attack event
-# called in supplygrabber
+# called on instantiated debris click event
 func callForAttack():
 	emitWasAttacked()
 
