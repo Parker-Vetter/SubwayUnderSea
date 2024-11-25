@@ -84,7 +84,13 @@ alignment = 1
 [node name="CreditsButton" type="Button" parent="ExitMenu/HBoxContainer2/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-text = "Credits"
+text = "Credits - Sends you 
+back to main menu"
+
+[node name="ReturnButton" type="Button" parent="ExitMenu/HBoxContainer2/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Return to Game"
 
 [node name="ExitButton" type="Button" parent="ExitMenu/HBoxContainer2/VBoxContainer"]
 texture_filter = 1
@@ -92,4 +98,5 @@ layout_mode = 2
 text = "Quit to Main Menu"
 
 [connection signal="pressed" from="ExitMenu/HBoxContainer2/VBoxContainer/CreditsButton" to="ExitMenu" method="_on_credits_button_pressed"]
+[connection signal="pressed" from="ExitMenu/HBoxContainer2/VBoxContainer/ReturnButton" to="ExitMenu" method="_on_return_button_pressed"]
 [connection signal="pressed" from="ExitMenu/HBoxContainer2/VBoxContainer/ExitButton" to="ExitMenu" method="_on_exit_button_pressed"]
