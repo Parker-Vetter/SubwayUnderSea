@@ -12,11 +12,13 @@ var currentSprite = load("res://assets/oxy_fixed.png")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var fixedSprite = load("res://assets/oxy_fixed.png")
 @onready var brokenSprite = load("res://assets/oxy_broken.png")
+@onready var blinkingSprite: AnimatedSprite2D = $AnimatedSprite2D
 
 signal oxygen_threshold_changed(oxygen_threshold)
 signal death
 
 func _ready() -> void:
+	blinkingSprite.visible = false
 	self.connect("death", self.get_parent().death)
 	self.get_parent().connect("wasAttacked", Callable(self, "wasAttacked"))
 	self.connect("oxygen_threshold_changed", face_display._on_oxygen_threshold_changed)
@@ -28,7 +30,7 @@ func wasAttacked(randomValue):
 
 # set the oxygen meter to go up again
 func repair():
-	sprite.texture = fixedSprite
+	currentSprite = fixedSprite
 
 func _process(delta: float) -> void:
 	playerOxyTank.set("value", oxygenAmount)
@@ -71,3 +73,17 @@ func _on_down_timeout() -> void:
 func _on_sanity_system_oxygen_multiplier_changed(new_multiplier: Variant) -> void:
 	multiplier = new_multiplier
 
+#set the sprite texture to the variable currentSprite
+func changeSprite():
+	sprite.texture = currentSprite
+	if currentSprite == brokenSprite:
+		blinkingSprite.visible = true
+	else:
+		blinkingSprite.visible = false
+
+#function to change the check the sprite and change the currentSprite variable
+func hasSpriteChanged():
+	if sprite.texture == fixedSprite:
+		currentSprite = brokenSprite
+	elif  sprite.texture == brokenSprite:
+		currentSprite = fixedSprite

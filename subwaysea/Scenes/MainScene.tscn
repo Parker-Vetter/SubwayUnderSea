@@ -116,6 +116,7 @@ scale = Vector2(3.38271, 3.38271)
 texture = ExtResource("4_2ui7e")
 
 [node name="light4" type="PointLight2D" parent="LightParent"]
+z_index = 1
 material = SubResource("CanvasItemMaterial_upv4y")
 position = Vector2(1363, 1234)
 scale = Vector2(0.675705, 0.675705)
