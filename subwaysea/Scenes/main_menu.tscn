@@ -9,37 +9,38 @@
 
 [node name="Node" type="Node"]
 
-[node name="Main Menu" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Main Menu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_pmlfr")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Main Menu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Main Menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
+offset_top = 2.0
+offset_right = 640.0
+offset_bottom = 362.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main Menu/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="TitleBar" type="Label" parent="Main Menu/HBoxContainer/VBoxContainer"]
+[node name="TitleBar" type="Label" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
 z_index = 1
 layout_mode = 2
 text = "SubwaySea The Game"
 
-[node name="TitleBarPanel" type="Panel" parent="Main Menu/HBoxContainer/VBoxContainer/TitleBar"]
+[node name="TitleBarPanel" type="Panel" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/TitleBar"]
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
@@ -52,15 +53,15 @@ offset_top = 0.00100017
 offset_right = -0.0200043
 offset_bottom = 0.0100002
 
-[node name="HSeparator" type="HSeparator" parent="Main Menu/HBoxContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Play Button" type="Button" parent="Main Menu/HBoxContainer/VBoxContainer"]
+[node name="Play Button" type="Button" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 text = "PLAY"
 
-[node name="Button" type="Button" parent="Main Menu/HBoxContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 text = "EXIT"
@@ -118,6 +119,6 @@ autostart = true
 
 [node name="SpriteHolder" type="Node2D" parent="FloatingSpritesinOcean"]
 
-[connection signal="pressed" from="Main Menu/HBoxContainer/VBoxContainer/Play Button" to="Main Menu" method="_on_play_button_pressed"]
-[connection signal="pressed" from="Main Menu/HBoxContainer/VBoxContainer/Button" to="Main Menu" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Play Button" to="CanvasLayer/Main Menu" method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Button" to="CanvasLayer/Main Menu" method="_on_button_pressed"]
 [connection signal="timeout" from="FloatingSpritesinOcean/Spawner" to="FloatingSpritesinOcean" method="_on_spawner_timeout"]
