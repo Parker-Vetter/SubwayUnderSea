@@ -13,8 +13,7 @@ func debrisCollected(is_monster):
 
 #debris_collected signal from debris.gd
 func _on_debris_container_child_entered_tree(node: Node) -> void:
-	if node.name == "debris":
-		node.connect("debris_collected", Callable(self, "debrisCollected"))
+	node.connect("debris_collected", Callable(self, "debrisCollected"))
 
 
 func _on_debris_container_child_exiting_tree(node: Node) -> void:

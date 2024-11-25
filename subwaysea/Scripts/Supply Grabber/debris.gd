@@ -1,7 +1,7 @@
 extends Node2D
 
 const Director = preload("res://Scripts/director.gd")
-
+@onready var main_scene =  get_node("/root/MainScene")
 var mouse_hover = false
 
 signal debris_collected
@@ -11,11 +11,10 @@ signal debris_collected
 var monster_is_on_left
 
 func _ready() -> void:
+	#self.connect("debris_collected", main_scene.callForAttack)
 	if is_monster:
-		self.name = "monster"
 		initialize_monster_position()
 	else:
-		self.name = "debris"
 		position.x = randfn(0, 64)
 		position.y = -100
 
