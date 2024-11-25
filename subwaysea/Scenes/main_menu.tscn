@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cia05oat6wybe"]
+[gd_scene load_steps=7 format=3 uid="uid://cia05oat6wybe"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="1_pmlfr"]
 [ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="2_6r3wy"]
 [ext_resource type="Texture2D" uid="uid://c4vjbsqie46d8" path="res://assets/top_bubbles.png" id="3_74qxx"]
+[ext_resource type="AudioStream" uid="uid://43rm7woswdlr" path="res://assets/sounds/poostain.wav" id="5_0ft7n"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/characterFalling.gd" id="6_d8ln4"]
 
 [sub_resource type="Curve" id="Curve_r874c"]
@@ -119,6 +120,12 @@ autostart = true
 
 [node name="SpriteHolder" type="Node2D" parent="FloatingSpritesinOcean"]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0ft7n")
+volume_db = -2.971
+autoplay = true
+
 [connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Play Button" to="CanvasLayer/Main Menu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Button" to="CanvasLayer/Main Menu" method="_on_button_pressed"]
 [connection signal="timeout" from="FloatingSpritesinOcean/Spawner" to="FloatingSpritesinOcean" method="_on_spawner_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play"]

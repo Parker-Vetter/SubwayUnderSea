@@ -22,8 +22,11 @@ func wasAttacked(randomValue):
 		depth_gauge.delta_depth = 0
 
 func repair():
-	currentSprite = fixedSprite
-	depth_gauge.delta_depth = 1
+	if currentSprite == brokenSprite:
+		currentSprite = fixedSprite
+		depth_gauge.delta_depth = 1
+		return true
+	
 
 #set the sprite texture to the variable currentSprite
 func changeSprite():

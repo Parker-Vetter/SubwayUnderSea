@@ -16,7 +16,7 @@ func _ready() -> void:
 	self.get_parent().connect("wasAttacked", Callable(self, "wasAttacked"))
 
 func wasAttacked(randomValue):
-	if randomValue <= 2:
+	if randomValue <= 3:
 		if currentSprite == fixedSprite:
 			lightParent.flickerOff()
 		currentSprite = brokenSprite
@@ -24,8 +24,9 @@ func wasAttacked(randomValue):
 
 func repair():
 	if currentSprite == brokenSprite:
-			lightParent.flickerOn()
-	currentSprite = fixedSprite
+		lightParent.flickerOn()
+		currentSprite = fixedSprite
+		return true
 
 #set the sprite texture to the variable currentSprite
 func changeSprite():

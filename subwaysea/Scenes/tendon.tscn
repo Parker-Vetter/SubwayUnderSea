@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjnnv7qvjrbp3"]
+
+[ext_resource type="Script" path="res://Scripts/tendon.gd" id="1_i0bkf"]
+
+[node name="Tendon" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_i0bkf")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -1, -1, 0, 0, 1, 1, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.999628, 0.343735, 0.457315, 1)
+polygon = PackedVector2Array(-3, -6, -9, 3, 5, 8, 12, -4)

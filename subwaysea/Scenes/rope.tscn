@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://cns4d83a6y1p5"]
+
+[ext_resource type="Script" path="res://Scripts/rope.gd" id="1_s3frs"]
+[ext_resource type="PackedScene" uid="uid://bjnnv7qvjrbp3" path="res://Scenes/tendon.tscn" id="2_tnn6q"]
+
+[node name="Rope" type="Node2D" node_paths=PackedStringArray("anchor_point")]
+script = ExtResource("1_s3frs")
+anchor_point = NodePath("Anchor")
+
+[node name="Tendon" parent="." instance=ExtResource("2_tnn6q")]
+
+[node name="Tendon2" parent="." instance=ExtResource("2_tnn6q")]
+position = Vector2(0, 12)
+
+[node name="Tendon3" parent="." instance=ExtResource("2_tnn6q")]
+position = Vector2(0, 24)
+
+[node name="Tendon4" parent="." instance=ExtResource("2_tnn6q")]
+position = Vector2(0, 40)
+
+[node name="Tendon5" parent="." instance=ExtResource("2_tnn6q")]
+position = Vector2(0, 51)
+
+[node name="Tendon6" parent="." instance=ExtResource("2_tnn6q")]
+position = Vector2(0, 51)
+
+[node name="Tendon7" parent="." instance=ExtResource("2_tnn6q")]
+position = Vector2(0, 51)
+
+[node name="Tendon8" parent="." instance=ExtResource("2_tnn6q")]
+position = Vector2(0, 51)
+
+[node name="Cord" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 6.0
+default_color = Color(0.207843, 0.152941, 0.0392157, 1)
+joint_mode = 2
+
+[node name="Anchor" type="Marker2D" parent="."]
+
+[node name="End" type="Marker2D" parent="."]
+position = Vector2(38, -1)
+
+[node name="Polygon2D" type="Polygon2D" parent="End"]
+polygon = PackedVector2Array(0, -4, -5, 2, 0, 5, 4, 1)

@@ -1,25 +1,26 @@
-extends Node
+extends Node2D
 
 var insideArea = false
 var multiplier = 1
-var oxygenAmount = 70
+var oxygenAmount = 50
 var oxygenCap = 100
 
 var currentSprite = load("res://assets/oxy_fixed.png")
 
 @onready var face_display: Node2D = $"../FaceDisplay"
 @onready var playerOxyTank = get_parent().find_child("PlayerOxyTank").get_child(0)
+@onready var player = get_tree().get_first_node_in_group('player')
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var fixedSprite = load("res://assets/oxy_fixed.png")
 @onready var brokenSprite = load("res://assets/oxy_broken.png")
 @onready var blinkingSprite: AnimatedSprite2D = $AnimatedSprite2D
 
 signal oxygen_threshold_changed(oxygen_threshold)
-signal death
 
 func _ready() -> void:
+	$Rope/Anchor.global_position = global_position
+	$Rope/End.global_position = global_position
 	blinkingSprite.visible = false
-	self.connect("death", self.get_parent().death)
 	self.get_parent().connect("wasAttacked", Callable(self, "wasAttacked"))
 	self.connect("oxygen_threshold_changed", face_display._on_oxygen_threshold_changed)
 
@@ -31,8 +32,9 @@ func wasAttacked(randomValue):
 
 # set the oxygen meter to go up again
 func repair():
-	currentSprite = fixedSprite
-
+	if currentSprite == brokenSprite:
+		currentSprite = fixedSprite
+		return true
 func _process(delta: float) -> void:
 	playerOxyTank.set("value", oxygenAmount)
 	determine_oxygen_threshold()
@@ -41,18 +43,22 @@ func _process(delta: float) -> void:
 
 func addOxygen():
 	if (oxygenAmount < oxygenCap) and (sprite.texture == fixedSprite):
-		oxygenAmount += 2
+		oxygenAmount += 1.5
+		$Rope/Anchor.global_position = global_position
+		$Rope/End.global_position = lerp($Rope/End.global_position, player.global_position - Vector2(0,40), .5)
 
 func loseOxygen():
-	oxygenAmount -= 1 * multiplier
-	if oxygenAmount <= 0:
-		death.emit()
+	oxygenAmount = max(0, oxygenAmount - (1 * multiplier))
+	
+
 
 func determine_oxygen_threshold():
 	var oxygen_threshold
+
 	if oxygenAmount == 0:
-		get_parent().death()
-	elif oxygenAmount < 50:
+		get_parent().dying = true
+	elif oxygenAmount < 25:
+		get_parent().dying = false
 		oxygen_threshold = "low"
 	else:
 		oxygen_threshold = "high"
@@ -68,6 +74,8 @@ func _on_fill_up_area_body_exited(body: Node2D) -> void:
 func _on_up_timeout() -> void:
 	if insideArea:
 		addOxygen()
+	else:
+		$Rope/End.global_position = lerp($Rope/End.global_position, global_position, .5)
 
 func _on_down_timeout() -> void:
 	if !insideArea || sprite.texture == brokenSprite:

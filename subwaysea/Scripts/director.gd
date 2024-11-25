@@ -18,4 +18,4 @@ func _process(delta):
 	if Input.is_action_just_pressed('restart'):
 		#killing player instead of just reloading the scene for the nice 
 		#fade in/fade out that's already implemented
-		get_node("/root/MainScene").death()
+		get_tree().reload_current_scene()

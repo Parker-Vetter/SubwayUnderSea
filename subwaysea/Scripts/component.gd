@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 
 	if detect_machine.has_overlapping_bodies():
 		if detect_machine.get_overlapping_bodies()[0].has_method('repair'):
-			detect_machine.get_overlapping_bodies()[0].repair()
-			die()
+			if detect_machine.get_overlapping_bodies()[0].repair():
+				die()
 
 func die():
 	#play animation

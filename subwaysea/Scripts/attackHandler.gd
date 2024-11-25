@@ -5,14 +5,17 @@ signal MainInitialized
 
 @onready var randomAttackTimer = find_child("AttackTimer")
 @onready var fadeIn: ColorRect = $ColorRect
-var dead = false
+var dying = false
 
 func _process(delta: float) -> void:
-	if dead and fadeIn.color.a < 1.0:
-		fadeIn.color.a += 0.5 * delta
+	if dying and fadeIn.color.a < 1.0:
+		fadeIn.color.a += 0.15 * delta
+		print(fadeIn.color.a)
 	elif fadeIn.color.a >= 1.0:
-		dead = false
+		dying = false
 		get_tree().reload_current_scene()
+	if dying == false:
+		fadeIn.color.a = max(0, fadeIn.color.a - delta,0)
 	#
 	#if Input.is_action_just_pressed('interact'):
 		#callForAttack()
@@ -40,6 +43,3 @@ func emitWasAttacked():
 func _on_attack_timer_timeout() -> void:
 	callForAttack()
 	randomAttackTimer.wait_time = randi_range(120,600)
-
-func death():
-	dead = true

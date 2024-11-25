@@ -450,12 +450,23 @@ polygon = PackedVector2Array(972.5, 621, 993.5, 596, 1017.5, 619, 1047.5, 602, 1
 polygon = PackedVector2Array(1536.5, 464, 1484.5, 466, 1454.5, 487, 1448.5, 527, 1436.5, 553, 1437.5, 582, 1414.5, 622, 1562.5, 625, 1550.5, 460)
 
 [node name="Player" parent="." instance=ExtResource("1_eeyxp")]
-position = Vector2(534, 527)
+position = Vector2(660, 869)
 angular_damp = 66.313
 
 [node name="OxygenSystem" parent="." instance=ExtResource("7_8beuo")]
 z_index = -1
 position = Vector2(300, 874)
+
+[node name="light" type="PointLight2D" parent="OxygenSystem"]
+material = SubResource("CanvasItemMaterial_upv4y")
+position = Vector2(45, 43)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 3.0
+shadow_enabled = true
+texture = ExtResource("3_n5gfx")
+texture_scale = 2.8
+height = 10.0
 
 [node name="PlayerOxyTank" parent="." instance=ExtResource("8_thvg5")]
 offset_left = 9.0
@@ -612,8 +623,18 @@ texture = ExtResource("22_7k725")
 z_index = -1
 position = Vector2(1583, 488)
 
+[node name="light" type="PointLight2D" parent="BreakerBox"]
+material = SubResource("CanvasItemMaterial_upv4y")
+position = Vector2(47, 58)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("3_n5gfx")
+texture_scale = 2.8
+height = 10.0
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.188235, 0.133333, 0.117647, 1)
 
 [node name="Engine" parent="." instance=ExtResource("26_s0mwt")]
@@ -625,6 +646,17 @@ position = Vector2(1651, 514)
 
 [node name="Component" parent="Engine" instance=ExtResource("28_o4yf3")]
 position = Vector2(514, 88)
+
+[node name="light" type="PointLight2D" parent="Engine"]
+material = SubResource("CanvasItemMaterial_upv4y")
+position = Vector2(87, 135)
+scale = Vector2(0.675705, 0.675705)
+color = Color(1, 0.85098, 0.129412, 0.294118)
+energy = 3.0
+shadow_enabled = true
+texture = ExtResource("3_n5gfx")
+texture_scale = 2.8
+height = 10.0
 
 [connection signal="wasAttacked" from="." to="LightParent" method="attacked_for_bit"]
 [connection signal="wasAttacked" from="." to="Hull" method="was_attacked"]
