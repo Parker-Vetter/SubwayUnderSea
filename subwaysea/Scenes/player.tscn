@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cc0kb5tbuiykm"]
+[gd_scene load_steps=34 format=3 uid="uid://cc0kb5tbuiykm"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
 [ext_resource type="PackedScene" uid="uid://po33qrtvxntv" path="res://Scenes/view_light.tscn" id="2_op83d"]
@@ -18,6 +18,9 @@
 [ext_resource type="AudioStream" uid="uid://12ti45lxodnb" path="res://assets/sounds/dr1.wav" id="16_abeaw"]
 [ext_resource type="AudioStream" uid="uid://cd1sg1ddtn42s" path="res://assets/sounds/dr2.wav" id="17_2t472"]
 [ext_resource type="AudioStream" uid="uid://dy0tnkuylpmsl" path="res://assets/sounds/dr3.wav" id="18_lvpxc"]
+[ext_resource type="AudioStream" uid="uid://bqm30boro7p00" path="res://assets/sounds/feet1.wav" id="19_pif35"]
+[ext_resource type="AudioStream" uid="uid://cudn1ue1h1xg0" path="res://assets/sounds/feet2.wav" id="20_gbn48"]
+[ext_resource type="AudioStream" uid="uid://fxaonxq47nhc" path="res://assets/sounds/feet3.wav" id="21_fk5gk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1pg1"]
 rough = true
@@ -54,10 +57,13 @@ radius = 106.066
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_184s0"]
 random_volume_offset_db = 2.0
-streams_count = 3
+streams_count = 6
 stream_0/stream = ExtResource("16_abeaw")
 stream_1/stream = ExtResource("17_2t472")
 stream_2/stream = ExtResource("18_lvpxc")
+stream_3/stream = ExtResource("19_pif35")
+stream_4/stream = ExtResource("20_gbn48")
+stream_5/stream = ExtResource("21_fk5gk")
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
 collision_layer = 2

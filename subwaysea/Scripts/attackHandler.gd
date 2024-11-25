@@ -16,8 +16,8 @@ func _process(delta: float) -> void:
 	if dying == false:
 		fadeIn.color.a = max(0, fadeIn.color.a - delta,0)
 	#
-	if Input.is_action_just_pressed('interact'):
-		callForAttack()
+	#if Input.is_action_just_pressed('interact'):
+		#callForAttack()
 
 func _ready() -> void:
 	randomAttackTimer.wait_time = randi_range(60,300)
@@ -31,8 +31,9 @@ func callForAttack():
 	emitWasAttacked()
 
 #emit signal to all machines that their was an attack
-func emitWasAttacked():
-	
+func emitWasAttacked(): #HULL can access as soon as its attacked
+	$BLAST.play()
+	await get_tree().create_timer(.95).timeout
 	var randValue = randi_range(0,10)
 	wasAttacked.emit(randValue)
 	# connect to OxygenMachine.gd and breakerBox.gd and camera.gd

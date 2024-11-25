@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://f34j633okqsc"]
+[gd_scene load_steps=7 format=3 uid="uid://f34j633okqsc"]
 
 [ext_resource type="Script" path="res://Scripts/component.gd" id="1_vt3f1"]
 [ext_resource type="Texture2D" uid="uid://dodm54g523nc5" path="res://assets/component.png" id="2_yrxft"]
+[ext_resource type="AudioStream" uid="uid://12ti45lxodnb" path="res://assets/sounds/dr1.wav" id="3_gfv72"]
+[ext_resource type="AudioStream" uid="uid://cudn1ue1h1xg0" path="res://assets/sounds/feet2.wav" id="4_3rmtg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_moquu"]
 
@@ -11,6 +13,8 @@ size = Vector2(70, 44)
 [node name="Component" type="RigidBody2D"]
 collision_layer = 16
 collision_mask = 17
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_vt3f1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -38,3 +42,14 @@ texture_filter = 1
 position = Vector2(-4.76837e-07, -7.15256e-07)
 scale = Vector2(1.7, 1.7)
 texture = ExtResource("2_yrxft")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gfv72")
+volume_db = -5.0
+pitch_scale = 0.9
+attenuation = 0.615572
+
+[node name="Grab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3rmtg")
+volume_db = -18.0
+pitch_scale = 1.85

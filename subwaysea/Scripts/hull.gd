@@ -3,6 +3,7 @@ extends StaticBody2D
 @onready var collision_shape_2d: CollisionPolygon2D = $CollisionShape2D
 @onready var light_occluder_2d: LightOccluder2D = $CollisionShape2D/LightOccluder2D
 @onready var visual_polygon: Polygon2D = $CollisionShape2D/Polygon2D
+@onready var blast: AudioStreamPlayer2D = $"../BLAST"
 
 @onready var smash_points = get_tree().get_nodes_in_group('smash_point')
 
@@ -15,7 +16,9 @@ func _process(delta: float) -> void:
 func was_attacked(rand_val):
 	if smash_points.size() <= 0:
 		return
+	
 	var new_dent = smash_points.pick_random()
+	blast.global_position = $SmashPoints.to_global(new_dent.polygon[0])
 	smash_points[smash_points.find(new_dent)].play()
 	var angle_to_center = new_dent.polygon[0].angle_to_point(Vector2(1000,1000))
 	Camera.add_trauma(1, Vector2.ONE.rotated(angle_to_center))

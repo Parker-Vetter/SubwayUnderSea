@@ -36,18 +36,32 @@ func repair():
 	if currentSprite == brokenSprite:
 		currentSprite = fixedSprite
 		$light.energy = 3
+		$Fixed.play()
 		return true
 func _process(delta: float) -> void:
 	playerOxyTank.set("value", oxygenAmount)
 	determine_oxygen_threshold()
 	if currentSprite == fixedSprite and $WorkingAudio.playing == false:
 		$WorkingAudio.play()
+	
+	if insideArea:
+		if oxyplay.playing == false:
+			oxyplay.play()
+		elif oxyplay.get_playback_position() >= 6 and oxyplay_2.playing == false:
+			oxyplay_2.play()
+		oxyplay.bus = 'Master'
+
+
+@onready var oxyplay: AudioStreamPlayer = $oxyplay
+@onready var oxyplay_2: AudioStreamPlayer = $oxyplay2
 
 func addOxygen():
 	if (oxygenAmount < oxygenCap) and (sprite.texture == fixedSprite):
 		oxygenAmount += 1.5
 		$Rope/Anchor.global_position = global_position
 		$Rope/End.global_position = lerp($Rope/End.global_position, player.global_position - Vector2(0,40), .5)
+
+		
 
 func loseOxygen():
 	oxygenAmount = max(0, oxygenAmount - (1 * multiplier))
@@ -72,6 +86,8 @@ func _on_fill_up_area_body_entered(body: Node2D) -> void:
 
 func _on_fill_up_area_body_exited(body: Node2D) -> void:
 	insideArea = false
+	oxyplay.stop()
+	oxyplay_2.stop()
 
 func _on_up_timeout() -> void:
 	if insideArea:
