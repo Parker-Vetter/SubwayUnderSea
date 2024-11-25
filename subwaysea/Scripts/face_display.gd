@@ -3,6 +3,7 @@ extends Node2D
 const LOW_OXYGEN = preload("res://assets/Low Oxygen.png")
 const LOW_SANITY = preload("res://assets/Low Sanity.png")
 const NORMAL = preload("res://assets/Normal.png")
+const HAPPY = preload("res://assets/Happy.png")
 
 @onready var face_sprite: Sprite2D = $"CanvasLayer/Display Frame/Sprite2D"
 @onready var bpm_display: RichTextLabel = $"CanvasLayer/Display Frame/RichTextLabel"
@@ -23,9 +24,11 @@ func _process(delta: float) -> void:
 	elif sanity < 20:
 		face_sprite.set_texture(LOW_SANITY)
 		$Beat.volume_db = -15
-	elif sanity >= 20:
+	elif sanity >= 20 and sanity < 70:
 		face_sprite.set_texture(NORMAL)
 		$Beat.volume_db = -20
+	elif sanity == 70:
+		face_sprite.set_texture(HAPPY)
 	
 
 func alter_heartbeat_speed():
