@@ -27,6 +27,7 @@ func repair():
 		currentSprite = fixedSprite
 		depth_gauge.delta_depth = 1
 		$light.energy = 3
+		$fixed.play()
 		return true
 	
 

@@ -22,9 +22,6 @@ func _process(delta: float) -> void:
 	#
 	#if Input.is_action_just_pressed('interact'):
 		#callForAttack()
-	if Input.is_action_just_pressed('fullscreen'):
-		callForAttack()
-
 
 func _ready() -> void:
 	var depth_multiplier = remap(run_time, 0, 400, 1, 0)
@@ -40,8 +37,9 @@ func callForAttack():
 	emitWasAttacked()
 
 #emit signal to all machines that their was an attack
-func emitWasAttacked():
-	
+func emitWasAttacked(): #HULL can access as soon as its attacked
+	$BLAST.play()
+	await get_tree().create_timer(.95).timeout
 	var randValue = randi_range(0,10)
 	wasAttacked.emit(randValue)
 	# connect to OxygenMachine.gd and breakerBox.gd and camera.gd

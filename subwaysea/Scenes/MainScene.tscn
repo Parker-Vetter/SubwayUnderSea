@@ -1,4 +1,5 @@
-[gd_scene load_steps=44 format=3 uid="uid://dywsx6k4swabh"]
+
+[gd_scene load_steps=49 format=3 uid="uid://dywsx6k4swabh"]
 
 [ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
@@ -29,8 +30,11 @@
 [ext_resource type="Shader" path="res://assets/insane.gdshader" id="22_08j3g"]
 [ext_resource type="Texture2D" uid="uid://blbbch3pqscg6" path="res://icon.svg" id="23_7lujp"]
 [ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/Engine/engine.tscn" id="26_s0mwt"]
+[ext_resource type="AudioStream" uid="uid://c6fe64ygnchj" path="res://assets/sounds/grease.wav" id="28_4v5pr"]
 [ext_resource type="PackedScene" uid="uid://f34j633okqsc" path="res://Scenes/component.tscn" id="28_o4yf3"]
-[ext_resource type="PackedScene" uid="uid://d0xh8vi2rqjwk" path="res://Scenes/escMenu.tscn" id="29_h5j81"]
+
+[ext_resource type="PackedScene" uid="uid://sv4xq3c2ohta" path="res://Scenes/ambience.tscn" id="31_w0gn8"]
+[ext_resource type="AudioStream" uid="uid://b3gegntc34gin" path="res://assets/sounds/bigfart.wav" id="33_7lr85"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
@@ -81,6 +85,17 @@ shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/distortion_strength = 0.03
 shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_uceex")
 shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_kh5rj")
+
+[sub_resource type="Curve" id="Curve_lx21w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6xr3v"]
+offsets = PackedFloat32Array(0, 0.5125, 0.979167)
+colors = PackedColorArray(0, 0, 0, 1, 0.462801, 0.360917, 0.304958, 1, 0.584164, 0.280527, 0.202706, 1)
+
+[sub_resource type="Gradient" id="Gradient_hlmdc"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_1xxoe")
@@ -642,6 +657,9 @@ position = Vector2(1947, 876)
 color = Color(0.0901961, 0.0313726, 0.0117647, 1)
 polygon = PackedVector2Array(-13, -8, -7, -10, 0, -11, 5, -11, 10, -10, 15, -8, 18, -6, 21, -3, 22, 1, 21, 4, 18, 7, 15, 9, 10, 10, 2, 11, -7, 11, -13, 10, -17, 8, -20, 3, -20, -2, -18, -5)
 
+[node name="AudioStreamPlayer2D" parent="SupplyGrabber" index="5"]
+volume_db = -15.0
+
 [node name="DebrisContainer" type="Node2D" parent="SupplyGrabber"]
 
 [node name="CoverScreen" type="ColorRect" parent="SupplyGrabber"]
@@ -665,16 +683,39 @@ offset_bottom = 13.0
 text = "Currently Collecting"
 
 [node name="ComponentSpawner" type="Node2D" parent="."]
-position = Vector2(1629, 782)
+z_index = 2
+position = Vector2(1628, 755)
 script = ExtResource("15_rset8")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ComponentSpawner"]
 light_mask = 0
 texture_filter = 1
-position = Vector2(0.999952, -5)
+position = Vector2(1.99995, 21)
 scale = Vector2(2.95833, 2.95833)
 texture = ExtResource("22_7k725")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ComponentSpawner"]
+stream = ExtResource("28_4v5pr")
+max_distance = 1000.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ComponentSpawner"]
+position = Vector2(3, 30)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.81
+emission_shape = 3
+emission_rect_extents = Vector2(14.135, 1)
+direction = Vector2(0, 1)
+spread = 60.0
+initial_velocity_min = 104.17
+initial_velocity_max = 104.17
+scale_amount_min = 5.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_lx21w")
+color_ramp = SubResource("Gradient_6xr3v")
+color_initial_ramp = SubResource("Gradient_hlmdc")
 
 [node name="BreakerBox" parent="." instance=ExtResource("16_yne7g")]
 z_index = -1
@@ -690,6 +731,7 @@ shadow_enabled = true
 texture = ExtResource("3_n5gfx")
 texture_scale = 2.8
 height = 10.0
+metadata/_edit_lock_ = true
 
 [node name="Engine" parent="." instance=ExtResource("26_s0mwt")]
 z_index = -1
@@ -714,12 +756,20 @@ texture_scale = 2.8
 height = 10.0
 metadata/_edit_lock_ = true
 
+[node name="Ambience" parent="." instance=ExtResource("31_w0gn8")]
+volume_db = -11.0
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.188235, 0.133333, 0.117647, 1)
 
 [node name="escMenu" parent="." instance=ExtResource("29_h5j81")]
 visible = false
+[node name="BLAST" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_7lr85")
+volume_db = 12.0
+max_distance = 2500.0
+attenuation = 1.62451
 
 [connection signal="wasAttacked" from="." to="LightParent" method="attacked_for_bit"]
 [connection signal="wasAttacked" from="." to="Hull" method="was_attacked"]

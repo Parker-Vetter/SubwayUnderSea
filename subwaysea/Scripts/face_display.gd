@@ -7,6 +7,7 @@ const NORMAL = preload("res://assets/Normal.png")
 @onready var face_sprite: Sprite2D = $"CanvasLayer/Display Frame/Sprite2D"
 @onready var bpm_display: RichTextLabel = $"CanvasLayer/Display Frame/RichTextLabel"
 @onready var heartbeat_monitor: AnimatedSprite2D = $"CanvasLayer/Display Frame/AnimatedSprite2D"
+@onready var beat: AudioStreamPlayer = $Beat
 
 var sanity = 0
 var old_sanity  = 0
@@ -21,8 +22,10 @@ func _process(delta: float) -> void:
 		face_sprite.set_texture(LOW_OXYGEN)
 	elif sanity < 20:
 		face_sprite.set_texture(LOW_SANITY)
+		$Beat.volume_db = -15
 	elif sanity >= 20:
 		face_sprite.set_texture(NORMAL)
+		$Beat.volume_db = -20
 	
 
 func alter_heartbeat_speed():
@@ -53,4 +56,7 @@ func _on_sanity_threshold_reached(new_sanity):
 
 func _on_oxygen_threshold_changed(new_oxygen):
 	oxygen = new_oxygen
-	
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if heartbeat_monitor.frame == 7 or heartbeat_monitor.frame == 22 or heartbeat_monitor.frame == 38:
+		beat.play()
