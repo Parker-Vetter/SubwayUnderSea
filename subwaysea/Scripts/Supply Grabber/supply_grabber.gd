@@ -6,6 +6,7 @@ const DEBRIS = preload("res://Scenes/Supply Grabber/debris.tscn")
 
 signal tick
 var alpha = 1
+var currently_collecting = false
 
 func check_for_debris_spawn():
 	var randint = randi_range(0, 4)
@@ -28,3 +29,19 @@ func _on_timer_timeout() -> void:
 	tick.emit()
 	check_for_debris_spawn()
 	modify_sonar()
+
+var collecting_flash = 0
+func _process(delta: float) -> void:
+	if currently_collecting:
+		$CurrentlyCollectingText.show()
+		$CoverScreen.show()
+		collecting_flash += delta
+		if collecting_flash >= 1:
+			collecting_flash = 0
+			$CurrentlyCollectingText.modulate = Color('ca8b38')
+		elif collecting_flash >= .5: 
+			$CurrentlyCollectingText.modulate = Color('221303')
+	else:
+		$CurrentlyCollectingText.hide()
+		$CoverScreen.hide()
+		$CurrentlyCollectingText.modulate = Color('ca8b38')

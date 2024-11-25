@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dywsx6k4swabh"]
+[gd_scene load_steps=36 format=3 uid="uid://dywsx6k4swabh"]
 
 [ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
@@ -26,7 +26,8 @@
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
 [ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
 [ext_resource type="Texture2D" uid="uid://e5gvb71liegp" path="res://assets/component spawner.png" id="22_7k725"]
-[ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/engine.tscn" id="26_s0mwt"]
+[ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/Engine/engine.tscn" id="26_s0mwt"]
+[ext_resource type="PackedScene" uid="uid://f34j633okqsc" path="res://Scenes/component.tscn" id="28_o4yf3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
@@ -575,6 +576,26 @@ polygon = PackedVector2Array(-13, -8, -7, -10, 0, -11, 5, -11, 10, -10, 15, -8, 
 
 [node name="DebrisContainer" type="Node2D" parent="SupplyGrabber"]
 
+[node name="CoverScreen" type="ColorRect" parent="SupplyGrabber"]
+light_mask = 5
+visibility_layer = 5
+z_index = 1
+offset_left = -152.0
+offset_top = -88.0
+offset_right = 152.0
+offset_bottom = 88.0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="CurrentlyCollectingText" type="RichTextLabel" parent="SupplyGrabber"]
+modulate = Color(0.131537, 0.0752709, 0.0105072, 1)
+z_index = 1
+offset_left = -75.0
+offset_top = -11.0
+offset_right = 86.0
+offset_bottom = 13.0
+text = "Currently Collecting"
+
 [node name="ComponentSpawner" type="Node2D" parent="."]
 position = Vector2(1629, 782)
 script = ExtResource("15_rset8")
@@ -595,8 +616,6 @@ position = Vector2(1583, 488)
 visible = false
 color = Color(0.188235, 0.133333, 0.117647, 1)
 
-[connection signal="wasAttacked" from="." to="LightParent" method="attacked_for_bit"]
-[connection signal="wasAttacked" from="." to="Hull" method="was_attacked"]
 [node name="Engine" parent="." instance=ExtResource("26_s0mwt")]
 z_index = -1
 position = Vector2(254, 450)
@@ -604,6 +623,11 @@ position = Vector2(254, 450)
 [node name="depthGague" parent="Engine" index="4"]
 position = Vector2(1651, 514)
 
+[node name="Component" parent="Engine" instance=ExtResource("28_o4yf3")]
+position = Vector2(514, 88)
+
+[connection signal="wasAttacked" from="." to="LightParent" method="attacked_for_bit"]
+[connection signal="wasAttacked" from="." to="Hull" method="was_attacked"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="oxygen_multiplier_changed" from="SanitySystem" to="OxygenSystem" method="_on_sanity_system_oxygen_multiplier_changed"]
 [connection signal="child_entered_tree" from="SupplyGrabber/DebrisContainer" to="ComponentSpawner" method="_on_debris_container_child_entered_tree"]

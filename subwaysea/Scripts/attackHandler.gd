@@ -13,9 +13,9 @@ func _process(delta: float) -> void:
 	elif fadeIn.color.a >= 1.0:
 		dead = false
 		get_tree().reload_current_scene()
-	
-	if Input.is_action_just_pressed('interact'):
-		callForAttack()
+	#
+	#if Input.is_action_just_pressed('interact'):
+		#callForAttack()
 
 
 func _ready() -> void:

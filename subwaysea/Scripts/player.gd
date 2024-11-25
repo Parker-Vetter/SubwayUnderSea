@@ -284,7 +284,8 @@ func manage_arm(delta):
 	$UpperBody/Line2D/AnimationLerp.global_position = $UpperBody/Line2D/Shoulder_pos.global_position
 	
 	r_lerp_position_hand.position = r_lerp_position_hand.position.lerp(Vector2(29,20) + (Vector2(0,(spine_offset.position.y - global_position.y) * 2)), delta * 8)
-	
+func bump_hand():
+	r_lerp_position_hand.position += Vector2.ONE * -8
 
 func manage_component(delta):
 	for i in holding_c:

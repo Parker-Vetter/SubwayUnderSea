@@ -23,7 +23,12 @@ func _ready() -> void:
 		position.y = -100
 
 func _process(delta: float) -> void:
+	if get_parent().get_parent().currently_collecting == true: return
 	if Input.is_action_just_pressed("left_mouse") and mouse_hover:
+		hide()
+		get_parent().get_parent().currently_collecting = true
+		await get_tree().create_timer(5).timeout
+		get_parent().get_parent().currently_collecting = false
 		debris_collected.emit()
 		self.queue_free()
 	
@@ -61,7 +66,6 @@ func _on_tick():
 
 func _on_area_2d_mouse_entered() -> void:
 	mouse_hover = true
-
 
 func _on_area_2d_mouse_exited() -> void:
 	mouse_hover = true

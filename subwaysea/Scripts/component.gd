@@ -8,6 +8,7 @@ extends RigidBody2D
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed('interact') and detect_player.overlaps_body(player) and detect_player.get_overlapping_bodies()[0].holding_c == []:
 		detect_player.get_overlapping_bodies()[0].holding_c += [self]
+		detect_player.get_overlapping_bodies()[0].bump_hand()
 		freeze = true
 		$CollisionShape2D.disabled = true
 
@@ -20,6 +21,7 @@ func _process(delta: float) -> void:
 func die():
 	#play animation
 	detect_player.get_overlapping_bodies()[0].holding_c.erase(self)
+	freeze = false
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 	
