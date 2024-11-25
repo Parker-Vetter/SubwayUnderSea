@@ -14,3 +14,5 @@ func isRayColliding():
 			target.get_parent().changeSprite()
 		elif (target != null and target.name == "BreakerBox"):
 			target.changeSprite()
+		elif (target != null and target.name == "Engine"):
+			target.changeSprite()

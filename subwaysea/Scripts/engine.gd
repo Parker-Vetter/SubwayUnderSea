@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 
-var currentSprite = load("res://assets/Light Machine ON.png")
+var currentSprite = load("res://assets/Engine OFF.png")
 @onready var depth_gauge: Node2D = $depthGague
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var blinkingSprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -13,12 +13,12 @@ func _ready() -> void:
 	blinkingSprite.visible = true
 	depth_gauge.delta_depth = 0
 	self.get_parent().connect("wasAttacked", Callable(self, "wasAttacked"))
-	print(self.get_parent().name)
+	
 
 func wasAttacked(randomValue):
 	if randomValue <= 10:
 		currentSprite = brokenSprite
-		#$WorkingAudio.stop()
+		$WorkingAudio.stop()
 		depth_gauge.delta_depth = 0
 
 func repair():

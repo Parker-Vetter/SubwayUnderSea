@@ -26,7 +26,7 @@
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
 [ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
 [ext_resource type="Texture2D" uid="uid://e5gvb71liegp" path="res://assets/component spawner.png" id="22_7k725"]
-[ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/Engine/engine.tscn" id="26_s0mwt"]
+[ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/engine.tscn" id="26_s0mwt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
