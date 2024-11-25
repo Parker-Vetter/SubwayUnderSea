@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cc0kb5tbuiykm"]
+[gd_scene load_steps=31 format=3 uid="uid://cc0kb5tbuiykm"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
 [ext_resource type="PackedScene" uid="uid://po33qrtvxntv" path="res://Scenes/view_light.tscn" id="2_op83d"]
@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://dutgvne6rmgfv" path="res://assets/player parts/foot.png" id="10_ue5gc"]
 [ext_resource type="Texture2D" uid="uid://cpy0056kvkp5p" path="res://assets/player parts/calf.png" id="11_dlhgw"]
 [ext_resource type="Texture2D" uid="uid://dbju5dk8iqtn3" path="res://assets/player parts/thigh.png" id="12_j47vb"]
+[ext_resource type="AudioStream" uid="uid://12ti45lxodnb" path="res://assets/sounds/dr1.wav" id="16_abeaw"]
+[ext_resource type="AudioStream" uid="uid://cd1sg1ddtn42s" path="res://assets/sounds/dr2.wav" id="17_2t472"]
+[ext_resource type="AudioStream" uid="uid://dy0tnkuylpmsl" path="res://assets/sounds/dr3.wav" id="18_lvpxc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1pg1"]
 rough = true
@@ -48,6 +51,13 @@ gradient = SubResource("Gradient_f1pns")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6vgp0"]
 radius = 106.066
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_184s0"]
+random_volume_offset_db = 2.0
+streams_count = 3
+stream_0/stream = ExtResource("16_abeaw")
+stream_1/stream = ExtResource("17_2t472")
+stream_2/stream = ExtResource("18_lvpxc")
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
 collision_layer = 2
@@ -455,3 +465,11 @@ texture = ExtResource("6_1qbdq")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="FootSteps" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_184s0")
+volume_db = -15.0
+
+[node name="FootSteps2" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_184s0")
+volume_db = -15.0

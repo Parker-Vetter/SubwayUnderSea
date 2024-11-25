@@ -10,15 +10,14 @@ var dying = false
 func _process(delta: float) -> void:
 	if dying and fadeIn.color.a < 1.0:
 		fadeIn.color.a += 0.15 * delta
-		print(fadeIn.color.a)
 	elif fadeIn.color.a >= 1.0:
 		dying = false
 		get_tree().reload_current_scene()
 	if dying == false:
 		fadeIn.color.a = max(0, fadeIn.color.a - delta,0)
 	#
-	#if Input.is_action_just_pressed('interact'):
-		#callForAttack()
+	if Input.is_action_just_pressed('interact'):
+		callForAttack()
 
 func _ready() -> void:
 	randomAttackTimer.wait_time = randi_range(60,300)

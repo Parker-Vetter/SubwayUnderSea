@@ -6,6 +6,8 @@ extends RigidBody2D
 @onready var bend_over: Marker2D = $BendOver
 @onready var target_feet: Marker2D = $TargetFeet
 @onready var floor_snap: Marker2D = $TargetFeet/FloorSnap
+@onready var foot_steps: AudioStreamPlayer = $FootSteps
+@onready var foot_steps_2: AudioStreamPlayer = $FootSteps2
 
 @onready var r_lerp_position_hand: Marker2D = $UpperBody/Line2D/AnimationLerp/RLerpPositionHand
 #@onready var moving_target: Marker2D = $Thigh/MovingTarget
@@ -188,6 +190,10 @@ func stand_process(delta):
 		rotation_time += delta
 		
 		if abs(stride_circle.global_rotation - last_stride_angle) > PI/2:
+			if !foot_steps.playing:
+				foot_steps.play()
+			else:
+				foot_steps_2.play()
 			stride_circle.global_rotation = 0
 			old_rotation_time = rotation_time
 			rotation_time = 0
@@ -243,6 +249,7 @@ func crouch_process(delta):
 		rotation_time += delta
 		
 		if abs(stride_circle.global_rotation - last_stride_angle) > PI/2:
+			foot_steps.play()
 			stride_circle.global_rotation = 0
 			old_rotation_time = rotation_time
 			rotation_time = 0

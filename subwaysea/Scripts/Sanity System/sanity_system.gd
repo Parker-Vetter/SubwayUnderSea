@@ -3,6 +3,7 @@ extends Node2D
 @onready var oxygen_system: Node2D = $"../OxygenSystem"
 @onready var face_display: Node2D = $"../FaceDisplay"
 @onready var breathing: AudioStreamPlayer = $Breathing
+@onready var heart_beat: AudioStreamPlayer = $HeartBeat
 
 signal oxygen_multiplier_changed(new_multiplier)
 signal sanity_threshold_reached(threshold)
@@ -14,6 +15,7 @@ var sanity_effect = 0.0
 func _ready() -> void:
 	self.connect("sanity_threshold_reached", face_display._on_sanity_threshold_reached)
 
+var delta_heart = 0
 func _process(delta: float) -> void:
 	passive_sanity_loss(delta)
 	
@@ -43,7 +45,12 @@ func _process(delta: float) -> void:
 	else:
 		sanity_effect = lerp(sanity_effect, 0.0, delta)
 		breathing.volume_db = -30
-		
+	
+	#print(1 - sanity/70)
+	#delta_heart += delta
+	#print(sin(delta_heart))
+	#if sin(delta_heart) >= .8:
+		#pass
 	$CanvasLayer/Sprite2D.material.set_shader_parameter('distortion_strength', sanity_effect)
 	calculate_multiplier()
 	determine_sanity_threshold()
@@ -56,7 +63,7 @@ func remove_sanity(delta):
 	sanity -= 5 * delta
 
 func passive_sanity_loss(delta):
-	sanity -= 0.8 * delta *3
+	sanity -= 0.8 * delta * 3
 
 func calculate_multiplier():
 		var multiplier = 1 - sanity/70
