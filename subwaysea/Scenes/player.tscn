@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cc0kb5tbuiykm"]
+[gd_scene load_steps=27 format=3 uid="uid://cc0kb5tbuiykm"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
 [ext_resource type="PackedScene" uid="uid://po33qrtvxntv" path="res://Scenes/view_light.tscn" id="2_op83d"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dtcq3yrxhmj0u" path="res://assets/player parts/bicep.png" id="6_j3peh"]
 [ext_resource type="Script" path="res://addons/la_ik/nodes/la_bone.gd" id="6_vnihy"]
 [ext_resource type="Texture2D" uid="uid://8achsi5y5nyo" path="res://assets/player parts/head.png" id="7_0gxui"]
+[ext_resource type="Texture2D" uid="uid://d0r5bpcgo6rrr" path="res://assets/ProgressBarProgress.tres" id="9_jr6uk"]
+[ext_resource type="Texture2D" uid="uid://blovv6icitxi2" path="res://assets/player parts/O2 Tank.png" id="10_4mtd4"]
 [ext_resource type="Texture2D" uid="uid://dutgvne6rmgfv" path="res://assets/player parts/foot.png" id="10_ue5gc"]
 [ext_resource type="Texture2D" uid="uid://cpy0056kvkp5p" path="res://assets/player parts/calf.png" id="11_dlhgw"]
 [ext_resource type="Texture2D" uid="uid://dbju5dk8iqtn3" path="res://assets/player parts/thigh.png" id="12_j47vb"]
@@ -28,6 +30,12 @@ height = 56.0
 [sub_resource type="Curve" id="Curve_a7l3r"]
 _data = [Vector2(0.0157895, 0.967033), 0.0, 0.0, 0, 0, Vector2(0.952632, 0.593407), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_np5nn"]
+colors = PackedColorArray(0.0901961, 0.0313726, 0.0117647, 1, 0.0901961, 0.0313726, 0.0117647, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l35ti"]
+gradient = SubResource("Gradient_np5nn")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kfwwb"]
 shader = ExtResource("4_owt5o")
@@ -161,6 +169,34 @@ position = Vector2(-3, -4)
 scale = Vector2(1.2849, 1.98122)
 texture = ExtResource("4_gitg4")
 
+[node name="OxyTank" type="Marker2D" parent="UpperBody/Line2D"]
+position = Vector2(-12, -14)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UpperBody/Line2D/OxyTank"]
+anchors_preset = -1
+anchor_left = 0.005
+anchor_top = 0.003
+anchor_right = 1.002
+anchor_bottom = 0.989
+offset_left = -9.0
+offset_right = 55.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.209589, 0.269874)
+value = 80.0
+rounded = true
+fill_mode = 3
+texture_under = SubResource("GradientTexture2D_l35ti")
+texture_progress = ExtResource("9_jr6uk")
+
+[node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D/OxyTank"]
+texture_filter = 1
+position = Vector2(-11.7635, -36)
+scale = Vector2(1.86364, 1.86364)
+texture = ExtResource("10_4mtd4")
+centered = false
+
 [node name="BendOver" type="Marker2D" parent="."]
 
 [node name="BendUp" type="Marker2D" parent="."]
@@ -215,14 +251,12 @@ target = NodePath("../LeftLerpMover")
 [node name="LeftThigh" type="Node2D" parent="Thigh/LeftFeet"]
 position = Vector2(1, -20)
 rotation = -0.0549179
-scale = Vector2(1, 1)
 script = ExtResource("6_vnihy")
 show_bone = false
 
 [node name="LeftCalf" type="Node2D" parent="Thigh/LeftFeet/LeftThigh"]
 position = Vector2(28, 0)
 rotation = 1.82085
-scale = Vector2(1, 1)
 script = ExtResource("6_vnihy")
 show_bone = false
 

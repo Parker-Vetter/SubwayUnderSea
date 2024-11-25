@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://d0r5bpcgo6rrr" path="res://assets/ProgressBarProgress.tres" id="1_xeib6"]
 [ext_resource type="Texture2D" uid="uid://blovv6icitxi2" path="res://assets/player parts/O2 Tank.png" id="2_eq0dq"]
 
-[sub_resource type="Gradient" id="Gradient_np5nn"]
+[sub_resource type="Gradient" id="Gradient_mcrsw"]
 colors = PackedColorArray(0.0901961, 0.0313726, 0.0117647, 1, 0.0901961, 0.0313726, 0.0117647, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ehl6j"]
-gradient = SubResource("Gradient_np5nn")
+gradient = SubResource("Gradient_mcrsw")
 
 [node name="Control" type="Control"]
 layout_mode = 3

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=16 format=3 uid="uid://c2lr5dioifn5e"]
+=======
+[gd_scene load_steps=16 format=3 uid="uid://mvm2alf2kxii"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_xo1ki"]
 [ext_resource type="Script" path="res://addons/la_ik/nodes/la_bone.gd" id="2_ll38w"]
