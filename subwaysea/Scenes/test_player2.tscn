@@ -1,43 +1,36 @@
-[gd_scene load_steps=23 format=3 uid="uid://cc0kb5tbuiykm"]
+[gd_scene load_steps=16 format=3 uid="uid://c2lr5dioifn5e"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
-[ext_resource type="PackedScene" uid="uid://po33qrtvxntv" path="res://Scenes/view_light.tscn" id="2_op83d"]
-[ext_resource type="Texture2D" uid="uid://coytrmujtyly" path="res://assets/player parts/body.png" id="4_gitg4"]
-[ext_resource type="Shader" uid="uid://uu7t6umy0ogm" path="res://assets/glow.tres" id="4_owt5o"]
-[ext_resource type="Texture2D" uid="uid://dqk0p87sn20f8" path="res://assets/player parts/hand.png" id="5_jruwp"]
-[ext_resource type="Script" path="res://addons/la_ik/nodes/la_ik_two_bone.gd" id="5_tmg8s"]
-[ext_resource type="Texture2D" uid="uid://blbbch3pqscg6" path="res://icon.svg" id="6_1qbdq"]
-[ext_resource type="Texture2D" uid="uid://dtcq3yrxhmj0u" path="res://assets/player parts/bicep.png" id="6_j3peh"]
-[ext_resource type="Script" path="res://addons/la_ik/nodes/la_bone.gd" id="6_vnihy"]
-[ext_resource type="Texture2D" uid="uid://8achsi5y5nyo" path="res://assets/player parts/head.png" id="7_0gxui"]
-[ext_resource type="Texture2D" uid="uid://dutgvne6rmgfv" path="res://assets/player parts/foot.png" id="10_ue5gc"]
-[ext_resource type="Texture2D" uid="uid://cpy0056kvkp5p" path="res://assets/player parts/calf.png" id="11_dlhgw"]
-[ext_resource type="Texture2D" uid="uid://dbju5dk8iqtn3" path="res://assets/player parts/thigh.png" id="12_j47vb"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_xo1ki"]
+[ext_resource type="Script" path="res://addons/la_ik/nodes/la_bone.gd" id="2_ll38w"]
+[ext_resource type="Script" path="res://addons/la_ik/nodes/la_ik_two_bone.gd" id="3_vlvw8"]
+[ext_resource type="PackedScene" uid="uid://po33qrtvxntv" path="res://Scenes/view_light.tscn" id="4_hgo6b"]
+[ext_resource type="Shader" uid="uid://uu7t6umy0ogm" path="res://assets/glow.tres" id="5_cq3sk"]
+[ext_resource type="Texture2D" uid="uid://blbbch3pqscg6" path="res://icon.svg" id="6_lxjg8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w1pg1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y25tw"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ligco"]
 radius = 21.0238
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_08nli"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ce8b2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a7r1p"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q6p1j"]
 radius = 18.0
 height = 56.0
 
-[sub_resource type="Curve" id="Curve_a7l3r"]
+[sub_resource type="Curve" id="Curve_tg2lt"]
 _data = [Vector2(0.0157895, 0.967033), 0.0, 0.0, 0, 0, Vector2(0.952632, 0.593407), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfwwb"]
-shader = ExtResource("4_owt5o")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_umio4"]
+shader = ExtResource("5_cq3sk")
 
-[sub_resource type="Gradient" id="Gradient_f1pns"]
+[sub_resource type="Gradient" id="Gradient_ejsf7"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8yvtv"]
-gradient = SubResource("Gradient_f1pns")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y6hwu"]
+gradient = SubResource("Gradient_ejsf7")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6vgp0"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_aexyt"]
 radius = 106.066
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
@@ -46,89 +39,63 @@ physics_material_override = SubResource("PhysicsMaterial_w1pg1")
 contact_monitor = true
 max_contacts_reported = 3
 angular_damp = 43.0
-script = ExtResource("1_pkbub")
+script = ExtResource("1_xo1ki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_y25tw")
+shape = SubResource("CircleShape2D_ligco")
 
 [node name="UpperBody" type="RigidBody2D" parent="."]
 top_level = true
 position = Vector2(0, -48)
 mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_08nli")
+physics_material_override = SubResource("PhysicsMaterial_ce8b2")
 lock_rotation = true
 linear_damp = 30.606
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperBody"]
-shape = SubResource("CapsuleShape2D_a7r1p")
+shape = SubResource("CapsuleShape2D_q6p1j")
 
 [node name="Line2D" type="Line2D" parent="UpperBody"]
 top_level = true
-position = Vector2(2, -31)
 points = PackedVector2Array(-1, -28, -1, 2)
-width_curve = SubResource("Curve_a7l3r")
-default_color = Color(1, 1, 1, 0)
-texture_mode = 2
+width_curve = SubResource("Curve_tg2lt")
 
 [node name="Shoulder_pos" type="Marker2D" parent="UpperBody/Line2D"]
-position = Vector2(0, -19)
+position = Vector2(0, 8)
 
 [node name="RShoulder" type="Node2D" parent="UpperBody/Line2D"]
-z_index = 2
-script = ExtResource("6_vnihy")
-show_bone = false
+visible = false
+position = Vector2(-1, 5)
+rotation = 1.06421
+script = ExtResource("2_ll38w")
 
 [node name="RForearm" type="Node2D" parent="UpperBody/Line2D/RShoulder"]
 position = Vector2(14, 2)
 rotation = -1.03266
 scale = Vector2(1, 1)
-script = ExtResource("6_vnihy")
-show_bone = false
+script = ExtResource("2_ll38w")
 
 [node name="RHand" type="Node2D" parent="UpperBody/Line2D/RShoulder/RForearm"]
 position = Vector2(25, 1)
-script = ExtResource("6_vnihy")
-show_bone = false
+script = ExtResource("2_ll38w")
 
 [node name="Polygon2D" type="Polygon2D" parent="UpperBody/Line2D/RShoulder/RForearm/RHand"]
-visible = false
 polygon = PackedVector2Array(0.977531, 0.210789, 2.08945, 4.54249, 15.9999, 0.0684967, 3.98653, -4.2553)
 
-[node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D/RShoulder/RForearm/RHand"]
-position = Vector2(-0.409834, -6.06894)
-scale = Vector2(1.15423, 1.15423)
-texture = ExtResource("5_jruwp")
-
 [node name="Polygon2D" type="Polygon2D" parent="UpperBody/Line2D/RShoulder/RForearm"]
-visible = false
 polygon = PackedVector2Array(0.977531, 0.210789, 4.98306, 4.91436, 24, 0.995724, 5.02587, -5.08555)
 
-[node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D/RShoulder/RForearm"]
-position = Vector2(14.2962, 3.53534)
-rotation = -1.57079
-scale = Vector2(1.66393, 1.66393)
-texture = ExtResource("6_j3peh")
-
 [node name="Polygon2D" type="Polygon2D" parent="UpperBody/Line2D/RShoulder"]
-visible = false
 polygon = PackedVector2Array(0.977531, 0.210789, 2.08945, 4.54249, 13.8962, 1.97348, 3.98653, -4.2553)
 
-[node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D/RShoulder"]
-position = Vector2(7.5119, 2.9277)
-rotation = -1.57079
-scale = Vector2(1.22476, 1.22476)
-texture = ExtResource("6_j3peh")
-
 [node name="LaIKTwoBone" type="Node2D" parent="UpperBody/Line2D" node_paths=PackedStringArray("bone_one", "bone_two", "target")]
-position = Vector2(-2, 31)
-script = ExtResource("5_tmg8s")
+script = ExtResource("3_vlvw8")
 bone_one = NodePath("../RShoulder")
 bone_two = NodePath("../RShoulder/RForearm")
 target = NodePath("../AnimationLerp/RLerpPositionHand")
 flip_bend = true
 
 [node name="AnimationLerp" type="Marker2D" parent="UpperBody/Line2D"]
-position = Vector2(0, -21)
 
 [node name="RLerpPositionHand" type="Marker2D" parent="UpperBody/Line2D/AnimationLerp"]
 position = Vector2(29, 20)
@@ -140,26 +107,12 @@ position = Vector2(0, -19)
 
 [node name="Head" type="Polygon2D" parent="UpperBody/Line2D"]
 position = Vector2(0, -29)
-color = Color(1, 1, 1, 0)
 offset = Vector2(4.61261, -11.5315)
 polygon = PackedVector2Array(-3.61261, -3.46853, 3.38739, 3.53147, 3.38739, 14.5315, -11.6126, 14.5315, -15.6126, 2.53147)
 
-[node name="ViewLight" parent="UpperBody/Line2D/Head" instance=ExtResource("2_op83d")]
+[node name="ViewLight" parent="UpperBody/Line2D/Head" instance=ExtResource("4_hgo6b")]
 position = Vector2(4.61261, -11.5316)
 scale = Vector2(1.00094, 1.00094)
-
-[node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D/Head"]
-z_index = 2
-position = Vector2(-5, 20)
-scale = Vector2(1.49164, 1.49164)
-texture = ExtResource("7_0gxui")
-
-[node name="BodySprite" type="Sprite2D" parent="UpperBody/Line2D"]
-z_index = 1
-texture_filter = 3
-position = Vector2(-3, -4)
-scale = Vector2(1.2849, 1.98122)
-texture = ExtResource("4_gitg4")
 
 [node name="BendOver" type="Marker2D" parent="."]
 
@@ -179,7 +132,7 @@ polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 [node name="FloorSnap" type="Marker2D" parent="TargetFeet"]
 
 [node name="Polygon2D" type="Polygon2D" parent="TargetFeet/FloorSnap"]
-material = SubResource("ShaderMaterial_kfwwb")
+material = SubResource("ShaderMaterial_umio4")
 color = Color(0.113725, 0, 0.52549, 0.878431)
 polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 
@@ -207,60 +160,37 @@ color = Color(0.176471, 0.403922, 0, 0.505882)
 polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 
 [node name="LeftLaIKTwoBone" type="Node2D" parent="Thigh/LeftFeet" node_paths=PackedStringArray("bone_one", "bone_two", "target")]
-script = ExtResource("5_tmg8s")
+script = ExtResource("3_vlvw8")
 bone_one = NodePath("../LeftThigh")
 bone_two = NodePath("../LeftThigh/LeftCalf")
 target = NodePath("../LeftLerpMover")
 
 [node name="LeftThigh" type="Node2D" parent="Thigh/LeftFeet"]
 position = Vector2(1, -20)
-rotation = -0.0549179
+rotation = -0.054918
 scale = Vector2(1, 1)
-script = ExtResource("6_vnihy")
-show_bone = false
+script = ExtResource("2_ll38w")
 
 [node name="LeftCalf" type="Node2D" parent="Thigh/LeftFeet/LeftThigh"]
 position = Vector2(28, 0)
 rotation = 1.82085
-scale = Vector2(1, 1)
-script = ExtResource("6_vnihy")
-show_bone = false
+script = ExtResource("2_ll38w")
 
 [node name="LeftFoot" type="Node2D" parent="Thigh/LeftFeet/LeftThigh/LeftCalf"]
 position = Vector2(21.9071, -5.39244)
 rotation = -1.6011
-script = ExtResource("6_vnihy")
-show_bone = false
+script = ExtResource("2_ll38w")
 
 [node name="Polygon2D2" type="Polygon2D" parent="Thigh/LeftFeet/LeftThigh/LeftCalf/LeftFoot"]
-visible = false
 position = Vector2(-4.76837e-07, -9.53674e-07)
 polygon = PackedVector2Array(-0.906404, -0.422411, 4.82612, 3.27239, 12.0827, -0.095479, 13.1199, -4.9867, 6.28438, -0.711765)
 
-[node name="Sprite2D" type="Sprite2D" parent="Thigh/LeftFeet/LeftThigh/LeftCalf/LeftFoot"]
-position = Vector2(0.171682, -23.3446)
-texture = ExtResource("10_ue5gc")
-
 [node name="Polygon2D2" type="Polygon2D" parent="Thigh/LeftFeet/LeftThigh/LeftCalf"]
-visible = false
 position = Vector2(-4.76837e-07, -9.53674e-07)
 polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 21.9071, -5.39244, 19.7102, -5.80911, 6.0985, -5.984)
 
-[node name="Sprite2D" type="Sprite2D" parent="Thigh/LeftFeet/LeftThigh/LeftCalf"]
-position = Vector2(-21.0754, 9.21937)
-rotation = 4.43978
-scale = Vector2(1.04607, 1.74968)
-texture = ExtResource("11_dlhgw")
-
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/LeftFeet/LeftThigh"]
-visible = false
 polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 28.213, 1.01224, 28.5739, -2.12939, 6.0985, -5.984)
-
-[node name="Sprite2D" type="Sprite2D" parent="Thigh/LeftFeet/LeftThigh"]
-position = Vector2(34.1134, -1.1292)
-rotation = 1.64639
-scale = Vector2(1.25886, 2.01036)
-texture = ExtResource("12_j47vb")
 
 [node name="RightFeet" type="Node2D" parent="Thigh"]
 position = Vector2(0, 19)
@@ -282,7 +212,7 @@ color = Color(0.176471, 0.403922, 0, 0.505882)
 polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 
 [node name="RightLaIKTwoBone" type="Node2D" parent="Thigh/RightFeet" node_paths=PackedStringArray("bone_one", "bone_two", "target")]
-script = ExtResource("5_tmg8s")
+script = ExtResource("3_vlvw8")
 bone_one = NodePath("../RightThigh")
 bone_two = NodePath("../RightThigh/RightCalf")
 target = NodePath("../RightLerpMover")
@@ -290,53 +220,31 @@ target = NodePath("../RightLerpMover")
 [node name="RightThigh" type="Node2D" parent="Thigh/RightFeet"]
 position = Vector2(1, -20)
 rotation = 1.57506
-script = ExtResource("6_vnihy")
-show_bone = false
+script = ExtResource("2_ll38w")
 
 [node name="RightCalf" type="Node2D" parent="Thigh/RightFeet/RightThigh"]
 position = Vector2(28, 0)
 rotation = 1.90681
-script = ExtResource("6_vnihy")
-show_bone = false
+script = ExtResource("2_ll38w")
 
 [node name="RightFoot" type="Node2D" parent="Thigh/RightFeet/RightThigh/RightCalf"]
 position = Vector2(20.6846, -4.14119)
 rotation = -1.6011
-script = ExtResource("6_vnihy")
-show_bone = false
+script = ExtResource("2_ll38w")
 
 [node name="Polygon2D2" type="Polygon2D" parent="Thigh/RightFeet/RightThigh/RightCalf/RightFoot"]
-visible = false
 position = Vector2(-4.76837e-07, -9.53674e-07)
 color = Color(0.550747, 0.146554, 0.173659, 1)
 polygon = PackedVector2Array(-0.906404, -0.422411, 4.82612, 3.27239, 12.0827, -0.095479, 13.1199, -4.9867, 6.28438, -0.711765)
 
-[node name="Sprite2D" type="Sprite2D" parent="Thigh/RightFeet/RightThigh/RightCalf/RightFoot"]
-position = Vector2(0.171682, -23.3446)
-texture = ExtResource("10_ue5gc")
-
 [node name="Polygon2D2" type="Polygon2D" parent="Thigh/RightFeet/RightThigh/RightCalf"]
-visible = false
 position = Vector2(-4.76837e-07, -9.53674e-07)
 color = Color(0.570384, 0.195931, 0.187809, 1)
 polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 13.4483, 0.893899, 20.6846, -4.14119, 6.0985, -5.984)
 
-[node name="Sprite2D" type="Sprite2D" parent="Thigh/RightFeet/RightThigh/RightCalf"]
-position = Vector2(-21.0754, 9.21937)
-rotation = 4.43978
-scale = Vector2(1.04607, 1.74968)
-texture = ExtResource("11_dlhgw")
-
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/RightFeet/RightThigh"]
-visible = false
 color = Color(0.739288, 0.125216, 0.104052, 1)
 polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 28.213, 1.01224, 28.5739, -2.12939, 6.0985, -5.984)
-
-[node name="Sprite2D" type="Sprite2D" parent="Thigh/RightFeet/RightThigh"]
-position = Vector2(34.1134, -1.1292)
-rotation = 1.64639
-scale = Vector2(1.25886, 2.01036)
-texture = ExtResource("12_j47vb")
 
 [node name="RestMoving" type="Marker2D" parent="Thigh"]
 position = Vector2(11, 36)
@@ -361,12 +269,12 @@ target_position = Vector2(0, 74)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Thigh"]
 
 [node name="CrouchMoving" type="Marker2D" parent="Thigh"]
-position = Vector2(41, -1)
+position = Vector2(29, 0)
 
 [node name="SnapCrouch" type="Sprite2D" parent="Thigh/CrouchMoving"]
 top_level = true
 scale = Vector2(0.0186198, 4.14925)
-texture = SubResource("GradientTexture1D_8yvtv")
+texture = SubResource("GradientTexture1D_y6hwu")
 
 [node name="CrouchRaycast" type="RayCast2D" parent="Thigh/CrouchMoving"]
 target_position = Vector2(1, 107)
@@ -377,14 +285,14 @@ position = Vector2(-24, 0)
 [node name="SnapAnchor" type="Sprite2D" parent="Thigh/CrouchAnchor"]
 top_level = true
 scale = Vector2(0.0186198, 4.14925)
-texture = SubResource("GradientTexture1D_8yvtv")
+texture = SubResource("GradientTexture1D_y6hwu")
 
 [node name="CrouchAnchor" type="RayCast2D" parent="Thigh/CrouchAnchor"]
 target_position = Vector2(0, 105)
 
 [node name="StrideCircle" type="CollisionShape2D" parent="."]
 top_level = true
-shape = SubResource("CircleShape2D_6vgp0")
+shape = SubResource("CircleShape2D_aexyt")
 disabled = true
 debug_color = Color(0, 0.6, 0.701961, 0)
 
@@ -407,4 +315,4 @@ points = PackedVector2Array(-1, 93, -1, 124)
 top_level = true
 z_index = 1
 scale = Vector2(0.113683, 0.113683)
-texture = ExtResource("6_1qbdq")
+texture = ExtResource("6_lxjg8")

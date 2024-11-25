@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dn0mkea57a3cw"]
+[gd_scene load_steps=33 format=3 uid="uid://dywsx6k4swabh"]
 
 [ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
@@ -22,9 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="13_eu4yb"]
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="14_61kdm"]
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
-[ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
+[ext_resource type="PackedScene" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
 [ext_resource type="Texture2D" uid="uid://e5gvb71liegp" path="res://assets/component spawner.png" id="22_7k725"]
-[ext_resource type="PackedScene" uid="uid://djl7jxpyxig1i" path="res://Scenes/depth_gague.tscn" id="24_o1462"]
+[ext_resource type="PackedScene" path="res://Scenes/depth_gague.tscn" id="24_o1462"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
@@ -40,7 +40,7 @@ polygon = PackedVector2Array(-621.5, -53, 1146.5, -53, 1146.5, 147, 1066.5, 123,
 
 [sub_resource type="Curve2D" id="Curve2D_46uno"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 40, -68, 0, 0, 0, 0, 38, 16, 0, 0, 0, 0, 38, 176, 0, 0, 0, 0, 38, 376)
+"points": PackedVector2Array(0, 0, 0, 0, 39, -90, 0, 0, 0, 0, 38, 16, 0, 0, 0, 0, 38, 176, 0, 0, 0, 0, 38, 376)
 }
 point_count = 4
 
@@ -411,7 +411,6 @@ polygon = PackedVector2Array(-621.5, -53, 1146.5, -53, 1146.5, 147, 1066.5, 123,
 [node name="Player" parent="." instance=ExtResource("1_eeyxp")]
 position = Vector2(534, 527)
 angular_damp = 66.313
-metadata/_edit_lock_ = true
 
 [node name="OxygenSystem" parent="." instance=ExtResource("7_8beuo")]
 z_index = -1
@@ -445,8 +444,8 @@ position = Vector2(6, 8)
 curve = SubResource("Curve2D_46uno")
 
 [node name="PathFollow2D" parent="Ladder/Path2D" index="0"]
-position = Vector2(40, -68)
-rotation = 1.5946
+position = Vector2(39, -90)
+rotation = 1.58023
 
 [node name="CollisionShape2D" parent="Ladder/Floor" index="0"]
 position = Vector2(47, 7)
