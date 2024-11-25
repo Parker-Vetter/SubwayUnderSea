@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://blbbch3pqscg6" path="res://icon.svg" id="23_7lujp"]
 [ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/Engine/engine.tscn" id="26_s0mwt"]
 [ext_resource type="PackedScene" uid="uid://f34j633okqsc" path="res://Scenes/component.tscn" id="28_o4yf3"]
+[ext_resource type="PackedScene" uid="uid://d0xh8vi2rqjwk" path="res://Scenes/escMenu.tscn" id="29_h5j81"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
@@ -687,6 +688,9 @@ metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.188235, 0.133333, 0.117647, 1)
+
+[node name="escMenu" parent="." instance=ExtResource("29_h5j81")]
+visible = false
 
 [connection signal="wasAttacked" from="." to="LightParent" method="attacked_for_bit"]
 [connection signal="wasAttacked" from="." to="Hull" method="was_attacked"]
