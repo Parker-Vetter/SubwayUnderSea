@@ -13,6 +13,9 @@ func _process(delta: float) -> void:
 	elif fadeIn.color.a >= 1.0:
 		dead = false
 		get_tree().reload_current_scene()
+	
+	if Input.is_action_just_pressed('interact'):
+		callForAttack()
 
 
 func _ready() -> void:
@@ -28,6 +31,7 @@ func callForAttack():
 
 #emit signal to all machines that their was an attack
 func emitWasAttacked():
+	
 	var randValue = randi_range(0,10)
 	wasAttacked.emit(randValue)
 	# connect to OxygenMachine.gd and breakerBox.gd and camera.gd

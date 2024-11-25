@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjdfdqapm70ch"]
+
+[ext_resource type="Script" path="res://Scripts/smash_point.gd" id="1_v6hji"]
+
+[sub_resource type="Curve" id="Curve_ci2g2"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 50.5495), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_51m2w"]
+_data = [Vector2(0, 0.274725), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xtyf2"]
+offsets = PackedFloat32Array(0.0144231, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.235815, 0.14408, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_u027e"]
+offsets = PackedFloat32Array(0.408654, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="SmashPoint1" type="CollisionPolygon2D" groups=["smash_point"]]
+polygon = PackedVector2Array(-14.5, -9, -18.5, 79, 2.5, 124, 59.5, 143, 120.5, 98, 81.5, -7)
+script = ExtResource("1_v6hji")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+emitting = false
+amount = 80
+one_shot = true
+explosiveness = 1.0
+emission_shape = 4
+emission_points = PackedVector2Array(6.085, 17.145, -21.895, 0, 18.555, 0)
+emission_colors = PackedColorArray()
+direction = Vector2(0, 10)
+spread = 90.0
+initial_velocity_min = 234.38
+initial_velocity_max = 234.38
+damping_min = 22.656
+damping_max = 61.719
+damping_curve = SubResource("Curve_ci2g2")
+angle_min = -585.0
+scale_amount_max = 12.0
+scale_amount_curve = SubResource("Curve_51m2w")
+color_ramp = SubResource("Gradient_xtyf2")
+color_initial_ramp = SubResource("Gradient_u027e")

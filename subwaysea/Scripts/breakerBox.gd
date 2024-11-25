@@ -16,7 +16,7 @@ func _ready() -> void:
 	self.get_parent().connect("wasAttacked", Callable(self, "wasAttacked"))
 
 func wasAttacked(randomValue):
-	if randomValue <= 5:
+	if randomValue <= 2:
 		if currentSprite == fixedSprite:
 			lightParent.flickerOff()
 		currentSprite = brokenSprite

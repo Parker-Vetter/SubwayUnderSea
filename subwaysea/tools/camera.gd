@@ -20,10 +20,6 @@ func _ready():
 	ignore_rotation = false
 	if player != null: position = player.position
 
-#func MainScene():
-	#print("mainIniziatlized")
-	#var mainScene = get_tree().root.get_node("MainScene")
-
 #black out area you were just in thats part of the gameplay
 func transition(point : Vector2): #ig just position
 	var tween = get_tree().create_tween()
@@ -32,9 +28,6 @@ func transition(point : Vector2): #ig just position
 	tween.tween_property(self, 'position', point + Vector2(160, 90), .5)
 
 func _process(delta):
-	var mainScene = get_tree().root.get_node("MainScene")
-	if mainScene != null:
-		mainScene.connect("wasAttacked", Callable(self, "attacked"))
 	player = get_tree().get_first_node_in_group('player')
 	if trauma: 
 		trauma = max(trauma - decay * delta, 0)

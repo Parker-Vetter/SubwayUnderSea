@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dywsx6k4swabh"]
+[gd_scene load_steps=35 format=3 uid="uid://dywsx6k4swabh"]
 
 [ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="11_y1uls"]
 [ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="12_e13pe"]
 [ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="13_eu4yb"]
+[ext_resource type="Script" path="res://Scripts/hull.gd" id="13_n462f"]
+[ext_resource type="PackedScene" uid="uid://bjdfdqapm70ch" path="res://Scenes/smash_point.tscn" id="14_00eo4"]
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="14_61kdm"]
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
 [ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
@@ -34,6 +36,9 @@ polygon = PackedVector2Array(-473.5, -18, -473.5, 118, 294.5, 118, 294.5, -18)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8i1j1"]
 polygon = PackedVector2Array(-453, -25, -453, 111, -77, 111, -53, 207, 3, 207, 27, 111, 211, 111, 211, -25)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ywtxs"]
+polygon = PackedVector2Array(-621.5, -53, 1146.5, -53, 1146.5, 147, 1066.5, 123, 1059.5, 51, 1066.5, 3, 994.5, -5, 921.5, 3, 833.281, -0.0366974, 682.5, -2, 578.5, 3, 570.5, 115, 514.5, 115, 506.5, 3, 385.5, 8, 286.5, -1, 205.178, 2.04959, 126.5, 5, 28.5, -7, -50.5, 6, -145.282, 5.24239, -225.853, 5.51958, -313.5, 13, -365.5, 6, -407.276, 4.88099, -477.5, 3, -477.5, 61.2996, -477.5, 117.868, -471.5, 174, -480.5, 215, -484.5, 323, -407.5, 364, -485.5, 390, -463.5, 466, -482.5, 545, -470.5, 582, -477.5, 611, -386.126, 611, -61.9302, 611, -25.9085, 611, 47.1945, 611, 112.881, 611, 205.5, 611, 273.5, 600, 415.5, 601, 482.5, 611, 482.5, 1011, 954.5, 1011, 954.5, 835, 594.5, 835, 594.5, 611, 673.103, 611.121, 742.078, 611.228, 812.236, 611.336, 885.966, 611.45, 951.369, 611.551, 1017.96, 611.653, 1072.66, 611.738, 1134.51, 611.833, 1242.5, 612, 1347.5, 613, 1450.5, 612, 1538.5, 611, 1534.5, 579, 1547.5, 537, 1537.5, 506, 1530.5, 413, 1538.5, 363, 1417.5, 354, 1335.5, 369, 1214.5, 362, 1130.5, 368, 1066.5, 363, 1061.5, 196, 1069.5, 166, 1066.5, 123, 1626.5, 275, 1626.5, 659, 1058.5, 851, 1058.5, 1059, 394.5, 1059, 250.5, 891, -509.5, 891, -621.5, 707)
 
 [sub_resource type="Curve2D" id="Curve2D_46uno"]
 _data = {
@@ -366,7 +371,7 @@ position = Vector2(626, 599)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Floor"]
 position = Vector2(-8.5, 27)
-polygon = PackedVector2Array(-473.5, -18, -473.5, 118, 294.5, 118, 294.5, -18)
+polygon = PackedVector2Array(-473.5, -18, -501.5, -1, -507.5, 48, -473.5, 118, 294.5, 118, 299.5, -18, 285.5, -27, 259.5, -26, 225.5, -18, -187.5, -17, -422.5, -23)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Floor/CollisionShape2D"]
 occluder = SubResource("OccluderPolygon2D_8026o")
@@ -375,11 +380,11 @@ occluder_light_mask = 3
 [node name="Polygon2D" type="Polygon2D" parent="Floor/CollisionShape2D"]
 light_mask = 0
 color = Color(0.0901961, 0.0313726, 0.0117647, 1)
-polygon = PackedVector2Array(-473.5, -18, -473.5, 118, 294.5, 118, 294.5, -18)
+polygon = PackedVector2Array(-473.5, -18, -501.5, -1, -507.5, 48, -473.5, 118, 294.5, 118, 299.5, -18, 285.5, -27, 259.5, -26, 225.5, -18, -187.5, -17, -422.5, -23)
 
 [node name="CollisionShape2D4" type="CollisionPolygon2D" parent="Floor"]
 position = Vector2(851, 34)
-polygon = PackedVector2Array(-453, -25, -453, 111, -77, 111, -53, 207, 3, 207, 27, 111, 211, 111, 211, -25)
+polygon = PackedVector2Array(-455, -22, -453, 111, -77, 111, -53, 207, 3, 207, 27, 111, 211, 111, 211, -25, -377, -27, -401, -30, -434, -26)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Floor/CollisionShape2D4"]
 occluder = SubResource("OccluderPolygon2D_8i1j1")
@@ -388,22 +393,60 @@ occluder_light_mask = 3
 [node name="Polygon2D" type="Polygon2D" parent="Floor/CollisionShape2D4"]
 light_mask = 0
 color = Color(0.0901961, 0.0313726, 0.0117647, 1)
-polygon = PackedVector2Array(-453, -25, -453, 111, -77, 111, -53, 207, 3, 207, 27, 111, 211, 111, 211, -25)
+polygon = PackedVector2Array(-455, -22, -453, 111, -77, 111, -53, 207, 3, 207, 27, 111, 211, 111, 211, -25, -377, -27, -401, -30, -434, -26)
 
 [node name="Hull" type="StaticBody2D" parent="."]
 position = Vector2(630, 354)
+script = ExtResource("13_n462f")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hull"]
 position = Vector2(-8.5, 27)
-polygon = PackedVector2Array(-621.5, -53, 1146.5, -53, 1146.5, 147, 1066.5, 123, 1059.5, 51, 1066.5, 3, 994.5, -5, 921.5, 3, 833.281, -0.0366974, 682.5, -2, 578.5, 3, 570.5, 115, 514.5, 115, 506.5, 3, 385.5, 8, 286.5, -1, 205.178, 2.04959, 126.5, 5, 28.5, -7, -50.5, 6, -145.282, 5.24239, -225.853, 5.51958, -313.5, 13, -365.5, 6, -407.276, 4.88099, -477.5, 3, -477.5, 61.2996, -477.5, 117.868, -471.5, 174, -480.5, 215, -484.5, 323, -407.5, 364, -485.5, 390, -463.5, 466, -482.5, 545, -470.5, 582, -477.5, 611, -386.126, 611, -61.9302, 611, -25.9085, 611, 47.1945, 611, 112.881, 611, 205.5, 611, 273.5, 600, 415.5, 601, 482.5, 611, 482.5, 1011, 954.5, 1011, 954.5, 835, 594.5, 835, 594.5, 611, 673.103, 611.121, 742.078, 611.228, 812.236, 611.336, 885.966, 611.45, 951.369, 611.551, 1017.96, 611.653, 1072.66, 611.738, 1134.51, 611.833, 1242.5, 612, 1347.5, 613, 1450.5, 612, 1538.5, 611, 1534.5, 579, 1547.5, 537, 1537.5, 506, 1530.5, 413, 1538.5, 363, 1417.5, 354, 1335.5, 369, 1214.5, 362, 1130.5, 368, 1066.5, 363, 1061.5, 196, 1069.5, 166, 1066.5, 123, 1626.5, 275, 1626.5, 659, 1058.5, 851, 1058.5, 1059, 394.5, 1059, 250.5, 891, -509.5, 891, -621.5, 707)
+polygon = PackedVector2Array(-621.5, -53, 1146.5, -53, 1146.5, 147, 1066.5, 123, 1059.5, 51, 1066.5, 3, 994.5, -5, 921.5, 3, 833.281, -0.0366974, 682.5, -2, 578.5, 3, 570.5, 115, 514.5, 115, 506.5, 3, 385.5, 8, 286.5, -1, 205.178, 2.04959, 117.5, 1, 26.5, -9, -50.5, 6, -145.282, 5.24239, -225.853, 5.51958, -313.5, 13, -365.5, 6, -407.276, 4.88099, -477.5, 3, -477.5, 61.2996, -477.5, 117.868, -471.5, 174, -480.5, 215, -484.5, 323, -407.5, 364, -485.5, 390, -463.5, 466, -482.5, 545, -470.5, 582, -477.5, 611, -386.126, 611, -61.9302, 611, -25.9085, 611, 47.1945, 611, 112.881, 611, 205.5, 611, 273.5, 600, 415.5, 601, 482.5, 611, 482.5, 1011, 954.5, 1011, 954.5, 835, 594.5, 835, 594.5, 611, 673.103, 611.121, 742.078, 611.228, 812.236, 611.336, 885.966, 611.45, 951.369, 611.551, 1017.96, 611.653, 1072.66, 611.738, 1134.51, 611.833, 1242.5, 612, 1347.5, 613, 1450.5, 612, 1538.5, 611, 1534.5, 579, 1547.5, 537, 1537.5, 506, 1530.5, 413, 1538.5, 363, 1417.5, 354, 1335.5, 369, 1214.5, 362, 1130.5, 368, 1066.5, 363, 1061.5, 196, 1069.5, 166, 1066.5, 123, 1626.5, 275, 1626.5, 659, 1058.5, 851, 1058.5, 1059, 394.5, 1059, 250.5, 891, -509.5, 891, -621.5, 707)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Hull/CollisionShape2D"]
+occluder = SubResource("OccluderPolygon2D_ywtxs")
 occluder_light_mask = 3
 
 [node name="Polygon2D" type="Polygon2D" parent="Hull/CollisionShape2D"]
 light_mask = 0
 color = Color(0.0901961, 0.0313726, 0.0117647, 1)
 polygon = PackedVector2Array(-621.5, -53, 1146.5, -53, 1146.5, 147, 1066.5, 123, 1059.5, 51, 1066.5, 3, 994.5, -5, 921.5, 3, 833.281, -0.0366974, 682.5, -2, 578.5, 3, 570.5, 115, 514.5, 115, 506.5, 3, 385.5, 8, 286.5, -1, 205.178, 2.04959, 126.5, 5, 28.5, -7, -50.5, 6, -145.282, 5.24239, -225.853, 5.51958, -313.5, 13, -365.5, 6, -407.276, 4.88099, -477.5, 3, -477.5, 61.2996, -477.5, 117.868, -471.5, 174, -480.5, 215, -484.5, 323, -407.5, 364, -485.5, 390, -463.5, 466, -482.5, 545, -470.5, 582, -477.5, 611, -386.126, 611, -61.9302, 611, -25.9085, 611, 47.1945, 611, 112.881, 611, 205.5, 611, 273.5, 600, 415.5, 601, 482.5, 611, 482.5, 1011, 954.5, 1011, 954.5, 835, 594.5, 835, 594.5, 611, 673.103, 611.121, 742.078, 611.228, 812.236, 611.336, 885.966, 611.45, 951.369, 611.551, 1017.96, 611.653, 1072.66, 611.738, 1134.51, 611.833, 1242.5, 612, 1347.5, 613, 1450.5, 612, 1538.5, 611, 1534.5, 579, 1547.5, 537, 1537.5, 506, 1530.5, 413, 1538.5, 363, 1417.5, 354, 1335.5, 369, 1214.5, 362, 1130.5, 368, 1066.5, 363, 1061.5, 196, 1069.5, 166, 1066.5, 123, 1626.5, 275, 1626.5, 659, 1058.5, 851, 1058.5, 1059, 394.5, 1059, 250.5, 891, -509.5, 891, -621.5, 707)
+
+[node name="SmashPoints" type="Node2D" parent="Hull"]
+modulate = Color(1, 1, 1, 0.313726)
+position = Vector2(-8.5, 27)
+
+[node name="SmashPoint1" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+
+[node name="SmashPoint2" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+polygon = PackedVector2Array(448.5, 1, 413.5, 90, 491.5, 137, 535.5, 156, 591.5, 153, 656.5, 75, 640.5, -5)
+
+[node name="SmashPoint3" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+polygon = PackedVector2Array(-396.5, 3, -420.5, 48, -463.5, 90, -496.5, 93, -493.5, 10, -469.5, -12)
+
+[node name="SmashPoint5" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+polygon = PackedVector2Array(294.5, -3, 221.5, 80, 127.5, 58, 94.5, 0, 209.5, -15)
+
+[node name="SmashPoint6" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+polygon = PackedVector2Array(-345.5, 5, -354.5, 45, -312.5, 67, -284.5, 49, -260.5, 53, -243.5, 2, -194.5, 0, -185.5, 53, -163.5, 95, -98.5, 76, -86.5, 47, -79.5, -9, -278.5, -37)
+
+[node name="SmashPoint7" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+polygon = PackedVector2Array(-488.5, 433, -378.5, 445, -353.5, 506, -374.5, 571, -437.5, 636, -526.5, 598)
+
+[node name="SmashPoint9" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+polygon = PackedVector2Array(-14.5, -9, -18.5, 79, -2.5, 158, 59.5, 143, 120.5, 98, 81.5, -7)
+
+[node name="SmashPoint8" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+polygon = PackedVector2Array(-70.5, 656, -16.5, 583, 36.5, 575, 112.5, 588, 158.5, 590, 208.5, 606, 231.5, 627, 136.5, 667)
+
+[node name="SmashPoint10" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+polygon = PackedVector2Array(626.5, 612, 679.5, 582, 715.5, 603, 746.5, 582, 793.5, 570, 839.5, 571, 869.5, 593, 893.5, 620, 666.5, 647)
+
+[node name="SmashPoint11" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+polygon = PackedVector2Array(972.5, 621, 993.5, 596, 1017.5, 619, 1047.5, 602, 1091.5, 619, 1142.5, 604, 1233.5, 623, 1034.5, 656)
+
+[node name="SmashPoint12" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
+polygon = PackedVector2Array(1536.5, 464, 1484.5, 466, 1454.5, 487, 1448.5, 527, 1436.5, 553, 1437.5, 582, 1414.5, 622, 1562.5, 625, 1550.5, 460)
 
 [node name="Player" parent="." instance=ExtResource("1_eeyxp")]
 position = Vector2(534, 527)
@@ -542,6 +585,8 @@ metadata/_edit_lock_ = true
 visible = false
 color = Color(0.188235, 0.133333, 0.117647, 1)
 
+[connection signal="wasAttacked" from="." to="LightParent" method="attacked_for_bit"]
+[connection signal="wasAttacked" from="." to="Hull" method="was_attacked"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="oxygen_multiplier_changed" from="SanitySystem" to="OxygenSystem" method="_on_sanity_system_oxygen_multiplier_changed"]
 [connection signal="child_entered_tree" from="SupplyGrabber/DebrisContainer" to="ComponentSpawner" method="_on_debris_container_child_entered_tree"]

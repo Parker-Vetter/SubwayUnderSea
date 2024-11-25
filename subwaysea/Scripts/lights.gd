@@ -35,3 +35,15 @@ func awaitTimer():
 			var rand = randi_range(0,6) #choses an int between 0 and max energy
 			child.energy = rand #sets brightness to the random int
 		await get_tree().create_timer(0.05).timeout #creates a timer for the flicker to last for
+
+func attacked_for_bit(rand_value):
+	for child in get_children():
+		if child.energy == 0:
+			return
+		else:
+			child.energy = 0
+			await get_tree().create_timer(.2).timeout
+			child.energy = 6
+			
+	
+	

@@ -2,7 +2,7 @@ extends Node
 
 var insideArea = false
 var multiplier = 1
-var oxygenAmount = 10
+var oxygenAmount = 70
 var oxygenCap = 100
 
 var currentSprite = load("res://assets/oxy_fixed.png")
@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 
 func addOxygen():
 	if (oxygenAmount < oxygenCap) and (sprite.texture == fixedSprite):
-		oxygenAmount += 1
+		oxygenAmount += 2
 
 func loseOxygen():
 	oxygenAmount -= 1 * multiplier

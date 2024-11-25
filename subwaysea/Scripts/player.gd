@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 		STATES.BEND:
 			crouch_process(delta)
 			spine = bend_over.global_position
-			bend_over.global_position = global_position + Vector2(direction * 25,-35)
+			bend_over.global_position = global_position + Vector2(direction * 25,-25)
 		STATES.CUTSCENE:
 			bend_up.global_position = global_position + Vector2(0, -30)
 			spine = bend_up.global_position
@@ -91,7 +91,7 @@ func _physics_process(delta: float) -> void:
 func set_state_stand():
 	cur_state = STATES.STAND
 	linear_damp = 0
-	speed = 250000
+	speed = 350000
 func set_state_bend():
 	cur_state = STATES.BEND
 	speed = 60000
@@ -120,8 +120,12 @@ func manage_spine(delta):
 	if cur_state != STATES.CUTSCENE:
 		$UpperBody/Line2D.rotation = upper_body.global_rotation + (linear_velocity.x * .0019)
 	
-	upper_body.apply_central_force((upper_body.global_position - (spine)) * -100)
-	apply_central_force((spine.x - upper_body.global_position.x) * Vector2(-50, 0.0))
+	upper_body.apply_central_force((upper_body.global_position - (spine)) * -80)
+	if cur_state == STATES.STAND: 
+		upper_body.rotation = 0
+	#apply_central_force((spine.x - upper_body.global_position.x) * Vector2(-60, 0.0))
+	apply_torque((spine.x - upper_body.global_position.x) * -10000)
+	
 	#base this upper part right here on how far the square is from the marker instead of the body
 
 
@@ -155,8 +159,10 @@ var old_rotation_time = .27
 
 func stand_process(delta):
 	calculate_speed(delta)
+	
 	stride_circle.global_rotation += circle_speed * delta * stride_circle_speed
 	walk_run_ratio = min(abs(circle_speed)/3, 1)
+	
 	if walking_backwards: 
 		walk_run_ratio = 0
 	else:
