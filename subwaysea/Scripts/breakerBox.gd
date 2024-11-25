@@ -20,6 +20,7 @@ func wasAttacked(randomValue):
 		if currentSprite == fixedSprite:
 			lightParent.flickerOff()
 		currentSprite = brokenSprite
+		$WorkingAudio.stop()
 
 func repair():
 	if currentSprite == brokenSprite:
@@ -40,3 +41,7 @@ func hasSpriteChanged():
 		currentSprite = brokenSprite
 	elif  sprite.texture == brokenSprite:
 		currentSprite = fixedSprite
+
+func _process(delta: float) -> void:
+	if currentSprite == fixedSprite and $WorkingAudio.playing == false:
+		$WorkingAudio.play()

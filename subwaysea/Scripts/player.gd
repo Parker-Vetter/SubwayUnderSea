@@ -75,8 +75,10 @@ func _physics_process(delta: float) -> void:
 		STATES.CUTSCENE:
 			bend_up.global_position = global_position + Vector2(0, -30)
 			spine = bend_up.global_position
+			spine_offset.global_position = global_position
 	
 	upper_body.rotation = upper_body.global_position.angle_to_point(global_position - Vector2(0,15)) - PI/2
+	
 	$Thigh.global_position = $UpperBody/Line2D.to_global($UpperBody/Line2D.get_point_position(1))
 	
 	anchor_ray_cast_2d.global_position = Vector2(anchor_target.global_position.x, global_position.y)
@@ -117,7 +119,7 @@ func manage_spine(delta):
 	$UpperBody/Line2D.rotation = upper_body.global_rotation + (linear_velocity.x * .001)
 	
 	upper_body.apply_central_force((upper_body.global_position - (spine)) * -100)
-	apply_central_force((spine.x - upper_body.global_position.x) * Vector2(-80, 0.0) ) 
+	apply_central_force((spine.x - upper_body.global_position.x) * Vector2(-50, 0.0))
 	#base this upper part right here on how far the square is from the marker instead of the body
 
 
@@ -150,47 +152,6 @@ var old_rotation_time = .27
 @onready var bounce_curve = preload("res://assets/bounce.tres")
 
 func stand_process(delta):
-	#moving code
-##region old ik system
-	#if linear_velocity.abs().length() > 20.0:
-		#
-		#
-		#if floor_snap.global_position.distance_to(lerp_position.global_position) > ik_length * 1.3:
-			#pass
-			##lerp_position.global_position = floor_snap.global_position
-			##print('thedistance, hes going for speed, shes all alone, all alone, in her time of need')
-	#else:
-		#target_feet.global_position = global_position + Vector2(Input.get_axis('left','right') * .1,0)
-		#lerp_position.global_position = floor_snap.global_position
-		#
-
-##endregion
-	#
-	#target_feet.global_position = global_position + Vector2(Input.get_axis('left','right') * ik_length,0)
-	#distance_leg = anchor_leg.global_position.x - moving_leg.global_position.x
-	#current_y = feet_ray_cast.get_collision_point().y
-	#$Thigh.global_position.x = global_position.x
-	##$Thigh.global_position.y = global_position.y - 10
-	#var leg_x = -left_lerp_mover.global_position.x + $Thigh.global_position.x
-	#var leg_length = 50
-	#set_y(current_y - (abs(leg_x * .4)) - 35)
-	#$Thigh.global_position.y = y_offset
-	#
-	#
-	##moving_leg.global_position.x = global_position.x
-	#var y_mover = cos(distance_leg * .1)  * amplitude
-	#
-	#
-	#if linear_velocity.abs().length() > 12.0:
-		#moving_leg.global_position.x = lerp(moving_leg.global_position.x, target_feet.global_position.x, delta * .1 * linear_velocity.x)
-		#moving_leg.global_position.y = current_y - y_mover - 3
-		#print((moving_leg.global_position.x - global_position.x) * Input.get_axis('left','right'))
-		#if moving_leg.global_position.y > current_y and (moving_leg.global_position.x - global_position.x) * Input.get_axis('left','right') > 0:
-
-	#else:
-		#moving_leg.global_position = moving_leg.global_position.lerp($Thigh/RestMoving.global_position, delta * 5)
-		#anchor_leg.global_position = anchor_leg.global_position.lerp($Thigh/RestAnchor.global_position, delta * 4)
-	##$Thigh.global_position.y = anchor_leg_
 	calculate_speed(delta)
 	stride_circle.global_rotation += circle_speed * delta * stride_circle_speed
 	walk_run_ratio = min(abs(circle_speed)/3, 1)
@@ -199,7 +160,7 @@ func stand_process(delta):
 		
 	#print(walk_run_ratio)
 	if abs(circle_speed) > 2:
-		stride_circle_speed = 2.0
+		stride_circle_speed = 1.5
 	else:
 		stride_circle_speed = 6.0
 	
@@ -258,10 +219,12 @@ var crouch_f = [Vector2(30,-3)]
 var crouch_i_f = [Vector2(0,0),Vector2(0,0)]
 
 func crouch_process(delta):
-	print(abs(stride_circle.global_rotation - last_stride_angle))
 	stride_circle_speed = 2.2
 	calculate_speed(delta)
 	stride_circle.global_rotation += circle_speed * delta * stride_circle_speed
+	
+	$Thigh/CrouchMoving.position.x = direction * 30
+	$Thigh/CrouchAnchor.position.x = direction * -15
 	
 	upper_body.apply_central_force(Vector2(0,-200 * abs(stride_circle.global_rotation - last_stride_angle)))
 	if linear_velocity.abs().length() > 3.0:
@@ -289,14 +252,18 @@ func crouch_process(delta):
 				anchor_leg = moving_target
 				moving_leg = anchor_target
 		elif abs(stride_circle.global_rotation - last_stride_angle) > PI/3:
-			
-			anchor_leg.position = anchor_leg.to_local(crouch_i_f[0])
+			#anchor_leg.position = anchor_leg.to_local(crouch_i_f[0])
 			moving_leg.position = crouch_f[0]
 		else:
 			anchor_leg.position = Vector2.ZERO
 			moving_leg.position = Vector2.ZERO
 			anchor_leg.position = anchor_leg.to_local(crouch_i_f[0])
 			moving_leg.position = moving_leg.to_local(crouch_i_f[1])
+	else:
+		anchor_leg.position = Vector2.ZERO
+		moving_leg.position = Vector2.ZERO
+		anchor_leg.position = anchor_leg.to_local(crouch_i_f[0])
+		moving_leg.position = moving_leg.to_local(crouch_i_f[1])
 			
 			
 	left_lerp_mover.position = left_lerp_mover.position.lerp(anchor_target.position, delta * 25)
@@ -324,6 +291,7 @@ func match_face(delta):
 	
 	
 #region offsets
-	pass
+	#$UpperBody/Line2D.rotation = 0 + (spine_offset.position - global_position).length() * .01
+	$UpperBody/Line2D/OxyTank.rotation = lerp($UpperBody/Line2D/OxyTank.rotation, (-$UpperBody/Line2D.rotation * direction) + 0 + (spine_offset.position - global_position).length() * .05, delta * 12)
 	
 #endregion

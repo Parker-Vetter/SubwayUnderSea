@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvotvnd110mnm"]
+[gd_scene load_steps=9 format=3 uid="uid://dvotvnd110mnm"]
 
 [ext_resource type="Script" path="res://Scripts/breakerBox.gd" id="1_qvh50"]
 [ext_resource type="Texture2D" uid="uid://cbxky3n3scti8" path="res://assets/Light Machine ON.png" id="2_05yh6"]
+[ext_resource type="AudioStream" uid="uid://ds3s1ow1i3l3r" path="res://assets/sounds/machenis.wav" id="3_mbr32"]
 [ext_resource type="Texture2D" uid="uid://bpo1sr2qms7j3" path="res://assets/Blinking Light Machine.png" id="3_q0h0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5wuyf"]
@@ -65,3 +66,9 @@ polygon = PackedVector2Array(-312.954, 119.685, -334.793, 131.796, -364.477, 131
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.133333, 0.0588235, 0.0352941, 1)
 polygon = PackedVector2Array(1, 83, 51, 83, 51, 131, 1, 131)
+
+[node name="WorkingAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mbr32")
+volume_db = -10.0
+max_distance = 800.0
+attenuation = 2.2974

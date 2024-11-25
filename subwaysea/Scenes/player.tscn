@@ -75,7 +75,6 @@ top_level = true
 position = Vector2(2, -31)
 points = PackedVector2Array(-1, -28, -1, 2)
 width_curve = SubResource("Curve_a7l3r")
-default_color = Color(1, 1, 1, 0)
 texture_mode = 2
 
 [node name="Shoulder_pos" type="Marker2D" parent="UpperBody/Line2D"]
@@ -153,7 +152,7 @@ offset = Vector2(4.61261, -11.5315)
 polygon = PackedVector2Array(-3.61261, -3.46853, 3.38739, 3.53147, 3.38739, 14.5315, -11.6126, 14.5315, -15.6126, 2.53147)
 
 [node name="ViewLight" parent="UpperBody/Line2D/Head" instance=ExtResource("2_op83d")]
-position = Vector2(4.61261, -11.5316)
+position = Vector2(10, -5)
 scale = Vector2(1.00094, 1.00094)
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D/Head"]
@@ -163,14 +162,13 @@ scale = Vector2(1.49164, 1.49164)
 texture = ExtResource("7_0gxui")
 
 [node name="BodySprite" type="Sprite2D" parent="UpperBody/Line2D"]
-z_index = 1
 texture_filter = 3
-position = Vector2(-3, -4)
-scale = Vector2(1.2849, 1.98122)
+position = Vector2(-3, -8.63262)
+scale = Vector2(1.2849, 1.7853)
 texture = ExtResource("4_gitg4")
 
 [node name="OxyTank" type="Marker2D" parent="UpperBody/Line2D"]
-position = Vector2(-12, -14)
+position = Vector2(-11, -16)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="UpperBody/Line2D/OxyTank"]
 anchors_preset = -1
@@ -249,6 +247,7 @@ bone_two = NodePath("../LeftThigh/LeftCalf")
 target = NodePath("../LeftLerpMover")
 
 [node name="LeftThigh" type="Node2D" parent="Thigh/LeftFeet"]
+modulate = Color(0.856067, 0.856067, 0.856067, 1)
 position = Vector2(1, -20)
 rotation = -0.0549179
 script = ExtResource("6_vnihy")
@@ -283,7 +282,7 @@ polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 21.9071, -5.39
 [node name="Sprite2D" type="Sprite2D" parent="Thigh/LeftFeet/LeftThigh/LeftCalf"]
 position = Vector2(-21.0754, 9.21937)
 rotation = 4.43978
-scale = Vector2(1.04607, 1.74968)
+scale = Vector2(1.56761, 1.74968)
 texture = ExtResource("11_dlhgw")
 
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/LeftFeet/LeftThigh"]
@@ -293,7 +292,7 @@ polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 28.213, 1.0122
 [node name="Sprite2D" type="Sprite2D" parent="Thigh/LeftFeet/LeftThigh"]
 position = Vector2(34.1134, -1.1292)
 rotation = 1.64639
-scale = Vector2(1.25886, 2.01036)
+scale = Vector2(1.73958, 2.01036)
 texture = ExtResource("12_j47vb")
 
 [node name="RightFeet" type="Node2D" parent="Thigh"]
@@ -358,7 +357,7 @@ polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 13.4483, 0.893
 [node name="Sprite2D" type="Sprite2D" parent="Thigh/RightFeet/RightThigh/RightCalf"]
 position = Vector2(-21.0754, 9.21937)
 rotation = 4.43978
-scale = Vector2(1.04607, 1.74968)
+scale = Vector2(1.44786, 1.74968)
 texture = ExtResource("11_dlhgw")
 
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/RightFeet/RightThigh"]
@@ -369,7 +368,7 @@ polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 28.213, 1.0122
 [node name="Sprite2D" type="Sprite2D" parent="Thigh/RightFeet/RightThigh"]
 position = Vector2(34.1134, -1.1292)
 rotation = 1.64639
-scale = Vector2(1.25886, 2.01036)
+scale = Vector2(1.66077, 2.01036)
 texture = ExtResource("12_j47vb")
 
 [node name="RestMoving" type="Marker2D" parent="Thigh"]
@@ -395,7 +394,7 @@ target_position = Vector2(0, 74)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Thigh"]
 
 [node name="CrouchMoving" type="Marker2D" parent="Thigh"]
-position = Vector2(41, -1)
+position = Vector2(30, -1)
 
 [node name="SnapCrouch" type="Sprite2D" parent="Thigh/CrouchMoving"]
 top_level = true
@@ -405,8 +404,11 @@ texture = SubResource("GradientTexture1D_8yvtv")
 [node name="CrouchRaycast" type="RayCast2D" parent="Thigh/CrouchMoving"]
 target_position = Vector2(1, 107)
 
+[node name="Polygon2D" type="Polygon2D" parent="Thigh/CrouchMoving"]
+polygon = PackedVector2Array(-1, -9, 19, -5, 11, 11, -16, 6)
+
 [node name="CrouchAnchor" type="Marker2D" parent="Thigh"]
-position = Vector2(-24, 0)
+position = Vector2(-15, 0)
 
 [node name="SnapAnchor" type="Sprite2D" parent="Thigh/CrouchAnchor"]
 top_level = true
@@ -442,3 +444,6 @@ top_level = true
 z_index = 1
 scale = Vector2(0.113683, 0.113683)
 texture = ExtResource("6_1qbdq")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

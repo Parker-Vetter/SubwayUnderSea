@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjcgghhh053jy"]
+[gd_scene load_steps=10 format=3 uid="uid://bjcgghhh053jy"]
 
 [ext_resource type="Script" path="res://Scripts/OxygenMachine.gd" id="1_8dnk0"]
 [ext_resource type="Texture2D" uid="uid://c7ywavpryni5k" path="res://assets/oxy_fixed.png" id="2_tlngf"]
+[ext_resource type="AudioStream" uid="uid://ds3s1ow1i3l3r" path="res://assets/sounds/machenis.wav" id="3_qwy7x"]
 [ext_resource type="Texture2D" uid="uid://crxk5xsxcq513" path="res://assets/oxy_broken-sheet.png" id="3_vfoq0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ittci"]
@@ -76,6 +77,12 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Machine Body"]
 position = Vector2(388, -1)
 polygon = PackedVector2Array(-312, 92, -188, 93, -157, 121, -409, 118, -388, 96, -388, 1, -370, -16, -348, -21, -326, -15, -310, 1, -316, 24, -342, 28, -349, 33, -348, 55, -341, 58, -315, 61)
+
+[node name="WorkingAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qwy7x")
+volume_db = -10.0
+max_distance = 800.0
+attenuation = 2.73208
 
 [connection signal="body_entered" from="FillUpArea" to="." method="_on_fill_up_area_body_entered"]
 [connection signal="body_exited" from="FillUpArea" to="." method="_on_fill_up_area_body_exited"]

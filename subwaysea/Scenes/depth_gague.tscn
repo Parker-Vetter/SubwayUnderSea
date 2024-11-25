@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://djl7jxpyxig1i"]
+[gd_scene load_steps=2 format=3 uid="uid://g3pogv21fi3u"]
 
 [ext_resource type="Script" path="res://Scripts/depth_gague.gd" id="1_72gyq"]
 
@@ -19,7 +19,8 @@ offset_left = -2176.0
 offset_top = -960.0
 offset_right = 2576.0
 offset_bottom = 1200.0
-color = Color(0, 0, 0.0117647, 0)
+mouse_filter = 1
+color = Color(0, 0, 0, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
