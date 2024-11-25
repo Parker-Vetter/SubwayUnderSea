@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://cc0kb5tbuiykm"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pkbub"]
-[ext_resource type="PackedScene" uid="uid://po33qrtvxntv" path="res://Scenes/view_light.tscn" id="2_op83d"]
+[ext_resource type="PackedScene" uid="uid://1rxjcuekay2p" path="res://Scenes/view_light.tscn" id="2_op83d"]
 [ext_resource type="Texture2D" uid="uid://coytrmujtyly" path="res://assets/player parts/body.png" id="4_gitg4"]
 [ext_resource type="Shader" uid="uid://uu7t6umy0ogm" path="res://assets/glow.tres" id="4_owt5o"]
 [ext_resource type="Texture2D" uid="uid://dqk0p87sn20f8" path="res://assets/player parts/hand.png" id="5_jruwp"]
@@ -61,7 +61,7 @@ shape = SubResource("CircleShape2D_y25tw")
 
 [node name="UpperBody" type="RigidBody2D" parent="."]
 top_level = true
-position = Vector2(0, -48)
+position = Vector2(3, -48)
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_08nli")
 lock_rotation = true
@@ -78,7 +78,7 @@ width_curve = SubResource("Curve_a7l3r")
 texture_mode = 2
 
 [node name="Shoulder_pos" type="Marker2D" parent="UpperBody/Line2D"]
-position = Vector2(0, -19)
+position = Vector2(3, -13)
 
 [node name="RShoulder" type="Node2D" parent="UpperBody/Line2D"]
 z_index = 2
@@ -102,7 +102,7 @@ visible = false
 polygon = PackedVector2Array(0.977531, 0.210789, 2.08945, 4.54249, 15.9999, 0.0684967, 3.98653, -4.2553)
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D/RShoulder/RForearm/RHand"]
-position = Vector2(-0.409834, -6.06894)
+position = Vector2(-8.09563, -11.3341)
 scale = Vector2(1.15423, 1.15423)
 texture = ExtResource("5_jruwp")
 
@@ -111,9 +111,9 @@ visible = false
 polygon = PackedVector2Array(0.977531, 0.210789, 4.98306, 4.91436, 24, 0.995724, 5.02587, -5.08555)
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D/RShoulder/RForearm"]
-position = Vector2(14.2962, 3.53534)
+position = Vector2(10.2543, -0.886327)
 rotation = -1.57079
-scale = Vector2(1.66393, 1.66393)
+scale = Vector2(1.66393, 1.31296)
 texture = ExtResource("6_j3peh")
 
 [node name="Polygon2D" type="Polygon2D" parent="UpperBody/Line2D/RShoulder"]
@@ -121,9 +121,9 @@ visible = false
 polygon = PackedVector2Array(0.977531, 0.210789, 2.08945, 4.54249, 13.8962, 1.97348, 3.98653, -4.2553)
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D/RShoulder"]
-position = Vector2(7.5119, 2.9277)
-rotation = -1.57079
-scale = Vector2(1.22476, 1.22476)
+position = Vector2(5.12285, 3.2797)
+rotation = -1.78237
+scale = Vector2(1.55529, 1.22476)
 texture = ExtResource("6_j3peh")
 
 [node name="LaIKTwoBone" type="Node2D" parent="UpperBody/Line2D" node_paths=PackedStringArray("bone_one", "bone_two", "target")]
@@ -146,7 +146,7 @@ position = Vector2(29, 20)
 position = Vector2(0, -19)
 
 [node name="Head" type="Polygon2D" parent="UpperBody/Line2D"]
-position = Vector2(0, -29)
+position = Vector2(0, -26)
 color = Color(1, 1, 1, 0)
 offset = Vector2(4.61261, -11.5315)
 polygon = PackedVector2Array(-3.61261, -3.46853, 3.38739, 3.53147, 3.38739, 14.5315, -11.6126, 14.5315, -15.6126, 2.53147)
@@ -163,22 +163,20 @@ texture = ExtResource("7_0gxui")
 
 [node name="BodySprite" type="Sprite2D" parent="UpperBody/Line2D"]
 texture_filter = 3
-position = Vector2(-3, -8.63262)
-scale = Vector2(1.2849, 1.7853)
+position = Vector2(-5, -2)
+scale = Vector2(1.86668, 2.02265)
 texture = ExtResource("4_gitg4")
 
-[node name="OxyTank" type="Marker2D" parent="UpperBody/Line2D"]
-position = Vector2(-11, -16)
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UpperBody/Line2D/OxyTank"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UpperBody/Line2D"]
 anchors_preset = -1
 anchor_left = 0.005
 anchor_top = 0.003
 anchor_right = 1.002
 anchor_bottom = 0.989
-offset_left = -9.0
-offset_right = 55.0
-offset_bottom = 64.0
+offset_left = -21.2365
+offset_top = -13.0
+offset_right = 42.7635
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.209589, 0.269874)
@@ -187,10 +185,11 @@ rounded = true
 fill_mode = 3
 texture_under = SubResource("GradientTexture2D_l35ti")
 texture_progress = ExtResource("9_jr6uk")
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D/OxyTank"]
+[node name="Sprite2D" type="Sprite2D" parent="UpperBody/Line2D"]
 texture_filter = 1
-position = Vector2(-11.7635, -36)
+position = Vector2(-24, -49)
 scale = Vector2(1.86364, 1.86364)
 texture = ExtResource("10_4mtd4")
 centered = false
@@ -229,6 +228,7 @@ top_level = true
 position = Vector2(7, 17)
 
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/LeftFeet/LerpPosition"]
+visible = false
 color = Color(0.176471, 0.403922, 0, 0.505882)
 polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 
@@ -237,6 +237,7 @@ modulate = Color(0, 0.469468, 0.349447, 1)
 position = Vector2(30, 1)
 
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/LeftFeet/LeftLerpMover"]
+visible = false
 color = Color(0.176471, 0.403922, 0, 0.505882)
 polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 
@@ -271,7 +272,7 @@ position = Vector2(-4.76837e-07, -9.53674e-07)
 polygon = PackedVector2Array(-0.906404, -0.422411, 4.82612, 3.27239, 12.0827, -0.095479, 13.1199, -4.9867, 6.28438, -0.711765)
 
 [node name="Sprite2D" type="Sprite2D" parent="Thigh/LeftFeet/LeftThigh/LeftCalf/LeftFoot"]
-position = Vector2(0.171682, -23.3446)
+position = Vector2(-4.10228, -24.6611)
 texture = ExtResource("10_ue5gc")
 
 [node name="Polygon2D2" type="Polygon2D" parent="Thigh/LeftFeet/LeftThigh/LeftCalf"]
@@ -280,9 +281,9 @@ position = Vector2(-4.76837e-07, -9.53674e-07)
 polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 21.9071, -5.39244, 19.7102, -5.80911, 6.0985, -5.984)
 
 [node name="Sprite2D" type="Sprite2D" parent="Thigh/LeftFeet/LeftThigh/LeftCalf"]
-position = Vector2(-21.0754, 9.21937)
-rotation = 4.43978
-scale = Vector2(1.56761, 1.74968)
+position = Vector2(-25.1934, 9.01398)
+rotation = 4.50772
+scale = Vector2(1.56761, 1.90314)
 texture = ExtResource("11_dlhgw")
 
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/LeftFeet/LeftThigh"]
@@ -290,9 +291,10 @@ visible = false
 polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 28.213, 1.01224, 28.5739, -2.12939, 6.0985, -5.984)
 
 [node name="Sprite2D" type="Sprite2D" parent="Thigh/LeftFeet/LeftThigh"]
-position = Vector2(34.1134, -1.1292)
+z_index = -1
+position = Vector2(38.272, -3.90511)
 rotation = 1.64639
-scale = Vector2(1.73958, 2.01036)
+scale = Vector2(1.47397, 2.01036)
 texture = ExtResource("12_j47vb")
 
 [node name="RightFeet" type="Node2D" parent="Thigh"]
@@ -303,6 +305,7 @@ top_level = true
 position = Vector2(7, 17)
 
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/RightFeet/LerpPosition"]
+visible = false
 color = Color(0.176471, 0.403922, 0, 0.505882)
 polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 
@@ -311,6 +314,7 @@ modulate = Color(0, 0.469468, 0.349447, 1)
 position = Vector2(-20, 5)
 
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/RightFeet/RightLerpMover"]
+visible = false
 color = Color(0.176471, 0.403922, 0, 0.505882)
 polygon = PackedVector2Array(-1, -5, -6, -1, 0, 4, 7, -1)
 
@@ -345,7 +349,7 @@ color = Color(0.550747, 0.146554, 0.173659, 1)
 polygon = PackedVector2Array(-0.906404, -0.422411, 4.82612, 3.27239, 12.0827, -0.095479, 13.1199, -4.9867, 6.28438, -0.711765)
 
 [node name="Sprite2D" type="Sprite2D" parent="Thigh/RightFeet/RightThigh/RightCalf/RightFoot"]
-position = Vector2(0.171682, -23.3446)
+position = Vector2(-1.64403, -21.5243)
 texture = ExtResource("10_ue5gc")
 
 [node name="Polygon2D2" type="Polygon2D" parent="Thigh/RightFeet/RightThigh/RightCalf"]
@@ -355,9 +359,9 @@ color = Color(0.570384, 0.195931, 0.187809, 1)
 polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 13.4483, 0.893899, 20.6846, -4.14119, 6.0985, -5.984)
 
 [node name="Sprite2D" type="Sprite2D" parent="Thigh/RightFeet/RightThigh/RightCalf"]
-position = Vector2(-21.0754, 9.21937)
+position = Vector2(-25.8396, 11.2699)
 rotation = 4.43978
-scale = Vector2(1.44786, 1.74968)
+scale = Vector2(1.44786, 2.03002)
 texture = ExtResource("11_dlhgw")
 
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/RightFeet/RightThigh"]
@@ -366,7 +370,7 @@ color = Color(0.739288, 0.125216, 0.104052, 1)
 polygon = PackedVector2Array(-0.906404, -0.422411, 5.984, 6.0985, 28.213, 1.01224, 28.5739, -2.12939, 6.0985, -5.984)
 
 [node name="Sprite2D" type="Sprite2D" parent="Thigh/RightFeet/RightThigh"]
-position = Vector2(34.1134, -1.1292)
+position = Vector2(34.9784, -5.14907)
 rotation = 1.64639
 scale = Vector2(1.66077, 2.01036)
 texture = ExtResource("12_j47vb")
@@ -405,6 +409,7 @@ texture = SubResource("GradientTexture1D_8yvtv")
 target_position = Vector2(1, 107)
 
 [node name="Polygon2D" type="Polygon2D" parent="Thigh/CrouchMoving"]
+visible = false
 polygon = PackedVector2Array(-1, -9, 19, -5, 11, 11, -16, 6)
 
 [node name="CrouchAnchor" type="Marker2D" parent="Thigh"]
@@ -419,6 +424,7 @@ texture = SubResource("GradientTexture1D_8yvtv")
 target_position = Vector2(0, 105)
 
 [node name="StrideCircle" type="CollisionShape2D" parent="."]
+visible = false
 top_level = true
 shape = SubResource("CircleShape2D_6vgp0")
 disabled = true
@@ -440,6 +446,7 @@ rotation = -4.71238
 points = PackedVector2Array(-1, 93, -1, 124)
 
 [node name="SpineOffset" type="Sprite2D" parent="."]
+visible = false
 top_level = true
 z_index = 1
 scale = Vector2(0.113683, 0.113683)

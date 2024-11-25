@@ -116,7 +116,9 @@ func manage_spine(delta):
 	
 	
 	$UpperBody/Line2D.global_position = upper_body.global_position + Vector2(0,12) + (spine_offset.position - global_position)
-	$UpperBody/Line2D.rotation = upper_body.global_rotation + (linear_velocity.x * .001)
+	# torso tilt while moving, disabled for ladder movement
+	if cur_state != STATES.CUTSCENE:
+		$UpperBody/Line2D.rotation = upper_body.global_rotation + (linear_velocity.x * .0019)
 	
 	upper_body.apply_central_force((upper_body.global_position - (spine)) * -100)
 	apply_central_force((spine.x - upper_body.global_position.x) * Vector2(-50, 0.0))
@@ -157,6 +159,8 @@ func stand_process(delta):
 	walk_run_ratio = min(abs(circle_speed)/3, 1)
 	if walking_backwards: 
 		walk_run_ratio = 0
+	else:
+		walk_run_ratio = 0.5
 		
 	#print(walk_run_ratio)
 	if abs(circle_speed) > 2:
@@ -292,6 +296,6 @@ func match_face(delta):
 	
 #region offsets
 	#$UpperBody/Line2D.rotation = 0 + (spine_offset.position - global_position).length() * .01
-	$UpperBody/Line2D/OxyTank.rotation = lerp($UpperBody/Line2D/OxyTank.rotation, (-$UpperBody/Line2D.rotation * direction) + 0 + (spine_offset.position - global_position).length() * .05, delta * 12)
+	#$UpperBody/Line2D/OxyTank.rotation = lerp($UpperBody/Line2D/OxyTank.rotation, (-$UpperBody/Line2D.rotation * direction) + 0 + (spine_offset.position - global_position).length() * .05, delta * 12)
 	
 #endregion
