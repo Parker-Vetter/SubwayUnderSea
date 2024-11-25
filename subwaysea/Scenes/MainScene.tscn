@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/Engine/engine.tscn" id="26_s0mwt"]
 [ext_resource type="AudioStream" uid="uid://c6fe64ygnchj" path="res://assets/sounds/grease.wav" id="28_4v5pr"]
 [ext_resource type="PackedScene" uid="uid://f34j633okqsc" path="res://Scenes/component.tscn" id="28_o4yf3"]
-[ext_resource type="PackedScene" path="res://Scenes/ambience.tscn" id="31_w0gn8"]
+[ext_resource type="PackedScene" uid="uid://sv4xq3c2ohta" path="res://Scenes/ambience.tscn" id="31_w0gn8"]
 [ext_resource type="AudioStream" uid="uid://b3gegntc34gin" path="res://assets/sounds/bigfart.wav" id="33_7lr85"]
 [ext_resource type="PackedScene" uid="uid://d0xh8vi2rqjwk" path="res://Scenes/escMenu.tscn" id="34_35x3h"]
 
@@ -514,7 +514,6 @@ script = ExtResource("9_bsjgf")
 metadata/_edit_lock_ = true
 
 [node name="Ladder" parent="." instance=ExtResource("11_y1uls")]
-z_index = -1
 position = Vector2(922, 608)
 
 [node name="CollisionShape2D" parent="Ladder/TopOfLadder" index="0"]
@@ -544,7 +543,6 @@ position = Vector2(47, 7)
 visible = false
 
 [node name="Ladder2" parent="." instance=ExtResource("11_y1uls")]
-z_index = -1
 position = Vector2(1124, 995)
 
 [node name="CollisionShape2D" parent="Ladder2/TopOfLadder" index="0"]
