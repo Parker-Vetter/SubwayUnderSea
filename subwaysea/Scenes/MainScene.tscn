@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dywsx6k4swabh"]
+[gd_scene load_steps=53 format=3 uid="uid://dywsx6k4swabh"]
 
 [ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
@@ -18,19 +18,23 @@
 [ext_resource type="Texture2D" uid="uid://b1ld0rjn6hd8u" path="res://assets/Backgrounds/foreground_pipes.png" id="9_frhj4"]
 [ext_resource type="Texture2D" uid="uid://b32pm3thjeb8w" path="res://assets/cat_photo.png" id="11_8sp0x"]
 [ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="11_y1uls"]
-[ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="12_e13pe"]
 [ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="13_eu4yb"]
 [ext_resource type="Script" path="res://Scripts/hull.gd" id="13_n462f"]
 [ext_resource type="PackedScene" uid="uid://bjdfdqapm70ch" path="res://Scenes/smash_point.tscn" id="14_00eo4"]
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="14_61kdm"]
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
 [ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
+[ext_resource type="Script" path="res://Scripts/Sanity System/sanity_system.gd" id="21_cilj8"]
 [ext_resource type="Texture2D" uid="uid://e5gvb71liegp" path="res://assets/component spawner.png" id="22_7k725"]
 [ext_resource type="Shader" path="res://assets/insane.gdshader" id="22_08j3g"]
 [ext_resource type="Texture2D" uid="uid://blbbch3pqscg6" path="res://icon.svg" id="23_7lujp"]
+[ext_resource type="AudioStream" uid="uid://6sagrhwsp53f" path="res://assets/sounds/breasting.wav" id="24_mx62b"]
+[ext_resource type="AudioStream" uid="uid://b4fhj0x4nptgw" path="res://assets/sounds/heartbeat.wav" id="25_bht53"]
 [ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/Engine/engine.tscn" id="26_s0mwt"]
+[ext_resource type="AudioStream" uid="uid://c6fe64ygnchj" path="res://assets/sounds/grease.wav" id="28_4v5pr"]
 [ext_resource type="PackedScene" uid="uid://f34j633okqsc" path="res://Scenes/component.tscn" id="28_o4yf3"]
-[ext_resource type="PackedScene" uid="uid://d0xh8vi2rqjwk" path="res://Scenes/escMenu.tscn" id="29_h5j81"]
+[ext_resource type="PackedScene" uid="uid://sv4xq3c2ohta" path="res://Scenes/ambience.tscn" id="31_w0gn8"]
+[ext_resource type="AudioStream" uid="uid://b3gegntc34gin" path="res://assets/sounds/bigfart.wav" id="33_7lr85"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
@@ -59,6 +63,12 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h2psw"]
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_75hbh"]
+blend_mode = 1
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_njsiy"]
 frequency = 0.0086
 
@@ -81,6 +91,17 @@ shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/distortion_strength = 0.03
 shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_uceex")
 shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_kh5rj")
+
+[sub_resource type="Curve" id="Curve_lx21w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6xr3v"]
+offsets = PackedFloat32Array(0, 0.5125, 0.979167)
+colors = PackedColorArray(0, 0, 0, 1, 0.462801, 0.360917, 0.304958, 1, 0.584164, 0.280527, 0.202706, 1)
+
+[sub_resource type="Gradient" id="Gradient_hlmdc"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_1xxoe")
@@ -330,6 +351,7 @@ clip_children = 1
 polygon = PackedVector2Array(1096, 1172, 1616, 1171, 1617, 1417, 1087, 1413)
 
 [node name="Parallax2D" type="Parallax2D" parent="Parallax Interior/Cat Room (Basement)"]
+z_index = -1
 scroll_scale = Vector2(0.86, 1)
 scroll_offset = Vector2(-161.125, 0)
 
@@ -559,30 +581,51 @@ position = Vector2(37, 4)
 [node name="Polygon2D" parent="Ladder2" index="5"]
 visible = false
 
-[node name="SanitySystem" parent="." instance=ExtResource("12_e13pe")]
+[node name="SanitySystem" type="Node2D" parent="."]
+z_index = 12
 position = Vector2(405, 525)
+script = ExtResource("21_cilj8")
 metadata/_edit_lock_ = true
 
-[node name="CatPhoto" parent="SanitySystem" index="0"]
-position = Vector2(961, 784)
-scale = Vector2(0.5, 0.5)
-
-[node name="Sanity Debuff Area" parent="SanitySystem" index="1"]
+[node name="Sanity Debuff Area" type="Area2D" parent="SanitySystem"]
 visible = false
+collision_layer = 8
+collision_mask = 2
 monitoring = false
 
-[node name="CollisionPolygon2D" parent="SanitySystem/Sanity Debuff Area" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SanitySystem/Sanity Debuff Area"]
+material = SubResource("CanvasItemMaterial_h2psw")
+position = Vector2(-48, -16)
 polygon = PackedVector2Array(-217, -125, 1336, -123, 1341, 228, 1805, 226, 1805, 484, 869, 492, 869, 598, 747, 599, 746.761, 487.658, -220, 491)
 
 [node name="CollisionShape2D" parent="SanitySystem/SanityBuffArea" index="0"]
+[node name="SanityBuffArea" type="Area2D" parent="SanitySystem"]
+visible = false
+position = Vector2(178, 1)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="SanitySystem/SanityBuffArea"]
+material = SubResource("CanvasItemMaterial_75hbh")
 position = Vector2(897, 750)
 polygon = PackedVector2Array(-239, -59, 96, -64, 94, 115, -375, 114, -379, 34, -238, 31)
 
-[node name="Sprite2D" type="Sprite2D" parent="SanitySystem/CanvasLayer" index="1"]
+[node name="CanvasLayer" type="CanvasLayer" parent="SanitySystem"]
+
+[node name="Sprite2D" type="Sprite2D" parent="SanitySystem/CanvasLayer"]
 material = SubResource("ShaderMaterial_wvs5b")
 position = Vector2(317, 181)
 scale = Vector2(5.01563, 2.82813)
 texture = ExtResource("23_7lujp")
+
+[node name="Breathing" type="AudioStreamPlayer" parent="SanitySystem"]
+stream = ExtResource("24_mx62b")
+volume_db = -30.0
+autoplay = true
+
+[node name="HeartBeat" type="AudioStreamPlayer" parent="SanitySystem"]
+stream = ExtResource("25_bht53")
+volume_db = -25.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 top_level = true
@@ -605,6 +648,9 @@ position = Vector2(1947, 876)
 [node name="ship" parent="SupplyGrabber" index="3"]
 color = Color(0.0901961, 0.0313726, 0.0117647, 1)
 polygon = PackedVector2Array(-13, -8, -7, -10, 0, -11, 5, -11, 10, -10, 15, -8, 18, -6, 21, -3, 22, 1, 21, 4, 18, 7, 15, 9, 10, 10, 2, 11, -7, 11, -13, 10, -17, 8, -20, 3, -20, -2, -18, -5)
+
+[node name="AudioStreamPlayer2D" parent="SupplyGrabber" index="5"]
+volume_db = -15.0
 
 [node name="DebrisContainer" type="Node2D" parent="SupplyGrabber"]
 
@@ -629,16 +675,39 @@ offset_bottom = 13.0
 text = "Currently Collecting"
 
 [node name="ComponentSpawner" type="Node2D" parent="."]
-position = Vector2(1629, 782)
+z_index = 2
+position = Vector2(1628, 755)
 script = ExtResource("15_rset8")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ComponentSpawner"]
 light_mask = 0
 texture_filter = 1
-position = Vector2(0.999952, -5)
+position = Vector2(1.99995, 21)
 scale = Vector2(2.95833, 2.95833)
 texture = ExtResource("22_7k725")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ComponentSpawner"]
+stream = ExtResource("28_4v5pr")
+max_distance = 1000.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ComponentSpawner"]
+position = Vector2(3, 30)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.81
+emission_shape = 3
+emission_rect_extents = Vector2(14.135, 1)
+direction = Vector2(0, 1)
+spread = 60.0
+initial_velocity_min = 104.17
+initial_velocity_max = 104.17
+scale_amount_min = 5.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_lx21w")
+color_ramp = SubResource("Gradient_6xr3v")
+color_initial_ramp = SubResource("Gradient_hlmdc")
 
 [node name="BreakerBox" parent="." instance=ExtResource("16_yne7g")]
 z_index = -1
@@ -654,13 +723,14 @@ shadow_enabled = true
 texture = ExtResource("3_n5gfx")
 texture_scale = 2.8
 height = 10.0
+metadata/_edit_lock_ = true
 
 [node name="Engine" parent="." instance=ExtResource("26_s0mwt")]
 z_index = -1
 position = Vector2(254, 450)
 metadata/_edit_lock_ = true
 
-[node name="depthGague" parent="Engine" index="4"]
+[node name="depthGague" parent="Engine" index="5"]
 position = Vector2(1651, 514)
 
 [node name="Component" parent="Engine" instance=ExtResource("28_o4yf3")]
@@ -678,22 +748,32 @@ texture_scale = 2.8
 height = 10.0
 metadata/_edit_lock_ = true
 
+[node name="Ambience" parent="." instance=ExtResource("31_w0gn8")]
+volume_db = -11.0
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.188235, 0.133333, 0.117647, 1)
 
-[node name="escMenu" parent="." instance=ExtResource("29_h5j81")]
-visible = false
+[node name="BLAST" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_7lr85")
+volume_db = 12.0
+max_distance = 2500.0
+attenuation = 1.62451
 
 [connection signal="wasAttacked" from="." to="LightParent" method="attacked_for_bit"]
 [connection signal="wasAttacked" from="." to="Hull" method="was_attacked"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="oxygen_multiplier_changed" from="SanitySystem" to="OxygenSystem" method="_on_sanity_system_oxygen_multiplier_changed"]
+[connection signal="body_entered" from="SanitySystem/Sanity Debuff Area" to="SanitySystem" method="_on_sanity_debuff_area_body_entered"]
+[connection signal="body_exited" from="SanitySystem/Sanity Debuff Area" to="SanitySystem" method="_on_sanity_debuff_area_body_exited"]
+[connection signal="body_entered" from="SanitySystem/SanityBuffArea" to="SanitySystem" method="_on_sanity_buff_area_body_entered"]
+[connection signal="body_exited" from="SanitySystem/SanityBuffArea" to="SanitySystem" method="_on_sanity_buff_area_body_exited"]
+[connection signal="finished" from="SanitySystem/Breathing" to="SanitySystem/Breathing" method="play"]
 [connection signal="child_entered_tree" from="SupplyGrabber/DebrisContainer" to="ComponentSpawner" method="_on_debris_container_child_entered_tree"]
 [connection signal="child_exiting_tree" from="SupplyGrabber/DebrisContainer" to="ComponentSpawner" method="_on_debris_container_child_exiting_tree"]
 
 [editable path="Ladder"]
 [editable path="Ladder2"]
-[editable path="SanitySystem"]
 [editable path="SupplyGrabber"]
 [editable path="Engine"]

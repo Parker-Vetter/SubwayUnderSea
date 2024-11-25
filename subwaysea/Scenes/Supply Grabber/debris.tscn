@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bihx5s1i11fgd"]
+[gd_scene load_steps=4 format=3 uid="uid://bihx5s1i11fgd"]
 
 [ext_resource type="Script" path="res://Scripts/Supply Grabber/debris.gd" id="1_gorbr"]
+[ext_resource type="AudioStream" uid="uid://c2s1vk3o3kasw" path="res://assets/sounds/beep.wav" id="2_e28t2"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_60s0e"]
 polygon = PackedVector2Array(-7, -6, 0, -7, 7, -6, 11, 0, 8, 5, 0, 7, -7, 5, -10, 0)
@@ -27,6 +28,10 @@ light_mask = 4
 z_index = -1
 occluder = SubResource("OccluderPolygon2D_60s0e")
 occluder_light_mask = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_e28t2")
+volume_db = -10.0
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

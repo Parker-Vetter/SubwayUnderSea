@@ -25,11 +25,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if get_parent().get_parent().currently_collecting == true: return
 	if Input.is_action_just_pressed("left_mouse") and mouse_hover:
+		$AudioStreamPlayer.play()
 		hide()
 		get_parent().get_parent().currently_collecting = true
 		await get_tree().create_timer(5).timeout
 		get_parent().get_parent().currently_collecting = false
-		debris_collected.emit()
+		if is_monster == 1:
+			debris_collected.emit()
+		else:
+			debris_collected.emit()
 		self.queue_free()
 	
 ## MONSTER-RELATED FUNCTIONS

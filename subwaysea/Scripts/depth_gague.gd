@@ -5,11 +5,16 @@ extends Node2D
 @export var delta_depth: int
 @onready var fadeIn: ColorRect = $ColorRect
 @onready var surfacing_label: Label = $"CanvasLayer/surfacing label"
+@onready var main_scene = self.get_tree().root.get_node("MainScene")
 var dots = ""
 var alpha = 0
 
+# connects to attack handler for variable monster attacks
+signal emit_depth(depth)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	self.connect("emit_depth", main_scene.depth_change_call)
 	delta_depth = 1
 	updateGauge()
 	surfacing_label.visible = false
@@ -27,6 +32,7 @@ func awaitTimer():
 		depth -= delta_depth
 		await get_tree().create_timer(1).timeout #create a timer and wait until it finishes
 		updateGauge() #run this loop again
+		emit_depth.emit(depth)
 		if depth <= 10:
 			alterGoofySurfacingText()
 	else:
