@@ -56,7 +56,8 @@ func remove_sanity(delta):
 	sanity -= 5 * delta
 
 func passive_sanity_loss(delta):
-	sanity -= 0.8 * delta *3
+	pass
+	#sanity -= 0.8 * delta *3
 
 func calculate_multiplier():
 		var multiplier = 1 - sanity/70
