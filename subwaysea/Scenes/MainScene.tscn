@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dywsx6k4swabh"]
+[gd_scene load_steps=43 format=3 uid="uid://dywsx6k4swabh"]
 
 [ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
@@ -26,6 +26,8 @@
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
 [ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
 [ext_resource type="Texture2D" uid="uid://e5gvb71liegp" path="res://assets/component spawner.png" id="22_7k725"]
+[ext_resource type="Shader" path="res://assets/insane.gdshader" id="22_08j3g"]
+[ext_resource type="Texture2D" uid="uid://blbbch3pqscg6" path="res://icon.svg" id="23_7lujp"]
 [ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/Engine/engine.tscn" id="26_s0mwt"]
 [ext_resource type="PackedScene" uid="uid://f34j633okqsc" path="res://Scenes/component.tscn" id="28_o4yf3"]
 
@@ -55,6 +57,29 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 39, -94, 0, 0, 0, 0, 36, 373)
 }
 point_count = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_njsiy"]
+frequency = 0.0086
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uceex"]
+seamless = true
+noise = SubResource("FastNoiseLite_njsiy")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a1wb4"]
+seed = 3
+frequency = 0.0125
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kh5rj"]
+seamless = true
+noise = SubResource("FastNoiseLite_a1wb4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wvs5b"]
+shader = ExtResource("22_08j3g")
+shader_parameter/offset1 = Vector2(0.1, 0.1)
+shader_parameter/offset2 = Vector2(0.2, 0.2)
+shader_parameter/distortion_strength = 0.03
+shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_uceex")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_kh5rj")
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_1xxoe")
@@ -563,6 +588,12 @@ visible = false
 position = Vector2(897, 750)
 polygon = PackedVector2Array(-239, -59, 96, -64, 94, 115, -375, 114, -379, 34, -238, 31)
 
+[node name="Sprite2D" type="Sprite2D" parent="SanitySystem/CanvasLayer" index="1"]
+material = SubResource("ShaderMaterial_wvs5b")
+position = Vector2(317, 181)
+scale = Vector2(5.01563, 2.82813)
+texture = ExtResource("23_7lujp")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 top_level = true
 light_mask = 0
@@ -635,6 +666,7 @@ texture_scale = 2.8
 height = 10.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.188235, 0.133333, 0.117647, 1)
 
 [node name="Engine" parent="." instance=ExtResource("26_s0mwt")]

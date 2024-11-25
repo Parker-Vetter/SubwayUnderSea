@@ -9,7 +9,7 @@ signal sanity_threshold_reached(threshold)
 var in_buff_area
 var in_debuff_area
 var sanity = 70
-
+var sanity_effect = 0.0
 func _ready() -> void:
 	self.connect("sanity_threshold_reached", face_display._on_sanity_threshold_reached)
 
@@ -22,6 +22,18 @@ func _process(delta: float) -> void:
 		remove_sanity(delta)
 	
 	sanity = clamp(sanity, 0, 70)
+	#var sanity_effect = (1/(sanity/69) - 1) * .01
+	
+	if sanity <= 10:
+		sanity_effect = lerp(sanity_effect, .01, delta)
+	elif sanity <= 30:
+		sanity_effect = lerp(sanity_effect, .005, delta)
+	elif sanity <= 50:
+		sanity_effect = lerp(sanity_effect, .001, delta)
+	#else:
+		#sanity_effect = lerp(sanity_effect, 0.0, delta)
+	print(sanity_effect)
+	$CanvasLayer/Sprite2D.material.set_shader_parameter('distortion_strength', sanity_effect)
 	calculate_multiplier()
 	determine_sanity_threshold()
 
@@ -33,7 +45,7 @@ func remove_sanity(delta):
 	sanity -= 5 * delta
 
 func passive_sanity_loss(delta):
-	sanity -= 0.8 * delta
+	sanity -= 0.8 * delta * 6
 
 func calculate_multiplier():
 		var multiplier = 1 - sanity/70

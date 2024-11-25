@@ -42,4 +42,4 @@ func emitWasAttacked():
 # call attack on end of timer then reset the time to be somethign else
 func _on_attack_timer_timeout() -> void:
 	callForAttack()
-	randomAttackTimer.wait_time = randi_range(120,600)
+	randomAttackTimer.wait_time = randi_range(120,300)
