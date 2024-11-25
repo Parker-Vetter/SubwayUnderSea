@@ -27,7 +27,7 @@ func repair():
 	if currentSprite == brokenSprite:
 		lightParent.flickerOn()
 		currentSprite = fixedSprite
-		$fixed.play()
+		$Fixed.play()
 		$light.energy = 2
 		return true
 
