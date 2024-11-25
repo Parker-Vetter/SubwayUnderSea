@@ -26,7 +26,7 @@
 [ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
 [ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
 [ext_resource type="Texture2D" uid="uid://e5gvb71liegp" path="res://assets/component spawner.png" id="22_7k725"]
-[ext_resource type="PackedScene" uid="uid://g3pogv21fi3u" path="res://Scenes/depth_gague.tscn" id="24_o1462"]
+[ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/Engine/engine.tscn" id="26_s0mwt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_upv4y"]
 light_mode = 2
@@ -281,7 +281,7 @@ centered = false
 [node name="Highest Z Index" type="Polygon2D" parent="Parallax Interior"]
 clip_children = 1
 light_mask = 0
-z_index = 1
+z_index = 24
 polygon = PackedVector2Array(1768, 328, 1768, 528, 2248, 656, 2248, 1040, 2008, 1120, 24, 1120, 0, 1088, 0, 673.628, 408, 671, 408.154, 328)
 
 [node name="Foreground Pipes" type="Parallax2D" parent="Parallax Interior/Highest Z Index"]
@@ -468,6 +468,7 @@ script = ExtResource("9_bsjgf")
 metadata/_edit_lock_ = true
 
 [node name="Ladder" parent="." instance=ExtResource("11_y1uls")]
+z_index = -1
 position = Vector2(922, 608)
 
 [node name="CollisionShape2D" parent="Ladder/TopOfLadder" index="0"]
@@ -487,10 +488,17 @@ curve = SubResource("Curve2D_46uno")
 position = Vector2(39, -90)
 rotation = 1.58023
 
+[node name="Polygon2D" parent="Ladder/Path2D/PathFollow2D" index="0"]
+visible = false
+
 [node name="CollisionShape2D" parent="Ladder/Floor" index="0"]
 position = Vector2(47, 7)
 
+[node name="Polygon2D" parent="Ladder" index="5"]
+visible = false
+
 [node name="Ladder2" parent="." instance=ExtResource("11_y1uls")]
+z_index = -1
 position = Vector2(1124, 995)
 
 [node name="CollisionShape2D" parent="Ladder2/TopOfLadder" index="0"]
@@ -512,8 +520,14 @@ curve = SubResource("Curve2D_2h8we")
 [node name="PathFollow2D" parent="Ladder2/Path2D" index="0"]
 rotation = 1.57722
 
+[node name="Polygon2D" parent="Ladder2/Path2D/PathFollow2D" index="0"]
+visible = false
+
 [node name="CollisionShape2D" parent="Ladder2/Floor" index="0"]
 position = Vector2(37, 4)
+
+[node name="Polygon2D" parent="Ladder2" index="5"]
+visible = false
 
 [node name="SanitySystem" parent="." instance=ExtResource("12_e13pe")]
 position = Vector2(405, 525)
@@ -540,7 +554,7 @@ polygon = PackedVector2Array(-239, -59, 96, -64, 94, 115, -375, 114, -379, 34, -
 [node name="ColorRect" type="ColorRect" parent="."]
 top_level = true
 light_mask = 0
-z_index = 24
+z_index = 30
 offset_top = 319.0
 offset_right = 2289.0
 offset_bottom = 1462.0
@@ -575,11 +589,7 @@ texture = ExtResource("22_7k725")
 
 [node name="BreakerBox" parent="." instance=ExtResource("16_yne7g")]
 z_index = -1
-position = Vector2(1584, 492)
-
-[node name="depthGague" parent="." instance=ExtResource("24_o1462")]
-position = Vector2(1901, 966)
-metadata/_edit_lock_ = true
+position = Vector2(1583, 488)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
@@ -587,6 +597,13 @@ color = Color(0.188235, 0.133333, 0.117647, 1)
 
 [connection signal="wasAttacked" from="." to="LightParent" method="attacked_for_bit"]
 [connection signal="wasAttacked" from="." to="Hull" method="was_attacked"]
+[node name="Engine" parent="." instance=ExtResource("26_s0mwt")]
+z_index = -1
+position = Vector2(254, 450)
+
+[node name="depthGague" parent="Engine" index="4"]
+position = Vector2(1651, 514)
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="oxygen_multiplier_changed" from="SanitySystem" to="OxygenSystem" method="_on_sanity_system_oxygen_multiplier_changed"]
 [connection signal="child_entered_tree" from="SupplyGrabber/DebrisContainer" to="ComponentSpawner" method="_on_debris_container_child_entered_tree"]
@@ -596,3 +613,4 @@ color = Color(0.188235, 0.133333, 0.117647, 1)
 [editable path="Ladder2"]
 [editable path="SanitySystem"]
 [editable path="SupplyGrabber"]
+[editable path="Engine"]

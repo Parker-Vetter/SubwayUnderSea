@@ -58,7 +58,6 @@ position = Vector2(-0.47971, -0.300093)
 shape = SubResource("RectangleShape2D_bovuj")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-visible = false
 position = Vector2(264, 9)
 scale = Vector2(0.675629, 0.657106)
 polygon = PackedVector2Array(-312.954, 119.685, -334.793, 131.796, -364.477, 131.457, -387.376, 117.723, -387.376, 109.875, -353.028, 107.913, -353.028, 76.52, -387.376, 74.5579, -388, 1, -368.294, -13.7344, -333.945, -13.7344, -312.954, 1.96204)
