@@ -32,7 +32,6 @@ func _process(delta: float) -> void:
 		sanity_effect = lerp(sanity_effect, .001, delta)
 	#else:
 		#sanity_effect = lerp(sanity_effect, 0.0, delta)
-	print(sanity_effect)
 	$CanvasLayer/Sprite2D.material.set_shader_parameter('distortion_strength', sanity_effect)
 	calculate_multiplier()
 	determine_sanity_threshold()
