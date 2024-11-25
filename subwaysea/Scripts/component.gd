@@ -15,8 +15,10 @@ func _process(delta: float) -> void:
 
 	if detect_machine.has_overlapping_bodies():
 		if detect_machine.get_overlapping_bodies()[0].has_method('repair'):
-			detect_machine.get_overlapping_bodies()[0].repair()
-			die()
+			# if I forgot to move the Load method to the @onready function please do that becuase we dont want to load it each time we call this
+			if detect_machine.get_overlapping_bodies()[0].find_child("Sprite2D").texture == load("res://assets/Light Machine OFF.png") or detect_machine.get_overlapping_bodies()[0].find_child("Sprite2D").texture == load("res://assets/Engine OFF.png") or detect_machine.get_overlapping_bodies()[0].find_child("Sprite2D").texture == load("res://assets/oxy_broken.png"):
+				detect_machine.get_overlapping_bodies()[0].repair()
+				die()
 
 func die():
 	#play animation
