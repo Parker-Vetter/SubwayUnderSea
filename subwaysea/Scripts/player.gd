@@ -296,7 +296,8 @@ func bump_hand():
 
 func manage_component(delta):
 	for i in holding_c:
-		i.global_position = r_lerp_position_hand.get_child(holding_c.find(i)).global_position
+		if i != null:
+			i.global_position = r_lerp_position_hand.get_child(holding_c.find(i)).global_position
 
 func match_face(delta):
 	$UpperBody/Line2D/Head.look_at(get_global_mouse_position())

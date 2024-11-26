@@ -39,7 +39,8 @@ alignment = 1
 [node name="TitleBar" type="Label" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
 z_index = 1
 layout_mode = 2
-text = "SubwaySea The Game"
+text = "Submersed"
+horizontal_alignment = 1
 
 [node name="TitleBarPanel" type="Panel" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/TitleBar"]
 z_as_relative = false
