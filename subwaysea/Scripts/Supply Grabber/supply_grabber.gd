@@ -48,3 +48,4 @@ func _process(delta: float) -> void:
 		$CurrentlyCollectingText.hide()
 		$CoverScreen.hide()
 		$CurrentlyCollectingText.modulate = Color('ca8b38')
+		currently_collecting = false

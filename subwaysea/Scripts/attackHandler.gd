@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	var depth_multiplier = remap(run_time, 0, 400, 1, 0)
-	var wait_time = int(randfn(20 + 30 * depth_multiplier, 10))
+	var wait_time = int(randfn(30 + 60 * depth_multiplier, 10))
 	randomAttackTimer.wait_time = wait_time
 	randomAttackTimer.autostart = true
 	MainInitialized.emit()

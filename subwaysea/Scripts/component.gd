@@ -2,10 +2,16 @@ extends RigidBody2D
 
 @onready var detect_player: Area2D = $DetectPlayer
 @onready var detect_machine: Area2D = $DetectMachine
+@onready var glow: PointLight2D = $Glow
 
 @onready var player = get_tree().get_first_node_in_group('player')
 var hit = false
 func _process(delta: float) -> void:
+	if detect_player.overlaps_body(player):
+		glow.enabled = true
+	else:
+		glow.enabled = false
+
 	if Input.is_action_just_pressed('left_mouse') and detect_player.overlaps_body(player) and detect_player.get_overlapping_bodies()[0].holding_c == []:
 		detect_player.get_overlapping_bodies()[0].holding_c += [self]
 		detect_player.get_overlapping_bodies()[0].bump_hand()

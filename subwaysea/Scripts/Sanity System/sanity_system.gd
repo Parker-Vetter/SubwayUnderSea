@@ -57,13 +57,13 @@ func _process(delta: float) -> void:
 
 #tweak all of these values for to balance sanity
 func add_sanity(delta):
-	sanity += 2 * delta
+	sanity += 3 * delta
 
 func remove_sanity(delta):
 	sanity -= 5 * delta
 
 func passive_sanity_loss(delta):
-	sanity -= 0.6 * delta
+	sanity -= 0.4 * delta
 
 func calculate_multiplier():
 		var multiplier = 1 - sanity/70
