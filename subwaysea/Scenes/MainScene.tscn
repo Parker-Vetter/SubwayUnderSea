@@ -65,7 +65,7 @@ point_count = 2
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_njsiy"]
 frequency = 0.0086
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uceex"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rcays"]
 seamless = true
 noise = SubResource("FastNoiseLite_njsiy")
 
@@ -73,7 +73,7 @@ noise = SubResource("FastNoiseLite_njsiy")
 seed = 3
 frequency = 0.0125
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kh5rj"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fe2b7"]
 seamless = true
 noise = SubResource("FastNoiseLite_a1wb4")
 
@@ -82,8 +82,8 @@ shader = ExtResource("22_08j3g")
 shader_parameter/offset1 = Vector2(0.1, 0.1)
 shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/distortion_strength = 0.03
-shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_uceex")
-shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_kh5rj")
+shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_rcays")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_fe2b7")
 
 [sub_resource type="Curve" id="Curve_lx21w"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -478,7 +478,7 @@ polygon = PackedVector2Array(-70.5, 656, -93.5, 643, -82.5, 585, -16.5, 583, 39.
 polygon = PackedVector2Array(626.5, 612, 679.5, 582, 715.5, 603, 746.5, 582, 793.5, 570, 839.5, 571, 869.5, 593, 893.5, 620, 666.5, 647)
 
 [node name="SmashPoint11" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(905.5, 614, 949.5, 592, 1017.5, 619, 1047.5, 602, 1091.5, 619, 1142.5, 604, 1233.5, 623, 1034.5, 656)
+polygon = PackedVector2Array(905.5, 614, 949.5, 592, 1014.5, 601, 1047.5, 602, 1091.5, 619, 1142.5, 604, 1233.5, 623, 1034.5, 656)
 
 [node name="SmashPoint12" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
 polygon = PackedVector2Array(1536.5, 464, 1484.5, 466, 1454.5, 487, 1448.5, 527, 1436.5, 553, 1437.5, 582, 1414.5, 622, 1562.5, 625, 1550.5, 460)
@@ -726,7 +726,6 @@ metadata/_edit_lock_ = true
 volume_db = -11.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.188235, 0.133333, 0.117647, 1)
 
 [node name="BLAST" type="AudioStreamPlayer2D" parent="."]

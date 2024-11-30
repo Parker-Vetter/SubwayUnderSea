@@ -32,8 +32,8 @@ func _on_timer_timeout() -> void:
 
 var collecting_flash = 0
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("blah"): 
-		currently_collecting = false
+	#if Input.is_action_just_pressed("blah"): 
+		#currently_collecting = false
 	
 	if currently_collecting:
 		$CurrentlyCollectingText.show()

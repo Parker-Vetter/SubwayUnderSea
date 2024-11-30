@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/Supply Grabber/debris.gd" id="1_gorbr"]
 [ext_resource type="AudioStream" uid="uid://c2s1vk3o3kasw" path="res://assets/sounds/beep.wav" id="2_e28t2"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_60s0e"]
-polygon = PackedVector2Array(-7, -6, 0, -7, 7, -6, 11, 0, 8, 5, 0, 7, -7, 5, -10, 0)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6dy30"]
+light_mode = 2
 
 [node name="debris" type="Node2D"]
 light_mask = 4
@@ -23,11 +23,12 @@ visibility_layer = 4
 position = Vector2(56, 24)
 polygon = PackedVector2Array(-63, -30, -56, -31, -49, -30, -45, -24, -48, -19, -56, -17, -63, -19, -66, -24)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="."]
 light_mask = 4
-z_index = -1
-occluder = SubResource("OccluderPolygon2D_60s0e")
-occluder_light_mask = 4
+visibility_layer = 4
+material = SubResource("CanvasItemMaterial_6dy30")
+color = Color(0, 0, 0, 0.619608)
+polygon = PackedVector2Array(0, -7, 7, -6, 11, 0, 8, 5, 0, 7, -7, 5, -10, 0, -7, -6)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_e28t2")

@@ -48,7 +48,7 @@ func emitWasAttacked(): #HULL can access as soon as its attacked
 func _on_attack_timer_timeout() -> void:
 	callForAttack()
 	var depth_multiplier = remap(run_time, 0, 500, 1, 0)
-	var wait_time = int(randfn(20 + 20 * depth_multiplier, 10))
+	var wait_time = int(randfn(30 + 45 * depth_multiplier, 10))
 	randomAttackTimer.wait_time = wait_time
 
 func depth_change_call(new_depth):
