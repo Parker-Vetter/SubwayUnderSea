@@ -311,6 +311,7 @@ polygon = PackedVector2Array(1768, 328, 1768, 528, 2248, 656, 2248, 1040, 1680, 
 
 [node name="Midground Cables" type="Parallax2D" parent="Parallax Interior/Middle Z Index"]
 scroll_scale = Vector2(0.96, 1)
+scroll_offset = Vector2(10, 0)
 repeat_size = Vector2(1280, 360)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax Interior/Middle Z Index/Midground Cables"]
@@ -328,7 +329,7 @@ polygon = PackedVector2Array(1768, 328, 1768, 528, 2248, 656, 2248, 1040, 2008, 
 [node name="Foreground Pipes" type="Parallax2D" parent="Parallax Interior/Highest Z Index"]
 light_mask = 0
 scroll_scale = Vector2(1.1, 1)
-scroll_offset = Vector2(235.945, 0)
+scroll_offset = Vector2(275, 0)
 repeat_size = Vector2(1280, 360)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax Interior/Highest Z Index/Foreground Pipes"]
@@ -478,7 +479,7 @@ polygon = PackedVector2Array(-70.5, 656, -93.5, 643, -82.5, 585, -16.5, 583, 39.
 polygon = PackedVector2Array(626.5, 612, 679.5, 582, 715.5, 603, 746.5, 582, 793.5, 570, 839.5, 571, 869.5, 593, 893.5, 620, 666.5, 647)
 
 [node name="SmashPoint11" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(905.5, 614, 949.5, 592, 1014.5, 601, 1047.5, 602, 1091.5, 619, 1142.5, 604, 1233.5, 623, 1034.5, 656)
+polygon = PackedVector2Array(905.5, 614, 950.5, 596, 999.5, 604, 1047.5, 602, 1103.5, 583, 1147.5, 588, 1233.5, 623, 1034.5, 656)
 
 [node name="SmashPoint12" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
 polygon = PackedVector2Array(1536.5, 464, 1484.5, 466, 1454.5, 487, 1448.5, 527, 1436.5, 553, 1437.5, 582, 1414.5, 622, 1562.5, 625, 1550.5, 460)
@@ -726,6 +727,7 @@ metadata/_edit_lock_ = true
 volume_db = -11.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.188235, 0.133333, 0.117647, 1)
 
 [node name="BLAST" type="AudioStreamPlayer2D" parent="."]
