@@ -61,12 +61,9 @@ func addOxygen():
 		$Rope/Anchor.global_position = global_position
 		$Rope/End.global_position = lerp($Rope/End.global_position, player.global_position - Vector2(0,40), .5)
 
-		
-
 func loseOxygen():
 	oxygenAmount = max(0, oxygenAmount - (1 * multiplier))
 	
-
 
 func determine_oxygen_threshold():
 	var oxygen_threshold

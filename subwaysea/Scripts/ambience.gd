@@ -3,9 +3,6 @@ extends AudioStreamPlayer
 @onready var amb_new = preload("res://Scenes/ambience.tscn")
 var spawned = false
 
-func _ready() -> void:
-	print('spawned')
-
 func _process(delta: float) -> void:
 	if get_playback_position() >= 26.0 and !spawned:
 		spawned = true

@@ -470,7 +470,7 @@ polygon = PackedVector2Array(-345.5, 5, -354.5, 45, -312.5, 67, -284.5, 49, -260
 polygon = PackedVector2Array(-488.5, 433, -378.5, 445, -181.5, 385, -353.5, 506, -374.5, 571, -437.5, 636, -526.5, 598)
 
 [node name="SmashPoint9" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
-polygon = PackedVector2Array(213.5, -6, 115.5, -6, 160.5, 37, 129.5, 71, 130.5, 117, 97.5, 143, 101.5, 161, 129.5, 163, 172.5, 147, 205.5, 145, 238.5, 120, 264.5, 84, 295.5, 64, 299.5, 20, 294.5, -11)
+polygon = PackedVector2Array(213.5, -6, 115.5, -6, 160.5, 37, 129.5, 71, 130.5, 117, 97.5, 143, 116.5, 156, 142.5, 156, 172.5, 147, 205.5, 145, 238.5, 120, 264.5, 84, 295.5, 64, 299.5, 20, 294.5, -11)
 
 [node name="SmashPoint8" parent="Hull/SmashPoints" instance=ExtResource("14_00eo4")]
 polygon = PackedVector2Array(-70.5, 656, -93.5, 643, -82.5, 585, -16.5, 583, 39.5, 557, 112.5, 588, 158.5, 590, 208.5, 606, 231.5, 627, 136.5, 667)
@@ -648,6 +648,10 @@ offset_top = -11.0
 offset_right = 86.0
 offset_bottom = 13.0
 text = "Currently Collecting"
+
+[node name="AbsolutlyStop" type="Timer" parent="SupplyGrabber"]
+wait_time = 6.0
+one_shot = true
 
 [node name="ComponentSpawner" type="Node2D" parent="."]
 z_index = 2
