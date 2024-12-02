@@ -5,7 +5,8 @@ extends Node2D
 @export var delta_depth: int
 @onready var fadeIn: ColorRect = $ColorRect
 @onready var surfacing_label: Label = $"CanvasLayer/surfacing label"
-@onready var main_scene = self.get_tree().root.get_node("MainScene")
+@onready var tutorial_scene = self.get_tree().root.get_node_or_null("TutorialScene")
+@onready var main_scene = self.get_tree().root.get_node_or_null("MainScene")
 var dots = ""
 var alpha = 0
 
@@ -14,7 +15,10 @@ signal emit_depth(depth)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.connect("emit_depth", main_scene.depth_change_call)
+	if tutorial_scene != null:
+		self.connect("emit_depth", tutorial_scene.depth_change_call)
+	else:
+		self.connect("emit_depth", main_scene.depth_change_call)
 	delta_depth = 1
 	updateGauge()
 	surfacing_label.visible = false
