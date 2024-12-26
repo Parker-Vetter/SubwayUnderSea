@@ -49,6 +49,11 @@ text = "PLAY"
 layout_mode = 2
 text = "Tutorial"
 
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Credits"
+
 [node name="Button" type="Button" parent="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
@@ -56,7 +61,7 @@ text = "EXIT"
 
 [node name="Title" type="Sprite2D" parent="CanvasLayer/Main Menu"]
 texture_filter = 1
-position = Vector2(320, 80)
+position = Vector2(320, 64)
 scale = Vector2(2, 2)
 texture = ExtResource("4_1a0iq")
 
@@ -120,6 +125,7 @@ autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Play Button" to="CanvasLayer/Main Menu" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Tutorial Button" to="CanvasLayer/Main Menu" method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/CreditsButton" to="CanvasLayer/Main Menu" method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main Menu/HBoxContainer/VBoxContainer/Button" to="CanvasLayer/Main Menu" method="_on_button_pressed"]
 [connection signal="timeout" from="FloatingSpritesinOcean/Spawner" to="FloatingSpritesinOcean" method="_on_spawner_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play"]
