@@ -1,6 +1,6 @@
 extends Node2D
 
-const PLAYERSPRITE = preload("res://Scenes/MainMenu/player_sprite_body.tscn")
+var PLAYERSPRITE = load("res://Scenes/MainMenu/player_sprite_body.tscn")
 const OXYGENMACHINESPRITE = preload("res://Scenes/MainMenu/oxygen_machine.tscn")
 const LIGHTMACHINESPRITE = preload("res://Scenes/MainMenu/light_machine.tscn")
 const LIFETIMER = preload("res://Scenes/MainMenu/lifeTimer.tscn")
@@ -10,9 +10,10 @@ const LIFETIMER = preload("res://Scenes/MainMenu/lifeTimer.tscn")
 @onready var spriteholder = $SpriteHolder
 
 func _process(delta):
-	for child in spriteholder.get_children():  # Iterate over all children of `spriteholder`
-			child.rotate(randi_range(2,5) * delta)  # Make it spin (scaled by delta for smooth rotation)
-			child.position.y += randi_range(10,20) * delta  # Move down the Y-axis (scaled by delta)
+	if spriteholder != null:
+		for child in spriteholder.get_children():  # Iterate over all children of `spriteholder`
+				child.rotate(randi_range(2,5) * delta)  # Make it spin (scaled by delta for smooth rotation)
+				child.position.y += randi_range(10,20) * delta  # Move down the Y-axis (scaled by delta)
 
 func _on_spawner_timeout() -> void:
 	var spawn_x = lerp(line.get_point_position(0).x, line.get_point_position(1).x, randf())
