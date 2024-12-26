@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://yutfskol300f"]
+[gd_scene load_steps=51 format=3 uid="uid://yutfskol300f"]
 
 [ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_uayea"]
 [ext_resource type="Script" path="res://Scripts/lights.gd" id="2_er4ac"]
@@ -95,6 +95,9 @@ colors = PackedColorArray(0, 0, 0, 1, 0.462801, 0.360917, 0.304958, 1, 0.584164,
 
 [sub_resource type="Gradient" id="Gradient_hlmdc"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0vfj"]
+font_size = 11
 
 [node name="TutorialScene" type="Node2D"]
 script = ExtResource("1_uayea")
@@ -742,6 +745,155 @@ attenuation = 1.62451
 
 [node name="escMenu" parent="." instance=ExtResource("34_76orr")]
 visible = false
+
+[node name="TutorialTextArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 361.0
+offset_right = 2278.0
+offset_bottom = 1466.0
+metadata/_edit_lock_ = true
+
+[node name="Label1" type="Label" parent="TutorialTextArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.293
+anchor_top = 0.077
+anchor_right = 0.478
+anchor_bottom = 0.168
+offset_left = -0.161011
+offset_top = -0.0850067
+offset_right = -0.406006
+offset_bottom = 0.359985
+text = "Welcome to submersed, Pickup the Component on the 
+ground to your left using Left Click and repair the engine.
+The engine working is the only way you will 
+escape the depths. Once finished go down the ladder"
+
+[node name="Label2" type="Label" parent="TutorialTextArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.688
+anchor_top = 0.029
+anchor_right = 0.737
+anchor_bottom = 0.102
+offset_left = -0.57605
+offset_top = -0.045002
+offset_right = -0.14917
+offset_bottom = 0.289993
+text = "This is the Breaker keep the lights on or you will go insane"
+label_settings = SubResource("LabelSettings_f0vfj")
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="TutorialTextArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.667
+anchor_top = 0.38
+anchor_right = 0.716
+anchor_bottom = 0.453
+offset_left = -0.759155
+offset_top = 0.0999756
+offset_right = -0.332031
+offset_bottom = 0.434998
+text = "This is the Component Dropper
+"
+label_settings = SubResource("LabelSettings_f0vfj")
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="TutorialTextArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.661
+anchor_top = 0.473
+anchor_right = 0.711
+anchor_bottom = 0.547
+offset_left = 0.902954
+offset_top = 0.334961
+offset_right = -0.947021
+offset_bottom = -0.435059
+text = "To our right is the radar, this tells you how close to the surface we are...
+"
+label_settings = SubResource("LabelSettings_f0vfj")
+autowrap_mode = 2
+
+[node name="Label5" type="Label" parent="TutorialTextArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.719
+anchor_top = 0.415
+anchor_right = 0.769
+anchor_bottom = 0.55
+offset_left = 0.836914
+offset_top = 0.424988
+offset_right = -1.01306
+offset_bottom = 0.25
+text = "You can collect scrap using the radar. But be carful not to click on a monster or your ship will be attacked! Scrap will only move Vertically."
+label_settings = SubResource("LabelSettings_f0vfj")
+autowrap_mode = 2
+
+[node name="Label6" type="Label" parent="TutorialTextArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.195
+anchor_top = 0.355
+anchor_right = 0.244
+anchor_bottom = 0.472
+offset_left = -1.01501
+offset_top = -0.275024
+offset_right = -0.588013
+offset_bottom = 0.439941
+text = "This is the Oxygen Machine, once on the platform the the oxy hose will conect to you and refill your oxy tank on your back"
+label_settings = SubResource("LabelSettings_f0vfj")
+autowrap_mode = 2
+
+[node name="Label7" type="Label" parent="TutorialTextArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.531
+anchor_top = 0.471
+anchor_right = 0.581
+anchor_bottom = 0.544
+offset_left = 0.912964
+offset_top = -0.455017
+offset_right = -0.937012
+offset_bottom = -0.120056
+text = "Go down the ladder to find the cat room
+"
+label_settings = SubResource("LabelSettings_f0vfj")
+autowrap_mode = 2
+
+[node name="Label8" type="Label" parent="TutorialTextArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.633
+anchor_top = 0.794
+anchor_right = 0.682
+anchor_bottom = 0.867
+offset_left = -0.341064
+offset_top = -0.370056
+offset_right = 0.0859375
+offset_bottom = -0.0350342
+text = "The cat room is the only place you will feel calm!
+"
+label_settings = SubResource("LabelSettings_f0vfj")
+autowrap_mode = 2
+
+[node name="Label9" type="Label" parent="TutorialTextArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.327
+anchor_top = 0.444
+anchor_right = 0.408
+anchor_bottom = 0.549
+offset_left = 0.420959
+offset_top = 0.379974
+offset_right = -1.01605
+offset_bottom = 0.35498
+text = "If a Machine says Repair above it you must pickup a component and bring it over to the machine to fix it, Walk into the wrench with the component if you wish to complete the repair"
+label_settings = SubResource("LabelSettings_f0vfj")
+autowrap_mode = 2
 
 [connection signal="wasAttacked" from="." to="LightParent" method="attacked_for_bit"]
 [connection signal="wasAttacked" from="." to="Hull" method="was_attacked"]
