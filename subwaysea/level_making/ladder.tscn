@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7wtkgsvif50g"]
 
-[ext_resource type="Script" path="res://Scripts/ladder.gd" id="1_6f501"]
+[ext_resource type="Script" uid="uid://dlw8cijceacsu" path="res://Scripts/ladder.gd" id="1_6f501"]
 [ext_resource type="Texture2D" uid="uid://bkqry0usfw578" path="res://assets/ladder.png" id="2_676y4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7o3p"]

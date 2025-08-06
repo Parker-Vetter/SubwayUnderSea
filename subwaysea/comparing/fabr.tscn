@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bw3aoclhumxfd"]
 
-[ext_resource type="Script" path="res://addons/la_ik/nodes/la_bone.gd" id="1_ktmni"]
-[ext_resource type="Script" path="res://addons/la_ik/nodes/la_ik_fabr.gd" id="1_lcapt"]
+[ext_resource type="Script" uid="uid://cpvfv1pdikmrg" path="res://addons/la_ik/nodes/la_bone.gd" id="1_ktmni"]
+[ext_resource type="Script" uid="uid://b66cpavw1g4lr" path="res://addons/la_ik/nodes/la_ik_fabr.gd" id="1_lcapt"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_2b683"]
 target_nodepath = NodePath("../Aim/AimFABRIK2")

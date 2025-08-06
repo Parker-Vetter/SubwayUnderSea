@@ -1,8 +1,8 @@
 [gd_scene load_steps=50 format=3 uid="uid://dywsx6k4swabh"]
 
-[ext_resource type="Script" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
+[ext_resource type="Script" uid="uid://bxwkl6s1wbx04" path="res://Scripts/attackHandler.gd" id="1_1xxoe"]
 [ext_resource type="PackedScene" uid="uid://cc0kb5tbuiykm" path="res://Scenes/player.tscn" id="1_eeyxp"]
-[ext_resource type="Script" path="res://Scripts/lights.gd" id="2_f5qwo"]
+[ext_resource type="Script" uid="uid://r1lu2eua5tle" path="res://Scripts/lights.gd" id="2_f5qwo"]
 [ext_resource type="Texture2D" uid="uid://dcgdftmbhk2d3" path="res://Icons/2d_lights_and_shadows_neutral_point_light.webp" id="3_n5gfx"]
 [ext_resource type="Texture2D" uid="uid://ohalo1nvu3fm" path="res://assets/light_on.png" id="4_2ui7e"]
 [ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="4_gn2it"]
@@ -14,19 +14,19 @@
 [ext_resource type="PackedScene" uid="uid://bjcgghhh053jy" path="res://Scenes/oxygenSystem.tscn" id="7_8beuo"]
 [ext_resource type="PackedScene" uid="uid://beb14gfytx36" path="res://Scenes/PlayerOxyTank.tscn" id="8_thvg5"]
 [ext_resource type="Texture2D" uid="uid://c7fh2ch28etqe" path="res://assets/Backgrounds/hanging_cables_foreground.png" id="8_x8q07"]
-[ext_resource type="Script" path="res://Scripts/playerUIFollow.gd" id="9_bsjgf"]
+[ext_resource type="Script" uid="uid://cu3s6qb4inwob" path="res://Scripts/playerUIFollow.gd" id="9_bsjgf"]
 [ext_resource type="Texture2D" uid="uid://b1ld0rjn6hd8u" path="res://assets/Backgrounds/foreground_pipes.png" id="9_frhj4"]
 [ext_resource type="Texture2D" uid="uid://b32pm3thjeb8w" path="res://assets/cat_photo.png" id="11_8sp0x"]
 [ext_resource type="PackedScene" uid="uid://c7wtkgsvif50g" path="res://level_making/ladder.tscn" id="11_y1uls"]
 [ext_resource type="PackedScene" uid="uid://s3pth3bvbbvt" path="res://Scenes/Sanity System.tscn" id="12_e13pe"]
 [ext_resource type="PackedScene" uid="uid://gnxhj7qlcejs" path="res://Scenes/FaceDisplay.tscn" id="13_eu4yb"]
-[ext_resource type="Script" path="res://Scripts/hull.gd" id="13_n462f"]
+[ext_resource type="Script" uid="uid://wqlyu0ltvbt6" path="res://Scripts/hull.gd" id="13_n462f"]
 [ext_resource type="PackedScene" uid="uid://bjdfdqapm70ch" path="res://Scenes/smash_point.tscn" id="14_00eo4"]
 [ext_resource type="PackedScene" uid="uid://smk00qmpdu36" path="res://Scenes/Supply Grabber/supplyGrabber.tscn" id="14_61kdm"]
-[ext_resource type="Script" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
+[ext_resource type="Script" uid="uid://bgp0ql66y48qn" path="res://Scripts/ComponentSpawner/componentSpawner.gd" id="15_rset8"]
 [ext_resource type="PackedScene" uid="uid://dvotvnd110mnm" path="res://Scenes/BreakerBox.tscn" id="16_yne7g"]
 [ext_resource type="Texture2D" uid="uid://e5gvb71liegp" path="res://assets/component spawner.png" id="22_7k725"]
-[ext_resource type="Shader" path="res://assets/insane.gdshader" id="22_08j3g"]
+[ext_resource type="Shader" uid="uid://tnfy5sam2e7i" path="res://assets/insane.gdshader" id="22_08j3g"]
 [ext_resource type="Texture2D" uid="uid://blbbch3pqscg6" path="res://icon.svg" id="23_7lujp"]
 [ext_resource type="PackedScene" uid="uid://dalvkdqnkycs8" path="res://Scenes/Engine/engine.tscn" id="26_s0mwt"]
 [ext_resource type="AudioStream" uid="uid://c6fe64ygnchj" path="res://assets/sounds/grease.wav" id="28_4v5pr"]
@@ -79,11 +79,11 @@ noise = SubResource("FastNoiseLite_a1wb4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wvs5b"]
 shader = ExtResource("22_08j3g")
+shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_rcays")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_fe2b7")
 shader_parameter/offset1 = Vector2(0.1, 0.1)
 shader_parameter/offset2 = Vector2(0.2, 0.2)
 shader_parameter/distortion_strength = 0.03
-shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_rcays")
-shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_fe2b7")
 
 [sub_resource type="Curve" id="Curve_lx21w"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

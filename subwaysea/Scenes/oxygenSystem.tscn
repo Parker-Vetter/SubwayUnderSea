@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bjcgghhh053jy"]
 
-[ext_resource type="Script" path="res://Scripts/OxygenMachine.gd" id="1_8dnk0"]
+[ext_resource type="Script" uid="uid://bb3epkb3w1gbl" path="res://Scripts/OxygenMachine.gd" id="1_8dnk0"]
 [ext_resource type="Texture2D" uid="uid://c7ywavpryni5k" path="res://assets/oxy_fixed.png" id="2_tlngf"]
 [ext_resource type="AudioStream" uid="uid://ds3s1ow1i3l3r" path="res://assets/sounds/machenis.wav" id="3_qwy7x"]
 [ext_resource type="Texture2D" uid="uid://crxk5xsxcq513" path="res://assets/oxy_broken-sheet.png" id="3_vfoq0"]

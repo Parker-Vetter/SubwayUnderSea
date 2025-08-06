@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bs087341cu6rc"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="1_e1of1"]
+[ext_resource type="Script" uid="uid://dxl0d7ceadv3h" path="res://Scripts/MainMenu/main_menu.gd" id="1_e1of1"]
 [ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="2_xc8ja"]
 [ext_resource type="Texture2D" uid="uid://c4vjbsqie46d8" path="res://assets/top_bubbles.png" id="3_lgaqy"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/characterFalling.gd" id="4_codwu"]
+[ext_resource type="Script" uid="uid://mvsmej2y0d1o" path="res://Scripts/MainMenu/characterFalling.gd" id="4_codwu"]
 [ext_resource type="AudioStream" uid="uid://43rm7woswdlr" path="res://assets/sounds/poostain.wav" id="5_4h0ch"]
 
 [sub_resource type="Curve" id="Curve_4qct1"]

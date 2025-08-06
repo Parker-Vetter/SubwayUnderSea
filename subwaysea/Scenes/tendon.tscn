@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bjnnv7qvjrbp3"]
 
-[ext_resource type="Script" path="res://Scripts/tendon.gd" id="1_i0bkf"]
+[ext_resource type="Script" uid="uid://ckcbvrugwvuvm" path="res://Scripts/tendon.gd" id="1_i0bkf"]
 
 [node name="Tendon" type="CharacterBody2D"]
 collision_layer = 0

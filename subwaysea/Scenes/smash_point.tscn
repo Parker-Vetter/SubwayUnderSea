@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjdfdqapm70ch"]
 
-[ext_resource type="Script" path="res://Scripts/smash_point.gd" id="1_v6hji"]
+[ext_resource type="Script" uid="uid://c8frhfre2h8pj" path="res://Scripts/smash_point.gd" id="1_v6hji"]
 
 [sub_resource type="Curve" id="Curve_ci2g2"]
-max_value = 100.0
+_limits = [0.0, 100.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 50.5495), 0.0, 0.0, 0, 0]
 point_count = 2
 

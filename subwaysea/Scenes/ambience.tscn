@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://sv4xq3c2ohta"]
 
 [ext_resource type="AudioStream" uid="uid://bsembbix0228c" path="res://assets/sounds/submarenis (1).wav" id="1_vhgle"]
-[ext_resource type="Script" path="res://Scripts/ambience.gd" id="2_cidqd"]
+[ext_resource type="Script" uid="uid://1li4vhunjwhl" path="res://Scripts/ambience.gd" id="2_cidqd"]
 
 [node name="Ambience" type="AudioStreamPlayer"]
 stream = ExtResource("1_vhgle")

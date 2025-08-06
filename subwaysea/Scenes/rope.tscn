@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cns4d83a6y1p5"]
 
-[ext_resource type="Script" path="res://Scripts/rope.gd" id="1_s3frs"]
+[ext_resource type="Script" uid="uid://b3wbyn0y8njlh" path="res://Scripts/rope.gd" id="1_s3frs"]
 [ext_resource type="PackedScene" uid="uid://bjnnv7qvjrbp3" path="res://Scenes/tendon.tscn" id="2_tnn6q"]
 
 [node name="Rope" type="Node2D" node_paths=PackedStringArray("anchor_point")]

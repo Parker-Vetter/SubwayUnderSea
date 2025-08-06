@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://g3pogv21fi3u"]
 
-[ext_resource type="Script" path="res://Scripts/depth_gague.gd" id="1_72gyq"]
+[ext_resource type="Script" uid="uid://c8xs5oufhitw6" path="res://Scripts/depth_gague.gd" id="1_72gyq"]
 
 [node name="depthGague" type="Node2D"]
 script = ExtResource("1_72gyq")

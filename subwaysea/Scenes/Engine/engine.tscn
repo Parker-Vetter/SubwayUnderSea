@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dalvkdqnkycs8"]
 
-[ext_resource type="Script" path="res://Scripts/engine.gd" id="1_jdd0p"]
+[ext_resource type="Script" uid="uid://breiybnhfqrpp" path="res://Scripts/engine.gd" id="1_jdd0p"]
 [ext_resource type="PackedScene" uid="uid://g3pogv21fi3u" path="res://Scenes/depth_gague.tscn" id="2_5wtmu"]
 [ext_resource type="Texture2D" uid="uid://q1xlsymokat7" path="res://assets/Engine OFF.png" id="2_w27jk"]
 [ext_resource type="Texture2D" uid="uid://drb2c5pd6smsq" path="res://assets/Blinking Engine.png" id="3_6knhp"]

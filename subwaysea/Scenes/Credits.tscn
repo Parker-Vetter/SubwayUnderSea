@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://xkdrsjke35ub"]
 
-[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_bmdyk"]
+[ext_resource type="Script" uid="uid://cjwuvwlvvqkfq" path="res://Scripts/credits.gd" id="1_bmdyk"]
 [ext_resource type="Texture2D" uid="uid://c6gm2uw0xbpr4" path="res://assets/bottom_bubbles.png" id="1_o251n"]
 [ext_resource type="Texture2D" uid="uid://c4vjbsqie46d8" path="res://assets/top_bubbles.png" id="2_4g7lo"]
 
@@ -37,8 +37,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3u5in"]
 _data = {
-"RESET": SubResource("Animation_7q4vf"),
-"label move": SubResource("Animation_vwcm6")
+&"RESET": SubResource("Animation_7q4vf"),
+&"label move": SubResource("Animation_vwcm6")
 }
 
 [node name="Credits" type="Node2D"]

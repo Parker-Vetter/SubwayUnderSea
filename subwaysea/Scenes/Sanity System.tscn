@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://s3pth3bvbbvt"]
 
-[ext_resource type="Script" path="res://Scripts/Sanity System/sanity_system.gd" id="1_4b13m"]
-[ext_resource type="Script" path="res://Scripts/Sanity System/cat_photo.gd" id="2_kl5jp"]
+[ext_resource type="Script" uid="uid://doyl00ivf51td" path="res://Scripts/Sanity System/sanity_system.gd" id="1_4b13m"]
+[ext_resource type="Script" uid="uid://i6qurfehmqip" path="res://Scripts/Sanity System/cat_photo.gd" id="2_kl5jp"]
 [ext_resource type="Texture2D" uid="uid://b32pm3thjeb8w" path="res://assets/cat_photo.png" id="3_uplhc"]
 [ext_resource type="AudioStream" uid="uid://6sagrhwsp53f" path="res://assets/sounds/breasting.wav" id="4_0203k"]
 [ext_resource type="AudioStream" uid="uid://b4fhj0x4nptgw" path="res://assets/sounds/heartbeat.wav" id="5_pg1mb"]
